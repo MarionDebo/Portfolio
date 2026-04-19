@@ -1,0 +1,394 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const domains = [
+  {
+    icon: '🧠',
+    title: 'LLM Product Integration',
+    description:
+      'Identifying where large language models create durable value in a product — not just novelty. I\'ve shipped NL query interfaces, AI-generated summaries, and anomaly narration features, each tied to a measurable reduction in user effort.',
+    outcomes: ['–60% time-to-insight', 'NPS +18pts post-launch', '3 LLM features in production'],
+  },
+  {
+    icon: '📊',
+    title: 'Embedded Analytics UX',
+    description:
+      'Most analytics products fail because they\'re built for analysts, not for the people making decisions. I specialise in designing analytics that live inside workflows — surfacing context rather than asking users to context-switch.',
+    outcomes: ['40+ enterprise SDK adopters', 'DAU/MAU ratio ×2.4', 'Sub-200ms p95 query latency'],
+  },
+  {
+    icon: '🔁',
+    title: 'AI-native Product Discovery',
+    description:
+      'Adapting classical PM frameworks (JTBD, Shape Up, continuous discovery) to the specific constraints of AI products: unpredictable outputs, evaluation complexity, and the need to build trust before adoption.',
+    outcomes: ['5-day discovery sprints', 'Eval loops before GA', 'Trust metrics in KPI sets'],
+  },
+  {
+    icon: '📐',
+    title: 'Data Modelling for Product',
+    description:
+      'I speak semantic layer, dbt, and event tracking fluently enough to collaborate with data engineers without a translator. This means I can define what data we need, validate it\'s correct, and ship faster.',
+    outcomes: ['dbt model owner on 3 products', 'Segment + Amplitude stacks', 'Custom attribution models'],
+  },
+];
+
+const tools = [
+  { category: 'Analytics & BI', items: ['Metabase', 'Apache Superset', 'Looker', 'Redash', 'Cube.js'] },
+  { category: 'AI & LLMs', items: ['OpenAI API', 'Anthropic Claude', 'LangChain', 'LlamaIndex', 'Hugging Face'] },
+  { category: 'Data Engineering', items: ['dbt', 'Airflow', 'Spark', 'Snowflake', 'BigQuery', 'Postgres'] },
+  { category: 'Product & Research', items: ['Linear', 'Notion', 'Figma', 'FullStory', 'Amplitude', 'Mixpanel'] },
+];
+
+const frameworks = [
+  { name: 'Jobs-to-be-Done', desc: 'Understand motivation, not just behaviour' },
+  { name: 'Shape Up', desc: 'Fixed time, variable scope — for AI where specs can\'t be frozen' },
+  { name: 'Continuous Discovery', desc: 'Weekly user touchpoints baked into process' },
+  { name: 'Opportunity Solution Trees', desc: 'Structured approach to navigating ambiguous problem spaces' },
+  { name: 'Product-Led Growth', desc: 'Embed the value loop inside the product itself' },
+  { name: 'AI Evaluation Loops', desc: 'Build, measure, and improve LLM outputs like any other system' },
+];
+---
+
+<BaseLayout
+  title="AI Expertise — Marion"
+  description="How I approach AI product strategy, embedded analytics, and LLM integration in B2B SaaS products."
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb text-muted">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>AI Expertise</span>
+      </div>
+      <h1 class="page-title">
+        AI that earns its<br />
+        <span class="text-gradient">place in the product</span>
+      </h1>
+      <p class="page-sub text-muted">
+        I've spent the last four years at the intersection of product management and applied AI —
+        shipping features that users don't just try, but depend on.
+      </p>
+    </div>
+  </section>
+
+  <!-- Domains -->
+  <section class="domains">
+    <div class="container">
+      <h2 class="section-title">Domains of expertise</h2>
+
+      <div class="domains-grid">
+        {domains.map(d => (
+          <article class="card domain-card">
+            <span class="domain-icon" aria-hidden="true">{d.icon}</span>
+            <h3>{d.title}</h3>
+            <p class="text-muted">{d.description}</p>
+            <ul class="domain-outcomes" role="list">
+              {d.outcomes.map(o => (
+                <li>
+                  <span class="outcome-dot" aria-hidden="true"></span>
+                  {o}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Insight callout -->
+  <section class="insight-section">
+    <div class="container">
+      <div class="insight-box card">
+        <div class="insight-glow" aria-hidden="true"></div>
+        <div class="insight-content">
+          <span class="insight-label text-accent">Point of view</span>
+          <blockquote>
+            "Most AI features fail not because the model is wrong, but because the product
+            doesn't make it obvious when to trust it and when not to.
+            Building that trust layer is the real PM job in AI products."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frameworks -->
+  <section class="frameworks-section">
+    <div class="container">
+      <div class="frameworks-layout">
+        <div class="frameworks-header">
+          <h2 class="section-title">Frameworks I use</h2>
+          <p class="text-muted">
+            Methodology isn't religion. I adapt these to context — the goal is always the
+            shortest path from uncertainty to a confident decision.
+          </p>
+        </div>
+
+        <div class="frameworks-grid">
+          {frameworks.map(f => (
+            <div class="framework-item">
+              <h3 class="framework-name">{f.name}</h3>
+              <p class="framework-desc text-muted">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section class="tools-section">
+    <div class="container">
+      <h2 class="section-title">Tools & stack</h2>
+      <p class="section-sub text-muted">
+        I know enough to be dangerous — which means I can evaluate trade-offs, not just defer to engineers.
+      </p>
+
+      <div class="tools-grid">
+        {tools.map(group => (
+          <div class="tool-group">
+            <h3 class="tool-category">{group.category}</h3>
+            <div class="tool-pills">
+              {group.items.map(item => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="card cta-box">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-inner">
+          <h2>Want to talk AI product strategy?</h2>
+          <p class="text-muted">
+            I'm always happy to exchange on hard problems at the intersection of AI, data,
+            and product design. No pitch, no agenda.
+          </p>
+          <div class="cta-actions">
+            <a href="mailto:hello@marionpm.com" class="btn btn-primary">Send me a note</a>
+            <a href="/portfolio" class="btn btn-outline">See my work first</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding-top: calc(var(--space-20) + var(--space-8));
+  padding-bottom: var(--space-16);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-6);
+}
+
+.breadcrumb a:hover { color: var(--color-text); }
+
+.page-title {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+.page-sub {
+  font-size: var(--text-lg);
+  max-width: 560px;
+  line-height: var(--leading-normal);
+}
+
+/* Domains */
+.domains { background: var(--color-bg-surface); }
+
+.domains-grid {
+  margin-top: var(--space-10);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.domain-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.domain-icon { font-size: 2rem; }
+
+.domain-card h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.domain-outcomes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.domain-outcomes li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.outcome-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Insight */
+.insight-box {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-12);
+}
+
+.insight-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(124,106,247,0.12) 0%, transparent 60%);
+}
+
+.insight-content { position: relative; z-index: 1; }
+
+.insight-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+blockquote {
+  font-size: clamp(var(--text-lg), 2.5vw, var(--text-2xl));
+  font-weight: 400;
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  max-width: 780px;
+  font-style: italic;
+}
+
+/* Frameworks */
+.frameworks-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.frameworks-header .section-title { margin-bottom: var(--space-4); }
+
+.frameworks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6) var(--space-8);
+}
+
+.framework-item {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-accent);
+}
+
+.framework-name {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.framework-desc { font-size: var(--text-sm); }
+
+/* Tools */
+.tools-section { background: var(--color-bg-surface); }
+
+.section-sub {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-10);
+  font-size: var(--text-lg);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+.tool-category {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.tool-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* CTA */
+.cta-box {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-12);
+}
+
+.cta-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(79,195,247,0.1) 0%, transparent 60%);
+}
+
+.cta-inner { position: relative; z-index: 1; }
+
+.cta-box h2 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.cta-box p { max-width: 480px; margin-bottom: var(--space-6); }
+
+.cta-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .frameworks-layout { grid-template-columns: 1fr; gap: var(--space-8); }
+}
+
+@media (max-width: 768px) {
+  .domains-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .frameworks-grid { grid-template-columns: 1fr; }
+}
+</style>

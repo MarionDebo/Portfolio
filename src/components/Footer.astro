@@ -5,9 +5,8 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-left">
-      <a href="/" class="footer-logo">
-        <span class="logo-mark">M</span>
-        <span>Marion</span>
+      <a href="/" class="footer-logo" aria-label="Home">
+        <span class="logo-mark">M<span class="logo-dot">·</span>D</span>
       </a>
       <p class="footer-tagline text-muted">
         Product Manager · AI-native Analytics · B2B SaaS
@@ -15,10 +14,10 @@ const year = new Date().getFullYear();
     </div>
 
     <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="/">Home</a>
-      <a href="/ai-expertise">AI Expertise</a>
-      <a href="/portfolio">Portfolio</a>
-      <a href="/my-story">My Story</a>
+      <a href="/ai-expertise">AI</a>
+      <a href="/portfolio">Work</a>
+      <a href="/my-story">Story</a>
+      <a href="mailto:hello@mariondupont.com">Contact</a>
     </nav>
 
     <div class="footer-social">
@@ -38,7 +37,7 @@ const year = new Date().getFullYear();
   <div class="footer-bottom">
     <div class="container">
       <p class="text-muted" style="font-size: var(--text-xs);">
-        © {year} Marion. Built with Astro.
+        © {year} Marion Dupont. Built with Astro.
       </p>
     </div>
   </div>
@@ -46,8 +45,10 @@ const year = new Date().getFullYear();
 
 <style>
 .footer {
-  border-top: 1px solid var(--color-border);
-  background: var(--color-bg-surface);
+  border-top: 1.5px solid var(--glass-border);
+  background: rgba(255,255,255,0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   padding-top: var(--space-12);
 }
 
@@ -61,28 +62,21 @@ const year = new Date().getFullYear();
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-weight: 600;
-  font-size: var(--text-sm);
   margin-bottom: var(--space-3);
+  text-decoration: none;
 }
 
 .logo-mark {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-accent-grad);
-  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-xs);
-  color: #fff;
+  font-size: 1.05rem;
+  letter-spacing: 0.09em;
+  color: var(--color-text);
 }
 
-.footer-tagline {
-  font-size: var(--text-sm);
-}
+.logo-dot { color: var(--color-accent); }
+
+.footer-tagline { font-size: var(--text-sm); }
 
 .footer-nav {
   display: flex;
@@ -92,6 +86,7 @@ const year = new Date().getFullYear();
 
 .footer-nav a {
   font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--color-text-muted);
   transition: color var(--transition);
 }
@@ -114,7 +109,7 @@ const year = new Date().getFullYear();
 .footer-bottom {
   margin-top: var(--space-8);
   padding-block: var(--space-4);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-soft);
 }
 
 @media (max-width: 640px) {

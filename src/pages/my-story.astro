@@ -38,19 +38,19 @@ const timeline = [
 
 const testimonials = [
   {
-    quote: "Marion is the rare PM who can walk into a data engineering stand-up and immediately contribute. She understands the trade-offs, asks the right questions, and never pretends ambiguity away. Working with her changed how our whole team approaches discovery.",
+    quote: "Marion is the rare PM who can walk into a data engineering stand-up and immediately contribute. She understands the trade-offs, asks the right questions, and never pretends ambiguity away.",
     name: 'Julien M.',
     role: 'Engineering Lead, analytics platform',
     initials: 'JM',
   },
   {
-    quote: "She's got an exceptional ability to hold both the strategic picture and the user-level detail at the same time. Our NPS jumped 18 points after she led the AI query feature — and she knew exactly why before the survey came back.",
+    quote: "She's got an exceptional ability to hold both the strategic picture and the user-level detail at the same time. Our NPS jumped 18 points after she led the AI query feature.",
     name: 'Sofia K.',
     role: 'Head of Product, B2B SaaS',
     initials: 'SK',
   },
   {
-    quote: "Marion rebuilt our onboarding from the ground up in six weeks. What stands out isn't just the result — it's how she got there. Every decision was tied to evidence, every trade-off was communicated clearly, and the team was energised throughout.",
+    quote: "Marion rebuilt our onboarding from the ground up in six weeks. Every decision was tied to evidence, every trade-off was communicated clearly, and the team was energised throughout.",
     name: 'Thomas R.',
     role: 'CEO, early-stage data startup',
     initials: 'TR',
@@ -59,7 +59,7 @@ const testimonials = [
 ---
 
 <BaseLayout
-  title="My Story — Marion"
+  title="Story — Marion Dupont"
   description="From data analyst to AI product manager — the decisions, pivots, and lessons that shaped my approach to building data products."
 >
   <!-- Hero -->
@@ -69,18 +69,18 @@ const testimonials = [
         <div class="breadcrumb text-muted">
           <a href="/">Home</a>
           <span aria-hidden="true">›</span>
-          <span>My Story</span>
+          <span>Story</span>
         </div>
 
         <h1 class="page-title">
           The long way<br />
-          <span class="text-gradient">into AI product</span>
+          <em class="title-em">into AI product</em>
         </h1>
 
         <p class="page-sub text-muted">
           I didn't plan to become a PM. I started by understanding data better than most,
           then learned that understanding users was the harder and more interesting problem.
-          Seven years later, I sit at the intersection of both — and that's exactly where I want to be.
+          Seven years later, I sit at the intersection of both.
         </p>
 
         <div class="hero-chips">
@@ -96,12 +96,13 @@ const testimonials = [
         <div class="portrait-wrap">
           <Image
             src={portrait}
-            alt="Marion, Product Manager specialised in AI and analytics"
+            alt="Marion Dupont, Product Manager specialised in AI and analytics"
             width={420}
             height={500}
             class="portrait-img"
             loading="eager"
           />
+          <div class="portrait-overlay"></div>
         </div>
       </div>
     </div>
@@ -167,9 +168,7 @@ const testimonials = [
         {testimonials.map(t => (
           <figure class="card testimonial-card">
             <div class="quote-mark" aria-hidden="true">"</div>
-            <blockquote class="testimonial-quote">
-              {t.quote}
-            </blockquote>
+            <blockquote class="testimonial-quote">{t.quote}</blockquote>
             <figcaption class="testimonial-author">
               <div class="author-avatar" aria-hidden="true">{t.initials}</div>
               <div>
@@ -187,7 +186,6 @@ const testimonials = [
   <section class="cta-section">
     <div class="container">
       <div class="card cta-box">
-        <div class="cta-glow" aria-hidden="true"></div>
         <div class="cta-inner">
           <h2>Let's write the next chapter together</h2>
           <p class="text-muted">
@@ -195,7 +193,7 @@ const testimonials = [
             I'd genuinely love to hear about it.
           </p>
           <div class="cta-actions">
-            <a href="mailto:hello@marionpm.com" class="btn btn-primary">
+            <a href="mailto:hello@mariondupont.com" class="btn btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
               Say hello
             </a>
@@ -212,7 +210,7 @@ const testimonials = [
 .story-hero {
   padding-top: calc(var(--space-20) + var(--space-8));
   padding-bottom: var(--space-16);
-  background: var(--color-bg-surface);
+  background: rgba(255,255,255,0.28);
 }
 
 .hero-layout {
@@ -232,11 +230,18 @@ const testimonials = [
 .breadcrumb a:hover { color: var(--color-text); }
 
 .page-title {
+  font-family: var(--font-display);
   font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.03em;
   line-height: var(--leading-tight);
   margin-bottom: var(--space-6);
+}
+
+.title-em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-accent);
 }
 
 .page-sub {
@@ -257,7 +262,9 @@ const testimonials = [
   border-radius: var(--radius-xl);
   overflow: hidden;
   aspect-ratio: 4/5;
-  box-shadow: var(--shadow-card), 0 0 60px rgba(124,106,247,0.1);
+  position: relative;
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .portrait-img {
@@ -267,13 +274,20 @@ const testimonials = [
   object-position: top center;
 }
 
+.portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,23,42,0.15) 0%, transparent 55%);
+}
+
 /* Timeline */
-.timeline-section { background: var(--color-bg); }
+.timeline-section { background: transparent; }
 
 .section-title {
+  font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.025em;
   margin-bottom: var(--space-3);
 }
 
@@ -302,7 +316,7 @@ const testimonials = [
   top: var(--space-12);
   bottom: 0;
   width: 1px;
-  background: var(--color-border);
+  background: var(--color-border-soft);
 }
 
 .timeline-year {
@@ -319,7 +333,6 @@ const testimonials = [
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--color-accent);
-  background: var(--color-bg);
   padding: var(--space-1) 0;
   position: relative;
   z-index: 1;
@@ -333,15 +346,14 @@ const testimonials = [
 }
 
 .timeline-title {
+  font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.timeline-content p { font-size: var(--text-base); }
-
 /* Values */
-.values-section { background: var(--color-bg-surface); }
+.values-section { background: rgba(255,255,255,0.28); }
 
 .values-layout {
   display: grid;
@@ -359,8 +371,9 @@ const testimonials = [
 }
 
 .value-label {
+  font-family: var(--font-display);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-2);
   color: var(--color-text);
 }
@@ -368,6 +381,8 @@ const testimonials = [
 .value-item p { font-size: var(--text-sm); }
 
 /* Testimonials */
+.testimonials-section { background: transparent; }
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -378,15 +393,13 @@ const testimonials = [
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  position: relative;
-  overflow: hidden;
 }
 
 .quote-mark {
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1;
   color: var(--color-accent);
-  opacity: 0.4;
+  opacity: 0.25;
   font-family: Georgia, serif;
   margin-bottom: calc(-1 * var(--space-4));
 }
@@ -404,14 +417,14 @@ const testimonials = [
   align-items: center;
   gap: var(--space-3);
   padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .author-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-accent-grad);
+  background: var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -426,30 +439,24 @@ const testimonials = [
   font-weight: 600;
 }
 
-.author-role {
-  font-size: var(--text-xs);
-}
+.author-role { font-size: var(--text-xs); }
 
 /* CTA */
+.cta-section { background: transparent; }
+
 .cta-box {
-  position: relative;
   overflow: hidden;
   padding: var(--space-12);
   text-align: center;
 }
 
-.cta-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(124,106,247,0.1) 0%, transparent 60%);
-}
-
 .cta-inner { position: relative; z-index: 1; }
 
 .cta-box h2 {
+  font-family: var(--font-display);
   font-size: var(--text-2xl);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.025em;
   margin-bottom: var(--space-3);
 }
 
@@ -474,11 +481,9 @@ const testimonials = [
 
 @media (max-width: 768px) {
   .hero-layout { grid-template-columns: 1fr; }
-  .hero-portrait { order: -1; max-width: 300px; margin-inline: auto; }
-
+  .hero-portrait { order: -1; max-width: 280px; margin-inline: auto; }
   .timeline-item { grid-template-columns: 60px 1fr; gap: var(--space-4); }
   .timeline-item:not(:last-child) .year-line { left: 59px; }
-
   .values-list { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
 }

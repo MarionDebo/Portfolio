@@ -2,10 +2,9 @@
 const pathname = Astro.url.pathname;
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/ai-expertise', label: 'AI Expertise' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/my-story', label: 'My Story' },
+  { href: '/ai-expertise', label: 'AI' },
+  { href: '/portfolio',    label: 'Work' },
+  { href: '/my-story',     label: 'Story' },
 ];
 
 function isActive(href: string) {
@@ -16,9 +15,12 @@ function isActive(href: string) {
 
 <header class="nav-header">
   <nav class="container nav-inner" aria-label="Main navigation">
+
+    <!-- Logo M·D -->
     <a href="/" class="nav-logo" aria-label="Home">
-      <span class="logo-mark">M</span>
-      <span class="logo-text">Marion</span>
+      <span class="logo-mark">
+        M<span class="logo-dot">·</span>D
+      </span>
     </a>
 
     <ul class="nav-links" role="list">
@@ -35,13 +37,14 @@ function isActive(href: string) {
       ))}
     </ul>
 
-    <a href="mailto:hello@marionpm.com" class="btn btn-primary btn-sm nav-cta">
-      Get in touch
+    <a href="mailto:hello@mariondupont.com" class="btn btn-primary btn-sm nav-cta">
+      Contact
     </a>
 
     <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+
   </nav>
 </header>
 
@@ -51,10 +54,11 @@ function isActive(href: string) {
   top: 0;
   z-index: 100;
   height: var(--nav-height);
-  background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1.5px solid var(--glass-border);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
 .nav-inner {
@@ -64,32 +68,27 @@ function isActive(href: string) {
   gap: var(--space-8);
 }
 
+/* Logo */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
   flex-shrink: 0;
+  text-decoration: none;
 }
 
 .logo-mark {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-accent-grad);
-  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-sm);
-  color: #fff;
+  font-size: 1.05rem;
+  letter-spacing: 0.09em;
+  color: var(--color-text);
 }
 
-.logo-text {
-  font-weight: 600;
-  font-size: var(--text-sm);
-  letter-spacing: -0.01em;
+.logo-dot {
+  color: var(--color-accent);
 }
 
+/* Nav links */
 .nav-links {
   display: flex;
   list-style: none;
@@ -100,28 +99,33 @@ function isActive(href: string) {
 .nav-link {
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  font-weight: 450;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
   transition: color var(--transition), background var(--transition);
 }
 
 .nav-link:hover {
   color: var(--color-text);
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.5);
 }
 
 .nav-link.active {
   color: var(--color-text);
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.6);
 }
 
+/* CTA */
 .btn-sm {
-  padding: 0.45rem 1rem;
-  font-size: var(--text-xs);
+  padding: 0.45rem 1.1rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
   margin-left: var(--space-4);
 }
 
+/* Burger */
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -135,7 +139,7 @@ function isActive(href: string) {
 .nav-burger span {
   display: block;
   width: 20px;
-  height: 2px;
+  height: 1.5px;
   background: var(--color-text);
   border-radius: 2px;
   transition: all var(--transition);
@@ -168,8 +172,10 @@ function isActive(href: string) {
     position: fixed;
     top: var(--nav-height);
     left: 0; right: 0;
-    background: var(--color-bg-surface);
-    border-bottom: 1px solid var(--color-border);
+    background: rgba(240, 238, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--glass-border);
     padding: var(--space-4);
     gap: var(--space-1);
     z-index: 99;
@@ -179,7 +185,7 @@ function isActive(href: string) {
     display: inline-flex;
     margin: 0 var(--space-4) var(--space-4);
     position: fixed;
-    top: calc(var(--nav-height) + 220px);
+    top: calc(var(--nav-height) + 180px);
     left: 0; right: 0;
     z-index: 99;
     justify-content: center;

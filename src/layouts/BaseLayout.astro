@@ -11,11 +11,11 @@ interface Props {
 
 const {
   title,
-  description = 'Marion — Product Manager specialised in AI-native embedded analytics SaaS. Building data products that think.',
+  description = 'Marion Dupont — Product Manager specialised in AI-native embedded analytics SaaS. Building data products that think.',
   ogImage = '/og-default.png',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://marionpm.com');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://mariondupont.com');
 ---
 
 <!doctype html>
@@ -46,11 +46,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://marionpm
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts -->
+    <!-- Fonts · Manrope (display) + DM Sans (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
       rel="stylesheet"
     />
   </head>

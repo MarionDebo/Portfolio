@@ -46,21 +46,14 @@ const teammates = [
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          <span>Available · Paris / Remote</span>
-        </div>
 
         <h1 class="hero-title">
-          Making data<br />
-          <em class="hero-em">actually</em><br />
-          useful.
+          Senior Product Manager<br />
+          <em class="hero-em">at the edge of AI.</em>
         </h1>
 
         <p class="hero-subtitle">
-          I'm Marion, a Product Manager at the intersection of AI, analytics, and B2B SaaS.
-          I build embedded analytics products that surface the right insight at the right moment —
-          no dashboard archaeology required.
+          6 years shipping SaaS and mobile products, at the intersection of data, Artificial Intelligence, and user obsession. Currently building the next generation of AI-native analytics at Toucan Toco.
         </p>
 
         <div class="hero-actions">
@@ -70,7 +63,7 @@ const teammates = [
 
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-value">7+</span>
+            <span class="stat-value">6+</span>
             <span class="stat-label text-muted">Years in product</span>
           </div>
           <div class="stat-divider"></div>
@@ -372,7 +365,7 @@ const teammates = [
 /* Title */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
   font-weight: 800;
   line-height: var(--leading-tight);
   letter-spacing: -0.03em;
@@ -553,7 +546,9 @@ const teammates = [
 
 /* ── Work list ───────────────────────────────────────── */
 .selected-work { background: transparent; }
-.work-list { display: flex; flex-direction: column; gap: var(--space-4); }
+.work-list { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.work-item.card { padding: var(--space-4) var(--space-6); }
 
 .work-item {
   display: grid;
@@ -894,6 +889,10 @@ const teammates = [
         el.style.border = 'none';
         el.style.boxShadow = 'none';
         el.style.outline = 'none';
+        // Add inner left padding to the graph container
+        if (el.tagName === 'DIV' && el.querySelector('svg')) {
+          el.style.paddingLeft = '12px';
+        }
       });
     });
     observer.observe(cal, { childList: true, subtree: true });

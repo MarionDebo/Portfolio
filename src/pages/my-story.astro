@@ -108,6 +108,34 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- Product Philosophy -->
+  <section class="philosophy-section">
+    <div class="container">
+      <h2 class="section-title">My Product Philosophy</h2>
+      <p class="section-sub text-muted">
+        A few principles I keep coming back to, whatever the product or team.
+      </p>
+
+      <div class="philosophy-grid">
+        <article class="card philosophy-card">
+          <span class="philosophy-icon" aria-hidden="true">💡</span>
+          <h3>Philosophy title 1</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </article>
+        <article class="card philosophy-card">
+          <span class="philosophy-icon" aria-hidden="true">🎯</span>
+          <h3>Philosophy title 2</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </article>
+        <article class="card philosophy-card">
+          <span class="philosophy-icon" aria-hidden="true">🔍</span>
+          <h3>Philosophy title 3</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Timeline -->
   <section class="timeline-section">
     <div class="container">
@@ -134,50 +162,38 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- What drives me -->
-  <section class="values-section">
+  <!-- Education -->
+  <section class="education-section">
     <div class="container">
-      <div class="values-layout">
-        <div class="values-header">
-          <h2 class="section-title">What I believe about product</h2>
-        </div>
-        <div class="values-list">
-          {[
-            { label: 'Evidence over opinion', text: 'I can hold a strong view while remaining genuinely open to being wrong. The data decides, not the loudest voice in the room.' },
-            { label: 'Trust is a product feature', text: 'Especially in AI. If users can\'t tell when to trust the system, you haven\'t shipped a feature — you\'ve shipped uncertainty.' },
-            { label: 'Simplicity is the hard part', text: 'Anyone can add. Removing something that\'s used by 15% of users but confuses 85% takes courage. That\'s the PM job.' },
-            { label: 'Know the stack', text: 'I won\'t write the query, but I\'ll understand why it\'s slow. That fluency makes me a better partner to engineers and a faster decision-maker.' },
-          ].map(v => (
-            <div class="value-item">
-              <h3 class="value-label">{v.label}</h3>
-              <p class="text-muted">{v.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+      <h2 class="section-title">Education</h2>
 
-  <!-- Testimonials -->
-  <section class="testimonials-section">
-    <div class="container">
-      <h2 class="section-title">Kind words from teammates</h2>
-      <p class="section-sub text-muted">From people I've shipped with.</p>
+      <div class="education-list">
+        <div class="education-item card">
+          <div class="education-year text-muted">2012 – 2015</div>
+          <div class="education-content">
+            <h3 class="education-degree">Master's in Economics & Management</h3>
+            <p class="education-school text-muted">Université Paris-Dauphine</p>
+            <p class="text-muted">Specialisation in digital strategy and data analysis. Thesis on behavioural economics in digital markets.</p>
+          </div>
+        </div>
 
-      <div class="testimonials-grid">
-        {testimonials.map(t => (
-          <figure class="card testimonial-card">
-            <div class="quote-mark" aria-hidden="true">"</div>
-            <blockquote class="testimonial-quote">{t.quote}</blockquote>
-            <figcaption class="testimonial-author">
-              <div class="author-avatar" aria-hidden="true">{t.initials}</div>
-              <div>
-                <p class="author-name">{t.name}</p>
-                <p class="author-role text-muted">{t.role}</p>
-              </div>
-            </figcaption>
-          </figure>
-        ))}
+        <div class="education-item card">
+          <div class="education-year text-muted">2010 – 2012</div>
+          <div class="education-content">
+            <h3 class="education-degree">Bachelor's in Business Administration</h3>
+            <p class="education-school text-muted">Université Paris I Panthéon-Sorbonne</p>
+            <p class="text-muted">Core curriculum in economics, statistics and organisational theory.</p>
+          </div>
+        </div>
+
+        <div class="education-item card">
+          <div class="education-year text-muted">2023</div>
+          <div class="education-content">
+            <h3 class="education-degree">AI Product Management — Certificate</h3>
+            <p class="education-school text-muted">Reforge</p>
+            <p class="text-muted">Intensive programme on building AI-native products, evaluation loops and LLM integration strategy.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -278,6 +294,31 @@ const testimonials = [
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(15,23,42,0.15) 0%, transparent 55%);
+}
+
+/* Philosophy */
+.philosophy-section { background: rgba(255,255,255,0.28); }
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.philosophy-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.philosophy-icon { font-size: 1.75rem; }
+
+.philosophy-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 /* Timeline */
@@ -440,6 +481,46 @@ const testimonials = [
 }
 
 .author-role { font-size: var(--text-xs); }
+
+/* Education */
+.education-section { background: transparent; }
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.education-year {
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding-top: 3px;
+}
+
+.education-degree {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-1);
+}
+
+.education-school {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+.education-content p { font-size: var(--text-sm); }
 
 /* CTA */
 .cta-section { background: transparent; }

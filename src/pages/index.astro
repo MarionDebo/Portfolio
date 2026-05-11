@@ -2,6 +2,36 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import portrait from '../assets/portrait-Marion.jpg';
+import saraTissenier from '../assets/sara-tissenier.jpeg';
+import jeremyPinhel from '../assets/jeremy-pinhel.jpeg';
+import christinaStumpf from '../assets/christina-stumpf.jpeg';
+
+const teammates = [
+  {
+    photo: saraTissenier.src,
+    quote: "Je travaille avec Marion depuis plusieurs années et elle fait clairement partie des PM avec qui on a envie de travailler. Elle fait preuve d'une grande maturité produit et sait arbitrer avec justesse sous pression marché, en alignant enjeux business, besoins utilisateurs et qualité de ce qui est délivré, sans jamais perdre de vue l'humain au sein de ses équipes. Elle collabore très étroitement avec le design et sait en faire un véritable levier d'impact produit. Curieuse et à l'aise avec la technique, elle expérimente et s'approprie les innovations, notamment en IA, pour améliorer ses façons de travailler. Un vrai plaisir de collaborer avec elle au quotidien.",
+    name: 'Sara Tissenier',
+    role: 'Senior Product Designer, AI product',
+    date: 'January 7, 2026',
+    linkedin: 'https://www.linkedin.com/in/saratissenier/',
+  },
+  {
+    photo: jeremyPinhel.src,
+    quote: "J'ai eu la chance de travailler avec Marion pendant plus d'un an dans la même squad, et c'est probablement l'une des collaborations produit / engineering les plus riches que j'ai connues. Ce que j'ai beaucoup apprécié avec Marion, c'est qu'elle ne reste jamais en surface des sujets. Elle cherche vraiment à comprendre : les utilisateurs, le marché, la concurrence, mais aussi les contraintes techniques et les impacts côté engineering. Ça rend les discussions très concrètes, très efficaces, et surtout beaucoup plus intéressantes pour un développeur. On a notamment travaillé ensemble sur toucanai.cloud, un nouveau produit pensé AI-first, dans un domaine où tout était encore très exploratoire. Côté engineering, c'est une PM avec qui il est très agréable de travailler. Je retravaillerais avec Marion sans aucune hésitation.",
+    name: 'Jérémy Pinhel',
+    role: 'Senior Software Engineer',
+    date: 'May 4, 2026',
+    linkedin: 'https://www.linkedin.com/in/jeremypinhel/',
+  },
+  {
+    photo: christinaStumpf.src,
+    quote: "Marion worked on Content Marketing tasks for the French market while being in my SEO team at FlixBus. She is very passionate about anything she does. She has lots of great and relevant ideas that drive the business forward and pushes all her projects with great vigour. On top of that, Marion is a great team player and a fun person to be around. Thank you, Marion, for all your incredible work, dedication, reliability and spirit!",
+    name: 'Christina Stumpf',
+    role: 'Project Lead Legal Tech @ Flix',
+    date: 'June 15, 2018',
+    linkedin: 'https://www.linkedin.com/in/christina-stumpf-584a8873/',
+  },
+];
 ---
 
 <BaseLayout
@@ -194,6 +224,36 @@ import portrait from '../assets/portrait-Marion.jpg';
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Kind Words ──────────────────────────────────────────────────── -->
+  <section class="kind-words">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Kind words from teammates</h2>
+        <p class="section-sub text-muted">From people I've shipped with.</p>
+      </div>
+
+      <div class="kw-grid">
+        {teammates.map(t => (
+          <figure class="card kw-card">
+            <div class="quote-mark" aria-hidden="true">"</div>
+            <blockquote class="kw-quote">{t.quote}</blockquote>
+            <figcaption class="kw-author">
+              <img src={t.photo} alt={t.name} class={`kw-avatar${t.name === 'Sara Tissenier' ? ' kw-avatar--bordered' : ''}`} width="56" height="56" loading="lazy" />
+              <div>
+                {t.linkedin
+                  ? <a href={t.linkedin} target="_blank" rel="noopener noreferrer" class="kw-name kw-name--link">{t.name}</a>
+                  : <p class="kw-name">{t.name}</p>
+                }
+                <p class="kw-role text-muted">{t.role}</p>
+                {t.date && <p class="kw-date text-muted">{t.date}</p>}
+              </div>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
@@ -536,12 +596,89 @@ import portrait from '../assets/portrait-Marion.jpg';
   font-size: var(--text-lg);
 }
 
+/* ── Kind Words ─────────────────────────────────────── */
+.kind-words { background: rgba(255,255,255,0.28); }
+
+.kw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.kw-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.quote-mark {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  margin-bottom: calc(-1 * var(--space-4));
+}
+
+.kw-quote {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+  font-style: italic;
+  flex: 1;
+}
+
+.kw-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.kw-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1.5px solid var(--glass-border);
+}
+
+.kw-avatar--bordered {
+  border: 1.5px solid #d0d0d0;
+}
+
+.kw-name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.kw-name--link {
+  transition: color var(--transition);
+}
+.kw-name--link:hover { color: var(--color-accent); }
+
+.kw-role { font-size: var(--text-xs); }
+
+.kw-date {
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+}
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 1024px) {
   .props-grid { grid-template-columns: 1fr 1fr; }
 }
 
+@media (max-width: 1024px) {
+  .kw-grid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 768px) {
+  .kw-grid { grid-template-columns: 1fr; }
+
   .hero-inner {
     grid-template-columns: 1fr;
     gap: var(--space-12);

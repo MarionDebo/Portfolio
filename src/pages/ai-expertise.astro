@@ -156,6 +156,30 @@ const frameworks = [
     </div>
   </section>
 
+  <!-- Building in public -->
+  <section class="github-section">
+    <div class="container">
+      <div class="github-inner card">
+        <div class="github-header">
+          <div class="github-text">
+            <span class="github-label text-muted">I don't just spec, I ship.</span>
+            <h2 class="github-title">Building in public</h2>
+            <p class="text-muted github-desc">From data pipelines to product prototypes, I use code as a thinking tool. This portfolio is built and maintained by me.</p>
+          </div>
+          <div class="github-meta">
+            <a href="https://github.com/MarionDebo" target="_blank" rel="noopener noreferrer" class="btn btn-outline github-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="github-graph">
+          <div class="calendar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="container">
@@ -383,6 +407,105 @@ blockquote {
 
 .cta-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
 
+/* GitHub */
+.github-section { background: rgba(255,255,255,0.28); }
+
+.github-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.github-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.github-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-shrink: 0;
+}
+
+.github-graph {
+  width: 100%;
+  overflow: hidden;
+  padding: var(--space-4);
+  background: rgba(255,255,255,0.5);
+  border-radius: var(--radius-md);
+}
+
+.github-label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.github-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-3);
+}
+
+.github-desc {
+  font-size: var(--text-sm);
+  max-width: 480px;
+}
+
+.github-btn {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.github-btn:hover {
+  background: #f0f0f0 !important;
+  color: var(--color-text) !important;
+  border-color: #d0d0d0 !important;
+}
+
+.calendar {
+  width: 100%;
+  overflow: hidden;
+}
+
+.calendar h2,
+.calendar .skip-to-content,
+.calendar a[href*="skip"] {
+  display: none !important;
+}
+
+.calendar svg {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.calendar > div,
+.calendar .js-calendar-graph,
+.calendar .ContributionCalendar {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.calendar text { font-family: var(--font-sans) !important; font-size: 10px !important; fill: var(--color-text-muted) !important; }
+
+.calendar .contrib-legend,
+.calendar .contrib-legend text,
+.calendar .contrib-legend span {
+  font-size: 9px !important;
+  color: var(--color-text-faint) !important;
+  fill: var(--color-text-faint) !important;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .frameworks-layout { grid-template-columns: 1fr; gap: var(--space-8); }
@@ -392,5 +515,57 @@ blockquote {
   .domains-grid { grid-template-columns: 1fr; }
   .tools-grid { grid-template-columns: 1fr; }
   .frameworks-grid { grid-template-columns: 1fr; }
+  .github-header {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .github-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
 }
 </style>
+
+<link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
+<script is:inline>
+  (function loadCalendar() {
+    const cal = document.querySelector('.calendar');
+
+    const observer = new MutationObserver(function() {
+      cal.querySelectorAll('h2, [aria-hidden="true"] + h2, a').forEach(function(el) {
+        const text = el.textContent.trim();
+        if (text.includes('Skip') || text.includes('Contribution Graph')) {
+          el.remove();
+        }
+      });
+      cal.querySelectorAll('*').forEach(function(el) {
+        const text = el.textContent.trim();
+        if ((text === 'Less' || text === 'More') && el.children.length === 0) {
+          el.style.fontSize = '9px';
+          el.style.color = '#A0A8B0';
+        }
+        el.style.border = 'none';
+        el.style.boxShadow = 'none';
+        el.style.outline = 'none';
+        if (el.tagName === 'DIV' && el.querySelector('svg')) {
+          el.style.paddingLeft = '12px';
+        }
+      });
+    });
+    observer.observe(cal, { childList: true, subtree: true });
+
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js';
+    script.onload = function () {
+      GitHubCalendar('.calendar', 'MarionDebo', {
+        responsive: true,
+        tooltips: true,
+        global_stats: false,
+        year: 2026,
+      });
+    };
+    document.head.appendChild(script);
+  })();
+</script>

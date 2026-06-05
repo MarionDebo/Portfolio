@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "/Users/toucan/Documents/Claude/Projects/Portfolio",
+      "port": 4321,
+      "autoPort": false
+    }
+  ]
+}

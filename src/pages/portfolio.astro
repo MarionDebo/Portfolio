@@ -27,17 +27,9 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
         <em class="title-em">moved the needle</em>
       </h1>
       <p class="page-sub text-muted">
-        A selection of product case studies — each one a real problem, a defined decision,
-        and a measurable outcome. No vanity metrics, no slide-deck abstractions.
+        A selection of product case studies: each one a real problem, a defined decision, and a measurable outcome.
       </p>
 
-      <!-- Tag filter -->
-      <div class="tag-filter" role="group" aria-label="Filter projects by tag">
-        <button class="tag tag-btn active" data-tag="all">All</button>
-        {allTags.map(tag => (
-          <button class="tag tag-btn" data-tag={tag}>{tag}</button>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -110,37 +102,6 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
     </section>
   )}
 
-  <!-- Process section -->
-  <section class="process-section">
-    <div class="container">
-      <div class="process-layout">
-        <div class="process-header">
-          <h2 class="section-title">How I work</h2>
-          <p class="text-muted">
-            Every project above followed a version of this loop — adapted to the
-            constraints, but never skipping the fundamentals.
-          </p>
-        </div>
-
-        <ol class="process-steps" role="list">
-          {[
-            { step: '01', title: 'Frame the problem', desc: 'Who has the pain? What are they actually trying to do? Where does the current solution break down?' },
-            { step: '02', title: 'Map the opportunity', desc: 'What would success look like in 12 months? What evidence would tell us we got it right?' },
-            { step: '03', title: 'Decide fast, cheaply', desc: 'Prototype the riskiest assumption first. Run a test, not a meeting.' },
-            { step: '04', title: 'Ship with a truth metric', desc: 'Every launch has a defined "this worked / this didn\'t" threshold, agreed before we ship.' },
-          ].map(s => (
-            <li class="process-step">
-              <span class="step-number text-muted">{s.step}</span>
-              <div>
-                <h3 class="step-title">{s.title}</h3>
-                <p class="text-muted step-desc">{s.desc}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </div>
-  </section>
 
   <!-- CTA -->
   <section class="cta-section">
@@ -294,14 +255,12 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-accent-light);
-  border: 1px solid var(--color-accent-mid);
-  border-radius: var(--radius-md);
   margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-soft);
 }
 
-.impact-icon { color: var(--color-accent); font-size: var(--text-lg); font-weight: 700; }
+.impact-icon { color: var(--color-accent); font-size: var(--text-base); font-weight: 700; }
 .impact-text { font-size: var(--text-sm); font-weight: 600; color: var(--color-accent); }
 
 .project-footer { margin-top: var(--space-2); }

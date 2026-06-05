@@ -5,56 +5,68 @@ import portrait from '../assets/portrait-Marion.jpg';
 
 const timeline = [
   {
-    year: '2017',
-    title: 'Started as a data analyst',
-    body: 'I fell into data by accident — economics degree, a startup internship, and suddenly I was the person everyone asked when the numbers didn\'t add up. I discovered I cared less about the numbers themselves and more about the decisions they enabled.',
+    year: '2009',
+    title: 'A literature degree and a love for complex ideas',
+    body: 'I started with books. A bachelor\'s in literature, then a master\'s in communication. I learned to read carefully, write clearly, and explain things that were hard to explain. Skills I still use every day.',
   },
   {
-    year: '2019',
-    title: 'Moved into product',
-    body: 'A PM at my company left mid-sprint. I raised my hand. Two weeks later I was running discovery sessions and writing specs. It turned out that understanding the data was a superpower in product — I could validate assumptions faster than anyone on the team.',
+    year: '2011',
+    title: 'Five years at EDF, understanding how large organizations work',
+    body: 'As a communication officer on engineering and innovation projects, I learned what it takes to make ideas land inside complex organizations. I also learned that the most interesting problems are rarely the most visible ones.',
+  },
+  {
+    year: '2016',
+    title: 'Munich. Two companies. A crash course in digital and agile.',
+    body: 'FlixBus, then a digital agency in Munich. SEO strategy at scale (4M monthly visits), OKRs, Kanban. My first real experience of agile culture, data-driven thinking, and moving fast.',
+  },
+  {
+    year: '2020',
+    title: 'I learned to code.',
+    body: 'Le Wagon bootcamp, Nantes. Not to become a developer, but to stop being afraid of code. It changed how I talk to engineers, how I read a codebase, and how I think about product feasibility.',
   },
   {
     year: '2021',
-    title: 'Led my first AI feature',
-    body: 'We were building an anomaly detection system. I pushed the team to go further than flagging — to also explain. That was my first real lesson in AI product design: the model is rarely the bottleneck. The user\'s trust is.',
-  },
-  {
-    year: '2022',
-    title: 'Rebuilt onboarding from scratch',
-    body: 'Time-to-value was killing us. I ran a six-week redesign sprint that cut 34 steps from the onboarding flow and moved completion rates from 12% to 71%. I learned that the best product decision is often removing something, not adding it.',
+    title: 'My first PM role, at a non-profit.',
+    body: 'Entourage gave me the rarest kind of PM experience: user research in the field, during maraudes and daytime shelter visits. You learn humility fast when your users sometimes don\'t have the energy to talk to you. I contributed to a full app redesign, repositioning the product from donation-centric to connection-centric.',
   },
   {
     year: '2023',
-    title: 'Shipped the embedded analytics SDK',
-    body: 'This was the most technically complex product I\'ve led — a white-label analytics SDK adopted by 40+ enterprise clients. It forced me to think like a platform PM: every API decision is a contract you\'ll be maintaining for years.',
-  },
-  {
-    year: '2024',
-    title: 'Natural language meets the data layer',
-    body: 'Shipped a production LLM interface on top of a multi-tenant analytics stack. 800+ evaluation queries. A trust model. A 60% reduction in time-to-insight. And a genuine belief that AI in analytics is still in its first chapter.',
+    title: 'Senior PM at Toucan. Embedded analytics, then AI.',
+    body: 'Three years building analytics products for B2B SaaS teams. I led the discovery and delivery of a self-service dashboard feature that became a key acquisition driver. Then I contributed to rebuilding the platform from scratch, AI-native, around a conversational experience. Still learning. Still shipping.',
   },
 ];
 
-const testimonials = [
+const philosophy = [
   {
-    quote: "Marion is the rare PM who can walk into a data engineering stand-up and immediately contribute. She understands the trade-offs, asks the right questions, and never pretends ambiguity away.",
-    name: 'Julien M.',
-    role: 'Engineering Lead, analytics platform',
-    initials: 'JM',
+    icon: '🎯',
+    title: 'Product exists to create business impact',
+    body: 'A great product solves a real user problem and generates revenue at the same time. That\'s the discipline I love: finding the overlap between what users need and what moves the business forward. Vanity metrics don\'t interest me. Outcomes do.',
   },
   {
-    quote: "She's got an exceptional ability to hold both the strategic picture and the user-level detail at the same time. Our NPS jumped 18 points after she led the AI query feature.",
-    name: 'Sofia K.',
-    role: 'Head of Product, B2B SaaS',
-    initials: 'SK',
+    icon: '🤝',
+    title: 'The product trio is still the best team unit',
+    body: 'AI gives us better tools and faster conversations. But I don\'t believe it replaces complementary minds. A design brain, a product brain, and a tech brain working together is still the most powerful combination I know. I lead squads with high standards and genuine care, because the best results come from teams that are driven by goals, supported in the day-to-day, and take time to celebrate wins.',
   },
   {
-    quote: "Marion rebuilt our onboarding from the ground up in six weeks. Every decision was tied to evidence, every trade-off was communicated clearly, and the team was energised throughout.",
-    name: 'Thomas R.',
-    role: 'CEO, early-stage data startup',
-    initials: 'TR',
+    icon: '🔍',
+    title: 'Understand the problem before imagining the solution',
+    body: 'I am user-obsessed, in the Teresa Torres and Marty Cagan sense of the term. Discovery is not a phase. It is a continuous practice. I believe that the best product decisions come from being close to users, close to the sales team, close to the CSMs, and close to the engineers. We all share the same goal. Anchoring product work in everyone\'s reality is what makes a team perform.',
   },
+];
+
+const bookshelf = [
+  { title: 'Continuous Discovery Habits', author: 'Teresa Torres' },
+  { title: 'Inspired / Empowered', author: 'Marty Cagan' },
+  { title: 'Building AI-Powered Products', author: 'Dr Marily Nika' },
+];
+
+const education = [
+  { year: '2025', degree: 'Gen AI for Product Teams', school: 'AI Discipline by Rémi Guyot' },
+  { year: '2022', degree: 'Product Discovery', school: 'Panash by Axel Sooriah' },
+  { year: '2021', degree: 'Agile Project Management', school: 'Udemy' },
+  { year: '2020', degree: 'Web Development', school: 'Le Wagon bootcamp' },
+  { year: '2011', degree: 'Master in Communication', school: 'Université Grenoble Alpes' },
+  { year: '2009', degree: 'Bachelor in Literature', school: 'Université Grenoble Alpes' },
 ];
 ---
 
@@ -73,14 +85,12 @@ const testimonials = [
         </div>
 
         <h1 class="page-title">
-          The long way<br />
-          <em class="title-em">into AI product</em>
+          From communication to product.<br />
+          <em class="title-em">Always about understanding people.</em>
         </h1>
 
         <p class="page-sub text-muted">
-          I didn't plan to become a PM. I started by understanding data better than most,
-          then learned that understanding users was the harder and more interesting problem.
-          Seven years later, I sit at the intersection of both.
+          I started with words. Literature, then communication. I spent years learning how to explain complex things to different audiences, how to listen before speaking, and how to make information land. Somewhere along the way, I realized the best way to do that at scale was to build products. Six years in, I haven't looked back.
         </p>
 
         <div class="hero-chips">
@@ -88,7 +98,7 @@ const testimonials = [
           <span class="tag accent">AI-native</span>
           <span class="tag accent">Embedded Analytics</span>
           <span class="tag">B2B SaaS</span>
-          <span class="tag">Based in Paris 🇫🇷</span>
+          <span class="tag">Based in La Rochelle 🇫🇷</span>
         </div>
       </div>
 
@@ -112,27 +122,33 @@ const testimonials = [
   <section class="philosophy-section">
     <div class="container">
       <h2 class="section-title">My Product Philosophy</h2>
-      <p class="section-sub text-muted">
-        A few principles I keep coming back to, whatever the product or team.
-      </p>
 
       <div class="philosophy-grid">
-        <article class="card philosophy-card">
-          <span class="philosophy-icon" aria-hidden="true">💡</span>
-          <h3>Philosophy title 1</h3>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </article>
-        <article class="card philosophy-card">
-          <span class="philosophy-icon" aria-hidden="true">🎯</span>
-          <h3>Philosophy title 2</h3>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </article>
-        <article class="card philosophy-card">
-          <span class="philosophy-icon" aria-hidden="true">🔍</span>
-          <h3>Philosophy title 3</h3>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </article>
+        {philosophy.map(p => (
+          <article class="card philosophy-card">
+            <span class="philosophy-icon" aria-hidden="true">{p.icon}</span>
+            <h3>{p.title}</h3>
+            <p class="text-muted">{p.body}</p>
+          </article>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Bookshelf -->
+  <section class="bookshelf-section">
+    <div class="container">
+      <h2 class="section-title">Bookshelf</h2>
+      <p class="section-sub text-muted">The books I keep coming back to.</p>
+
+      <ul class="bookshelf-list">
+        {bookshelf.map(b => (
+          <li class="bookshelf-item">
+            <span class="book-title">{b.title}</span>
+            <span class="book-author text-muted">— {b.author}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -140,13 +156,9 @@ const testimonials = [
   <section class="timeline-section">
     <div class="container">
       <h2 class="section-title">The journey</h2>
-      <p class="section-sub text-muted">
-        Not a CV. A sequence of decisions — the ones that stuck, the ones that surprised me,
-        and what I learned from each.
-      </p>
 
       <div class="timeline" role="list">
-        {timeline.map((item, i) => (
+        {timeline.map((item) => (
           <div class="timeline-item" role="listitem">
             <div class="timeline-year">
               <span class="year-label">{item.year}</span>
@@ -168,32 +180,15 @@ const testimonials = [
       <h2 class="section-title">Education</h2>
 
       <div class="education-list">
-        <div class="education-item card">
-          <div class="education-year text-muted">2012 – 2015</div>
-          <div class="education-content">
-            <h3 class="education-degree">Master's in Economics & Management</h3>
-            <p class="education-school text-muted">Université Paris-Dauphine</p>
-            <p class="text-muted">Specialisation in digital strategy and data analysis. Thesis on behavioural economics in digital markets.</p>
+        {education.map(e => (
+          <div class="education-item card">
+            <div class="education-year text-muted">{e.year}</div>
+            <div class="education-content">
+              <h3 class="education-degree">{e.degree}</h3>
+              <p class="education-school text-muted">{e.school}</p>
+            </div>
           </div>
-        </div>
-
-        <div class="education-item card">
-          <div class="education-year text-muted">2010 – 2012</div>
-          <div class="education-content">
-            <h3 class="education-degree">Bachelor's in Business Administration</h3>
-            <p class="education-school text-muted">Université Paris I Panthéon-Sorbonne</p>
-            <p class="text-muted">Core curriculum in economics, statistics and organisational theory.</p>
-          </div>
-        </div>
-
-        <div class="education-item card">
-          <div class="education-year text-muted">2023</div>
-          <div class="education-content">
-            <h3 class="education-degree">AI Product Management — Certificate</h3>
-            <p class="education-school text-muted">Reforge</p>
-            <p class="text-muted">Intensive programme on building AI-native products, evaluation loops and LLM integration strategy.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -320,6 +315,35 @@ const testimonials = [
   font-weight: 700;
   letter-spacing: -0.015em;
 }
+
+/* Bookshelf */
+.bookshelf-section { background: transparent; }
+
+.bookshelf-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.bookshelf-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-soft);
+  font-size: var(--text-lg);
+}
+
+.bookshelf-item:last-child { border-bottom: none; }
+
+.book-title {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.book-author { font-size: var(--text-base); }
 
 /* Timeline */
 .timeline-section { background: transparent; }

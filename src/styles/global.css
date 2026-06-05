@@ -8,27 +8,28 @@
   --color-border-soft:  rgba(0,0,0,0.07);
   --color-border-hover: rgba(255,255,255,0.88);
 
-  --color-text:         #111118;
+  --color-text:         #1A1A22;
   --color-text-muted:   #6B7180;
   --color-text-faint:   #A0A8B0;
 
-  --color-accent:       #0F172A;           /* navy ink */
-  --color-accent-light: #EEF1F7;
-  --color-accent-mid:   #D6DCE9;
-  --color-accent-dark:  #1E293B;
+  --color-accent:       #2D7FF9;           /* bright blue */
+  --color-accent-light: #E8F1FE;
+  --color-accent-mid:   #C5DDFC;
+  --color-accent-dark:  #1B62D6;
 
   /* Glass */
-  --glass-bg:           rgba(255,255,255,0.58);
-  --glass-border:       rgba(255,255,255,0.78);
-  --glass-blur:         blur(14px);
-  --glass-shadow:       0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+  --glass-bg:           rgba(255,255,255,0.55);
+  --glass-border:       rgba(255,255,255,0.85);
+  --glass-blur:         blur(16px);
+  --glass-shadow:       0 8px 32px rgba(80,70,120,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
 
-  /* Background gradient (applied on body) */
-  --color-grad:         linear-gradient(145deg, #EEF2FF 0%, #F4EEF9 45%, #FDF5EE 100%);
+  /* Background gradient (applied on body) — soft pastel like vjy.me */
+  --color-grad:         linear-gradient(135deg, #FCE9E4 0%, #F3ECFB 35%, #EAF0FC 70%, #F5FAFE 100%);
 
   /* ── Typography ── */
-  --font-display: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Newsreader', Georgia, serif;
   --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-ui:      'Manrope', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
 
   --text-xs:   0.75rem;
@@ -73,7 +74,7 @@
   /* ── Shadows ── */
   --shadow-sm:    0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
   --shadow-card:  0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-  --shadow-accent:0 4px 20px rgba(15,23,42,0.22);
+  --shadow-accent:0 4px 20px rgba(45,127,249,0.28);
 
   /* ── Transitions ── */
   --transition:      200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -107,8 +108,8 @@ button { cursor: pointer; font-family: inherit; }
 /* ─── Typography utilities ───────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   line-height: var(--leading-tight);
   color: var(--color-text);
 }
@@ -210,7 +211,7 @@ section { padding-block: var(--space-20); }
 .btn-primary:hover {
   background: var(--color-accent-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(15,23,42,0.28);
+  box-shadow: 0 6px 24px rgba(45,127,249,0.35);
 }
 
 .btn-outline {

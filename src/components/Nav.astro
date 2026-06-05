@@ -37,10 +37,6 @@ function isActive(href: string) {
       ))}
     </ul>
 
-    <a href="mailto:hello@mariondebonnaire.com" class="btn btn-primary btn-sm nav-cta">
-      Contact
-    </a>
-
     <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -117,14 +113,6 @@ function isActive(href: string) {
   background: rgba(255,255,255,0.6);
 }
 
-/* CTA */
-.btn-sm {
-  padding: 0.45rem 1.1rem;
-  font-size: 0.6875rem;
-  letter-spacing: 0.06em;
-  margin-left: var(--space-4);
-}
-
 /* Burger */
 .nav-burger {
   display: none;
@@ -146,7 +134,7 @@ function isActive(href: string) {
 }
 
 @media (max-width: 768px) {
-  .nav-links, .nav-cta { display: none; }
+  .nav-links { display: none; }
   .nav-burger { display: flex; }
 }
 </style>
@@ -154,13 +142,11 @@ function isActive(href: string) {
 <script>
   const burger = document.querySelector('.nav-burger') as HTMLButtonElement;
   const links  = document.querySelector('.nav-links') as HTMLElement;
-  const cta    = document.querySelector('.nav-cta') as HTMLElement;
 
   burger?.addEventListener('click', () => {
     const expanded = burger.getAttribute('aria-expanded') === 'true';
     burger.setAttribute('aria-expanded', String(!expanded));
     links?.classList.toggle('mobile-open');
-    cta?.classList.toggle('mobile-open');
   });
 </script>
 
@@ -179,16 +165,6 @@ function isActive(href: string) {
     padding: var(--space-4);
     gap: var(--space-1);
     z-index: 99;
-  }
-
-  .nav-cta.mobile-open {
-    display: inline-flex;
-    margin: 0 var(--space-4) var(--space-4);
-    position: fixed;
-    top: calc(var(--nav-height) + 180px);
-    left: 0; right: 0;
-    z-index: 99;
-    justify-content: center;
   }
 }
 </style>

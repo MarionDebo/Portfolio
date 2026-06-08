@@ -8,49 +8,55 @@ const timeline = [
     year: '2009',
     title: 'A literature degree and a love for complex ideas',
     body: 'I started with books. A bachelor\'s in literature, then a master\'s in communication. I learned to read carefully, write clearly, and explain things that were hard to explain. Skills I still use every day.',
+    impact: 'The ability to explain hard things simply is still my most-used PM skill.',
   },
   {
     year: '2011',
     title: 'Five years at EDF, understanding how large organizations work',
     body: 'As a communication officer on engineering and innovation projects, I learned what it takes to make ideas land inside complex organizations. I also learned that the most interesting problems are rarely the most visible ones.',
+    impact: 'Stakeholder alignment and cross-functional influence — learned the hard way.',
   },
   {
     year: '2016',
     title: 'Munich. Two companies. A crash course in digital and agile.',
     body: 'FlixBus, then a digital agency in Munich. SEO strategy at scale (4M monthly visits), OKRs, Kanban. My first real experience of agile culture, data-driven thinking, and moving fast.',
+    impact: '4M monthly visits. My first taste of product at scale.',
   },
   {
     year: '2020',
     title: 'I learned to code.',
     body: 'Le Wagon bootcamp, Nantes. Not to become a developer, but to stop being afraid of code. It changed how I talk to engineers, how I read a codebase, and how I think about product feasibility.',
+    impact: 'Changed how I think about technical feasibility — permanently.',
   },
   {
     year: '2021',
     title: 'My first PM role, at a non-profit.',
     body: 'Entourage gave me the rarest kind of PM experience: user research in the field, during maraudes and daytime shelter visits. You learn humility fast when your users sometimes don\'t have the energy to talk to you. I contributed to a full app redesign, repositioning the product from donation-centric to connection-centric.',
+    impact: 'Full app redesign. Product repositioning from donation-centric to connection-centric.',
   },
   {
     year: '2023',
     title: 'Senior PM at Toucan. Embedded analytics, then AI.',
     body: 'Three years building analytics products for B2B SaaS teams. I led the discovery and delivery of a self-service dashboard feature that became a key acquisition driver. Then I contributed to rebuilding the platform from scratch, AI-native, around a conversational experience. Still learning. Still shipping.',
+    impact: 'Self-service dashboards → key acquisition driver. Now rebuilding the platform AI-native.',
   },
 ];
 
 const philosophy = [
   {
-    icon: '🎯',
     title: 'Product exists to create business impact',
     body: 'A great product solves a real user problem and generates revenue at the same time. That\'s the discipline I love: finding the overlap between what users need and what moves the business forward. Vanity metrics don\'t interest me. Outcomes do.',
+    svg: '<line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
   },
   {
-    icon: '🤝',
     title: 'The product trio is still the best team unit',
     body: 'AI gives us better tools and faster conversations. But I don\'t believe it replaces complementary minds. A design brain, a product brain, and a tech brain working together is still the most powerful combination I know. I lead squads with high standards and genuine care, because the best results come from teams that are driven by goals, supported in the day-to-day, and take time to celebrate wins.',
+    svg: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
   },
   {
-    icon: '🔍',
     title: 'Understand the problem before imagining the solution',
     body: 'I am user-obsessed, in the Teresa Torres and Marty Cagan sense of the term. Discovery is not a phase. It is a continuous practice. I believe that the best product decisions come from being close to users, close to the sales team, close to the CSMs, and close to the engineers. We all share the same goal. Anchoring product work in everyone\'s reality is what makes a team perform.',
+    svg: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>',
   },
 ];
 
@@ -93,13 +99,6 @@ const education = [
           I started with words. Literature, then communication. I spent years learning how to explain complex things to different audiences, how to listen before speaking, and how to make information land. Somewhere along the way, I realized the best way to do that at scale was to build products. Six years in, I haven't looked back.
         </p>
 
-        <div class="hero-chips">
-          <span class="tag accent">Product Management</span>
-          <span class="tag accent">AI-native</span>
-          <span class="tag accent">Embedded Analytics</span>
-          <span class="tag">B2B SaaS</span>
-          <span class="tag">Based in La Rochelle 🇫🇷</span>
-        </div>
       </div>
 
       <div class="hero-portrait">
@@ -126,10 +125,41 @@ const education = [
       <div class="philosophy-grid">
         {philosophy.map(p => (
           <article class="card philosophy-card">
-            <span class="philosophy-icon" aria-hidden="true">{p.icon}</span>
+            <div class="philosophy-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={p.svg} />
+            </div>
             <h3>{p.title}</h3>
             <p class="text-muted">{p.body}</p>
           </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline-section">
+    <div class="container">
+      <h2 class="section-title">The journey</h2>
+
+      <div class="timeline" role="list">
+        {timeline.map((item) => (
+          <div class="timeline-item" role="listitem">
+            <div class="tl-left">
+              <div class="tl-anchor">
+                <span class="year-label">{item.year}</span>
+                <div class="tl-dot" aria-hidden="true"></div>
+              </div>
+              <div class="tl-line" aria-hidden="true"></div>
+            </div>
+            <div class="tl-content">
+              <h3 class="timeline-title">{item.title}</h3>
+              <p class="timeline-body">{item.body}</p>
+              <p class="timeline-impact">
+                <span class="impact-arrow" aria-hidden="true">→</span>
+                {item.impact}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -152,68 +182,6 @@ const education = [
     </div>
   </section>
 
-  <!-- Timeline -->
-  <section class="timeline-section">
-    <div class="container">
-      <h2 class="section-title">The journey</h2>
-
-      <div class="timeline" role="list">
-        {timeline.map((item) => (
-          <div class="timeline-item" role="listitem">
-            <div class="timeline-year">
-              <span class="year-label">{item.year}</span>
-              <div class="year-line" aria-hidden="true"></div>
-            </div>
-            <div class="timeline-content card">
-              <h3 class="timeline-title">{item.title}</h3>
-              <p class="text-muted">{item.body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section class="education-section">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-
-      <div class="education-list">
-        {education.map(e => (
-          <div class="education-item card">
-            <div class="education-year text-muted">{e.year}</div>
-            <div class="education-content">
-              <h3 class="education-degree">{e.degree}</h3>
-              <p class="education-school text-muted">{e.school}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="card cta-box">
-        <div class="cta-inner">
-          <h2>Let's write the next chapter together</h2>
-          <p class="text-muted">
-            If you're building something at the intersection of AI, data, and product —
-            I'd genuinely love to hear about it.
-          </p>
-          <div class="cta-actions">
-            <a href="mailto:hello@mariondebonnaire.com" class="btn btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-              Say hello
-            </a>
-            <a href="/portfolio" class="btn btn-outline">See my work</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
@@ -307,7 +275,18 @@ const education = [
   gap: var(--space-4);
 }
 
-.philosophy-icon { font-size: 1.75rem; }
+.philosophy-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-light);
+  border: 1px solid var(--color-accent-mid);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
 
 .philosophy-card h3 {
   font-family: var(--font-display);
@@ -365,56 +344,100 @@ const education = [
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  margin-top: var(--space-12);
 }
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: var(--space-8);
-  position: relative;
+  grid-template-columns: 92px 1fr;
 }
 
-.timeline-item:not(:last-child) .year-line {
-  position: absolute;
-  left: 99px;
-  top: var(--space-12);
-  bottom: 0;
-  width: 1px;
-  background: var(--color-border-soft);
-}
-
-.timeline-year {
+/* Left column */
+.tl-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  padding-top: var(--space-8);
-  flex-shrink: 0;
-  position: relative;
 }
 
-.year-label {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  font-family: var(--font-mono);
-  color: var(--color-accent);
-  padding: var(--space-1) 0;
-  position: relative;
-  z-index: 1;
-}
-
-.timeline-content {
-  margin-block: var(--space-4);
+/* Flex row: year + dot share the same vertical center — guaranteed alignment */
+.tl-anchor {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   gap: var(--space-3);
 }
 
+.year-label {
+  font-size: var(--text-base);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  color: var(--color-text-faint);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tl-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* Vertical line: margin-right centers it on the dot (dot = 9px → center at 4.5px from right edge) */
+.tl-line {
+  flex: 1;
+  width: 1px;
+  background: var(--color-border-soft);
+  margin-left: auto;
+  margin-right: 4px; /* (9px dot / 2) - (1px line / 2) = 4px from right edge → center aligns with dot center */
+}
+
+/* Last item: no line after the final dot */
+.timeline-item:last-child .tl-line { display: none; }
+
+/* Right column */
+.tl-content {
+  padding-left: var(--space-8);
+  padding-bottom: var(--space-12);
+}
+
+.timeline-item:last-child .tl-content { padding-bottom: 0; }
+
 .timeline-title {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-3);
+  /* align first line with the dot row */
+  padding-top: 0;
+  margin-top: calc((var(--text-xl) * var(--leading-snug) - var(--text-xl)) / -2 + 0.05em);
+}
+
+.timeline-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+  max-width: 580px;
+  margin-bottom: var(--space-4);
+}
+
+.timeline-impact {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.impact-arrow {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 /* Values */
@@ -587,8 +610,9 @@ const education = [
 @media (max-width: 768px) {
   .hero-layout { grid-template-columns: 1fr; }
   .hero-portrait { order: -1; max-width: 280px; margin-inline: auto; }
-  .timeline-item { grid-template-columns: 60px 1fr; gap: var(--space-4); }
-  .timeline-item:not(:last-child) .year-line { left: 59px; }
+  .timeline-item { grid-template-columns: 64px 1fr; }
+  .tl-content { padding-left: var(--space-5); padding-bottom: var(--space-8); }
+  .timeline-title { font-size: var(--text-lg); }
   .values-list { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
 }

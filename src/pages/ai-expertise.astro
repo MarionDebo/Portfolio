@@ -100,26 +100,6 @@ const tools = [
   </section>
 
 
-  <!-- Tools -->
-  <section class="tools-section">
-    <div class="container">
-      <h2 class="section-title">Tools & stack</h2>
-
-      <div class="tools-list">
-        {tools.map(group => (
-          <div class="tool-row">
-            <h3 class="tool-category">{group.category}</h3>
-            <div class="tool-pills">
-              {group.items.map(item => (
-                <span class="tag">{item}</span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Building in public -->
   <section class="github-section">
     <div class="container">
@@ -140,6 +120,26 @@ const tools = [
         <div class="github-graph">
           <div class="calendar"></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section class="tools-section">
+    <div class="container">
+      <h2 class="section-title">Tools & stack</h2>
+
+      <div class="tools-list">
+        {tools.map(group => (
+          <div class="tool-row">
+            <h3 class="tool-category">{group.category}</h3>
+            <div class="tool-pills">
+              {group.items.map(item => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

@@ -1,0 +1,110 @@
+---
+// Pure-CSS browser mockup with a 36px title bar (traffic lights + fake URL pill).
+// Body is either a decorative placeholder ('chart' | 'dashboard') or, when the
+// default slot is filled, a real screenshot (used on the Work page).
+interface Props {
+  variant?: 'chart' | 'dashboard';
+  /** Lighter elevation (--shadow-card-sm) instead of the default. */
+  soft?: boolean;
+  /** Width of the fake URL pill. */
+  urlWidth?: string;
+}
+const { variant = 'chart', soft = false, urlWidth = '48%' } = Astro.props;
+const hasImage = Astro.slots.has('default');
+---
+
+<div class:list={['browser', { soft }]}>
+  <div class="bar">
+    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+    <div class="url" style={`width:${urlWidth}`}></div>
+  </div>
+
+  {hasImage ? (
+    <slot />
+  ) : variant === 'chart' ? (
+    <div class="body chart">
+      <div class="rail">
+        <div class="line accent"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+      <div>
+        <div class="chips">
+          <div class="chip"></div><div class="chip"></div><div class="chip accent"></div>
+        </div>
+        <div class="bars">
+          <div style="height:40%;background:var(--violet-200)"></div>
+          <div style="height:65%;background:var(--violet-400)"></div>
+          <div style="height:50%;background:var(--violet-200)"></div>
+          <div style="height:85%;background:var(--color-accent)"></div>
+          <div style="height:72%;background:var(--violet-400)"></div>
+          <div style="height:95%;background:var(--color-accent)"></div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="body dashboard">
+      <div class="col">
+        <div class="title ink"></div>
+        <div class="box dashed"></div>
+        <div class="box dashed"></div>
+      </div>
+      <div class="col">
+        <div class="title violet"></div>
+        <div class="box solid"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+.browser {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-card);
+  background: #fff;
+}
+.browser.soft { box-shadow: var(--shadow-card-sm); }
+
+.bar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  background: #F4F2F7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.red { background: var(--dot-red); }
+.dot.yellow { background: var(--dot-yellow); }
+.dot.green { background: var(--dot-green); }
+.url {
+  margin-left: 10px;
+  height: 16px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Chart variant */
+.body.chart { padding: 20px; display: grid; grid-template-columns: 58px 1fr; gap: 16px; }
+.rail { display: flex; flex-direction: column; gap: 10px; }
+.line { height: 10px; border-radius: 5px; background: var(--violet-100); }
+.line.accent { background: var(--color-accent); }
+.chips { display: flex; gap: 10px; margin-bottom: 16px; }
+.chip { flex: 1; height: 48px; border-radius: 8px; background: var(--color-bg-lilac-tint); }
+.chip.accent { background: var(--color-accent); }
+.bars { display: flex; align-items: flex-end; gap: 8px; height: 96px; }
+.bars > div { flex: 1; border-radius: 6px 6px 0 0; }
+
+/* Dashboard variant */
+.body.dashboard { padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.col { display: flex; flex-direction: column; gap: 10px; }
+.title { height: 14px; border-radius: 5px; }
+.title.ink { width: 60%; background: var(--color-ink); }
+.title.violet { width: 40%; background: var(--violet-300); }
+.box { height: 80px; border-radius: 8px; background: var(--color-bg-lilac-tint); }
+.box.dashed { border: 1px dashed var(--violet-300); }
+.box.solid { background: var(--color-accent); }
+</style>

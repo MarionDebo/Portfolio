@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F4F2EE; font-family: 'Hanken Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #6C4DF6; color: #fff; }
+  a { text-decoration: none; color: inherit; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div data-screen-label="My Story" style="background:#F4F2EE;color:#2c2836;font-family:'Hanken Grotesk',sans-serif">
+
+  <div id="nav-top-sentinel" style="position:absolute;top:0;left:0;height:8px;width:1px"></div>
+
+  <header style="position:sticky;top:0;z-index:50;padding:18px 32px 0">
+    <div id="hero-nav" style="max-width:1080px;margin:0 auto;border-radius:999px;padding:12px 16px 12px 26px;display:flex;align-items:center;justify-content:space-between;border:1px solid transparent;transition:background 300ms ease,box-shadow 300ms ease,border-color 300ms ease">
+      <a href="Home.dc.html" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;color:#15131C">Marion Débonnaire</a>
+      <nav style="display:flex;align-items:center;gap:32px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:500;color:#3a3646">
+        <a href="Work.dc.html" style="color:inherit">Work</a>
+        <a href="#" style="color:inherit">AI Expertise</a>
+        <a href="My Story.dc.html" style="color:#6C4DF6">Story</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ░░ Hero — type-led, centered, no photo ░░ -->
+  <section style="margin-top:-78px;padding:160px 32px 92px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:120px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(180px,30vw,360px);line-height:1;color:#6C4DF6;opacity:0.05;letter-spacing:-0.04em;pointer-events:none;user-select:none;white-space:nowrap">product</div>
+    <div style="max-width:880px;margin:0 auto;text-align:center;position:relative;z-index:1">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#6C4DF6;margin-bottom:30px">MY&nbsp;STORY</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(48px,6.4vw,82px);line-height:1.03;letter-spacing:-0.035em;margin:0 0 32px;color:#15131C">Not a résumé.<br>A throughline.</h1>
+      <p style="font-size:21px;line-height:1.65;color:#55505f;max-width:60ch;margin:0 auto">I'm Marion, a product manager who fell for the messy middle, where user needs, business reality and what's technically possible all collide. Six years in, the throughline hasn't changed: turn complexity into something a human can actually use. Lately, that means building at the edge of AI.</p>
+      <div style="display:flex;justify-content:center;gap:14px;margin-top:40px;flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6C4DF6;border:1px solid rgba(108,77,246,0.32);padding:7px 16px;border-radius:999px">Product</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6C4DF6;border:1px solid rgba(108,77,246,0.32);padding:7px 16px;border-radius:999px">AI · Data</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6C4DF6;border:1px solid rgba(108,77,246,0.32);padding:7px 16px;border-radius:999px">Human-first</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ The Journey — vertical timeline ░░ -->
+  <section style="background:#FFFFFF">
+    <div style="max-width:1080px;margin:0 auto;padding:88px 32px 96px">
+      <div style="display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(108,77,246,0.28);padding-bottom:20px;margin-bottom:8px">
+        <span style="width:30px;height:3px;background:#6C4DF6;border-radius:2px"></span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.02em;margin:0;color:#15131C">The Journey</h2>
+      </div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8594;letter-spacing:0.06em;margin:0 0 56px">FOUR CHAPTERS · ONE DIRECTION OF TRAVEL</p>
+
+      <div style="position:relative;padding-left:0">
+        <!-- the rail -->
+        <div style="position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(#6C4DF6 0%,#D8CDFB 100%)"></div>
+
+        <!-- Chapter 01 -->
+        <div style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:28px;padding-bottom:56px">
+          <div style="position:relative"><span style="position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:#6C4DF6;box-shadow:0 0 0 5px #fff,0 0 0 6px rgba(108,77,246,0.25)"></span></div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#6C4DF6;margin-bottom:10px">CH. 01 · THE SPARK</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:27px;letter-spacing:-0.02em;margin:0 0 14px;color:#15131C">Falling for the problem</h3>
+            <p style="font-size:18px;line-height:1.65;color:#4a4556;max-width:62ch;margin:0">I didn't set out to manage products. I set out to understand why people abandon the very thing that was supposed to help them. Product was simply where that question lived — at the seam between empathy, business and engineering. I've been standing on that seam ever since.</p>
+          </div>
+        </div>
+
+        <!-- Chapter 02 -->
+        <div style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:28px;padding-bottom:56px">
+          <div style="position:relative"><span style="position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:#6C4DF6;box-shadow:0 0 0 5px #fff,0 0 0 6px rgba(108,77,246,0.25)"></span></div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#6C4DF6;margin-bottom:10px">CH. 02 · MISSION-DRIVEN</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:27px;letter-spacing:-0.02em;margin:0 0 14px;color:#15131C">Entourage — product with a purpose</h3>
+            <p style="font-size:18px;line-height:1.65;color:#4a4556;max-width:62ch;margin:0 0 18px">At Entourage I helped move a non-profit's app away from being a donation box and toward a place where people genuinely connect — events, communities, learning. 170,000 people now use it. The lesson that stuck: impact doesn't happen by accident. It has to be designed.</p>
+            <div style="display:inline-flex;align-items:baseline;gap:10px;font-family:'Space Grotesk',sans-serif"><span style="font-weight:600;font-size:24px;color:#6C4DF6;letter-spacing:-0.02em">170,000</span><span style="font-size:14px;color:#8a8594">people on the app</span></div>
+          </div>
+        </div>
+
+        <!-- Chapter 03 -->
+        <div style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:28px;padding-bottom:56px">
+          <div style="position:relative"><span style="position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:#6C4DF6;box-shadow:0 0 0 5px #fff,0 0 0 6px rgba(108,77,246,0.25)"></span></div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#6C4DF6;margin-bottom:10px">CH. 03 · INTO THE DATA</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:27px;letter-spacing:-0.02em;margin:0 0 14px;color:#15131C">Toucan — making analytics human</h3>
+            <p style="font-size:18px;line-height:1.65;color:#4a4556;max-width:62ch;margin:0 0 18px">Then came analytics. At Toucan I built a self-service dashboard editor so business users could shape their own embedded analytics — no SQL, no waiting on a data team. It pushed SQL-to-QSO conversion to 36%. I learned that the best data product is the one that disappears behind the decision it helps you make.</p>
+            <div style="display:inline-flex;align-items:baseline;gap:10px;font-family:'Space Grotesk',sans-serif"><span style="font-weight:600;font-size:24px;color:#6C4DF6;letter-spacing:-0.02em">36%</span><span style="font-size:14px;color:#8a8594">SQL-to-QSO conversion</span></div>
+          </div>
+        </div>
+
+        <!-- Chapter 04 -->
+        <div style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:28px;padding-bottom:8px">
+          <div style="position:relative"><span style="position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:#15131C;box-shadow:0 0 0 5px #fff,0 0 0 6px rgba(108,77,246,0.4)"></span></div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#6C4DF6;margin-bottom:10px">CH. 04 · AI-NATIVE · TODAY</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:27px;letter-spacing:-0.02em;margin:0 0 14px;color:#15131C">Betting on the conversation</h3>
+            <p style="font-size:18px;line-height:1.65;color:#4a4556;max-width:62ch;margin:0">Today I'm rebuilding analytics around conversation. Toucan AI lets people just ask — and get the answer, not a chart to decipher. It's the edge of AI, and it's exactly where I want to be: making powerful technology feel obvious, even kind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ Product Philosophy ░░ -->
+  <section style="background:#ECE7FF">
+    <div style="max-width:1180px;margin:0 auto;padding:88px 32px 96px">
+      <div style="display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(108,77,246,0.3);padding-bottom:20px;margin-bottom:48px">
+        <span style="width:30px;height:3px;background:#6C4DF6;border-radius:2px"></span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.02em;margin:0;color:#15131C">Product Philosophy</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <!-- left: lead + team photo -->
+        <div>
+          <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:27px;line-height:1.42;letter-spacing:-0.015em;color:#15131C;margin:0 0 28px">There's no good product work without a solid team. I care about the craft, but I care more about the people I build it with. That's where the good decisions actually come from.</p>
+          <img src="uploads/Photo-groupe-maison.jpeg" alt="The team together after a bike ride" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;box-shadow:0 28px 54px -26px rgba(50,30,110,0.45)">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7d6fb0;letter-spacing:0.05em;margin:14px 0 0">↑ THE TEAM BEHIND THE WORK</p>
+        </div>
+
+        <!-- right: principle cards -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:#FFFFFF;border-radius:16px;padding:26px 28px;border:1px solid rgba(108,77,246,0.12)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6C4DF6;margin-bottom:10px">01</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em;margin:0 0 8px;color:#15131C">Start with the job, not the feature</h4>
+            <p style="font-size:15.5px;line-height:1.6;color:#4a4556;margin:0">Understand the real job someone is hiring the product to do. Features are just one possible answer to it.</p>
+          </div>
+          <div style="background:#FFFFFF;border-radius:16px;padding:26px 28px;border:1px solid rgba(108,77,246,0.12)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6C4DF6;margin-bottom:10px">02</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em;margin:0 0 8px;color:#15131C">Ship to learn</h4>
+            <p style="font-size:15.5px;line-height:1.6;color:#4a4556;margin:0">Evidence beats opinion. Build the smallest thing that teaches you something real, then let it change your mind.</p>
+          </div>
+          <div style="background:#FFFFFF;border-radius:16px;padding:26px 28px;border:1px solid rgba(108,77,246,0.12)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6C4DF6;margin-bottom:10px">03</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em;margin:0 0 8px;color:#15131C">Make the technology disappear</h4>
+            <p style="font-size:15.5px;line-height:1.6;color:#4a4556;margin:0">Especially with AI. The best experience asks nothing of the user and quietly does the hard part for them.</p>
+          </div>
+          <div style="background:#15131C;border-radius:16px;padding:26px 28px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#A593F8;margin-bottom:10px">04</div>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em;margin:0 0 8px;color:#fff">The team is the product</h4>
+            <p style="font-size:15.5px;line-height:1.6;color:#c8c2d6;margin:0">A clear, trusting, curious team ships better products than any roadmap ever could. Protect it fiercely.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#15131C;color:#F4F2EE">
+    <div style="max-width:1180px;margin:0 auto;padding:96px 32px;text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#9b94ad;margin-bottom:24px">LET'S TALK</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:54px;letter-spacing:-0.025em;margin:0 0 28px;color:#fff">Building something AI-native?</h2>
+      <a href="#" title="Add your LinkedIn URL" style="display:inline-flex;align-items:center;gap:10px;background:#6C4DF6;color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;padding:15px 30px;border-radius:999px">Get in touch →</a>
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:40px">
+        <a href="#" aria-label="LinkedIn" title="Add your LinkedIn URL" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,242,238,0.2);color:#F4F2EE;transition:background 200ms ease,border-color 200ms ease,color 200ms ease" style-hover="background:#6C4DF6;border-color:#6C4DF6;color:#fff">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.84v1.64h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9V9Z"></path></svg>
+        </a>
+        <a href="#" aria-label="GitHub" title="Add your GitHub URL" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,242,238,0.2);color:#F4F2EE;transition:background 200ms ease,border-color 200ms ease,color 200ms ease" style-hover="background:#6C4DF6;border-color:#6C4DF6;color:#fff">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.85 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.79.62-3.38-1.37-3.38-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.92-2.34 4.78-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"></path></svg>
+        </a>
+      </div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#a39cb5;letter-spacing:0.04em;margin:36px 0 0">Made with love, caffeine, and my buddy Claude</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const apply = (glassy) => {
+      const el = document.getElementById('hero-nav');
+      if (!el) return;
+      if (glassy) {
+        el.style.background = 'rgba(255,255,255,0.66)';
+        el.style.backdropFilter = 'blur(16px) saturate(1.4)';
+        el.style.webkitBackdropFilter = 'blur(16px) saturate(1.4)';
+        el.style.borderColor = 'rgba(255,255,255,0.7)';
+        el.style.boxShadow = '0 10px 34px -12px rgba(40,25,90,0.26)';
+      } else {
+        el.style.background = 'transparent';
+        el.style.backdropFilter = 'none';
+        el.style.webkitBackdropFilter = 'none';
+        el.style.borderColor = 'transparent';
+        el.style.boxShadow = 'none';
+      }
+    };
+    apply(false);
+    const sentinel = document.getElementById('nav-top-sentinel');
+    this._check = () => {
+      if (!sentinel) return;
+      const top = sentinel.getBoundingClientRect().top;
+      apply(top < -4);
+    };
+    window.addEventListener('scroll', this._check, { passive: true, capture: true });
+    if (sentinel && 'IntersectionObserver' in window) {
+      this._io = new IntersectionObserver(
+        (entries) => { entries.forEach((e) => apply(!e.isIntersecting)); },
+        { threshold: 0 }
+      );
+      this._io.observe(sentinel);
+    }
+    this._check();
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._check) window.removeEventListener('scroll', this._check, { capture: true });
+  }
+}
+</script>
+</body>
+</html>

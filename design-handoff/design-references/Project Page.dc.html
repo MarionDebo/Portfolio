@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; font-family: 'Hanken Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #6C4DF6; color: #fff; }
+  a { text-decoration: none; color: inherit; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div data-screen-label="Project · Self-service Dashboard" style="background:#FFFFFF;color:#2c2836;font-family:'Hanken Grotesk',sans-serif">
+
+  <div id="nav-top-sentinel" style="position:absolute;top:0;left:0;height:8px;width:1px"></div>
+
+  <header style="position:sticky;top:0;z-index:50;padding:18px 32px 0">
+    <div id="hero-nav" style="max-width:1080px;margin:0 auto;border-radius:999px;padding:12px 16px 12px 26px;display:flex;align-items:center;justify-content:space-between;border:1px solid transparent;transition:background 300ms ease,box-shadow 300ms ease,border-color 300ms ease">
+      <a href="Home.dc.html" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;color:#15131C">Marion Débonnaire</a>
+      <nav style="display:flex;align-items:center;gap:32px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:500;color:#3a3646">
+        <a href="Home.dc.html" style="color:inherit">Work</a>
+        <a href="#" style="color:inherit">AI Expertise</a>
+        <a href="#" style="color:inherit">Story</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ░░ Colored header (home gradient) ░░ -->
+  <section style="background:radial-gradient(ellipse 60% 80% at 12% 8%,rgba(255,224,205,0.55),transparent 52%),radial-gradient(ellipse 70% 90% at 92% 70%,rgba(214,224,242,0.6),transparent 58%),linear-gradient(108deg,#FBEEE7 0%,#F4E9F1 32%,#EBE6F7 56%,#E6EAF3 80%,#E9ECF2 100%);margin-top:-78px;padding-top:78px">
+    <div style="max-width:860px;margin:0 auto;padding:64px 32px 0">
+      <div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12.5px;margin-bottom:26px">
+        <a href="Work.dc.html" style="color:#6C4DF6">Work</a>
+        <span style="color:#b3aec0">/</span>
+        <span style="color:#8a8594">Self-service Dashboard</span>
+      </div>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:62px;line-height:1.04;letter-spacing:-0.03em;margin:0 0 24px;color:#15131C">Self-service Dashboard</h1>
+      <p style="font-size:19px;line-height:1.6;color:#4a4556;max-width:60ch;margin:0">Toucan enables SaaS product teams to embed fully customizable, white-label analytics into their applications in days, not months. This allows teams to stay focused on their core product while Toucan takes care of the analytics experience.</p>
+    </div>
+    <div style="max-width:860px;margin:0 auto;padding:40px 32px 0">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid rgba(21,19,28,0.14);padding-top:26px">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#8a8594;margin-bottom:9px">ROLE</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#15131C">Senior Product Manager</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#8a8594;margin-bottom:9px">SCOPE</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#15131C">Discovery → Delivery</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#8a8594;margin-bottom:9px">IMPACT</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;color:#6C4DF6">36% of SQL-to-QSO conversions</div>
+        </div>
+      </div>
+    </div>
+    <div style="height:96px"></div>
+  </section>
+
+  <!-- ░░ Hero screenshot in a modern MacBook frame ░░ -->
+  <div style="max-width:1040px;margin:-72px auto 0;padding:0 32px;position:relative;z-index:2">
+    <!-- Screen -->
+    <div style="max-width:968px;margin:0 auto;background:#0C0B10;border-radius:20px 20px 7px 7px;padding:13px 13px 15px;box-shadow:0 50px 90px -30px rgba(50,30,110,0.5);border:1px solid rgba(0,0,0,0.5)">
+      <div style="display:flex;align-items:center;justify-content:center;padding:1px 0 9px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#26252c;box-shadow:inset 0 0 2px rgba(0,0,0,0.8)"></span>
+      </div>
+      <div style="border-radius:7px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,0.4)">
+        <img src="uploads/Self-serv-Dashboard_Edition.png" alt="Toucan self-service dashboard editor" style="width:100%;display:block">
+      </div>
+    </div>
+    <!-- Laptop base -->
+    <div style="position:relative;height:16px;background:linear-gradient(180deg,#e3e4e9 0%,#c2c3cb 55%,#a7a8b1 100%);border-radius:0 0 4px 4px;box-shadow:inset 0 2px 2px rgba(255,255,255,0.7)"></div>
+    <div style="position:relative;height:11px;width:104%;margin-left:-2%;background:linear-gradient(180deg,#b9bac2 0%,#9a9ba4 60%,#7e7f88 100%);border-radius:0 0 14px 14px;box-shadow:0 14px 22px -10px rgba(0,0,0,0.35)">
+      <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:128px;height:9px;background:linear-gradient(180deg,#86878f,#aeb0b8);border-radius:0 0 9px 9px"></div>
+    </div>
+  </div>
+
+  <section style="max-width:720px;margin:0 auto;padding:92px 32px 0">
+    <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(0,0,0,0.1);padding-bottom:20px;margin-bottom:28px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#6C4DF6;letter-spacing:-0.01em">01</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.025em;color:#15131C;margin:0;line-height:1.05">My Role</h2>
+    </div>
+    <p style="font-size:20px;line-height:1.7;color:#2c2836;margin:0">Senior Product Manager. I led this initiative end-to-end, from discovery to delivery, working closely with a Lead Engineer and a Product Designer. I was responsible for framing the problem, defining the product strategy, making prioritization calls, and ensuring we shipped fast enough to unlock business impact.</p>
+  </section>
+
+  <section style="max-width:720px;margin:0 auto;padding:92px 32px 0">
+    <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(0,0,0,0.1);padding-bottom:20px;margin-bottom:28px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#6C4DF6;letter-spacing:-0.01em">02</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.025em;color:#15131C;margin:0;line-height:1.05">The Problem</h2>
+    </div>
+    <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0 0 36px">The absence of a self-service offering represented a <strong style="font-weight:600;color:#15131C">significant amount of lost revenue every year</strong>. For most of our prospects, self-service was a non-negotiable prerequisite to even consider Toucan, making it a critical acquisition blocker.</p>
+  </section>
+
+  <section style="max-width:720px;margin:0 auto;padding:56px 32px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6C4DF6;margin-bottom:14px">WHAT WE HEARD</div>
+    <blockquote style="margin:0;padding:8px 0 8px 28px;border-left:3px solid #6C4DF6">
+      <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:24px;line-height:1.45;color:#15131C;margin:0 0 16px;letter-spacing:-0.01em">"As a B2B SaaS, I need a self-service layer in my product so that admin users can build their own dashboards with a simple, point-and-click experience, without depending on my team."</p>
+      <cite style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6a6577;font-style:normal">Toucan prospect, 2025</cite>
+    </blockquote>
+    <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:32px 0 0">Self-service had been one of our most recurring requests from prospects, and its absence had been causing us to regularly miss deals.</p>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:56px 32px 0">
+    <div style="max-width:720px;margin:0 auto;padding:0 32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6C4DF6;margin-bottom:14px">WHO NEEDED IT</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;letter-spacing:-0.015em;color:#15131C;margin:0 0 6px">Three distinct user needs</h3>
+      <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0 0 32px">Through customer interviews, we identified three segments with different expectations:</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="border-top:2px solid #6C4DF6;padding-top:22px"><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:46px;color:#6C4DF6;letter-spacing:-0.02em;line-height:1">1/3</div><p style="font-size:16px;line-height:1.6;color:#3a3646;margin:14px 0 0">want to <strong style="font-weight:600;color:#15131C">browse and select</strong> charts from an existing library</p></div>
+      <div style="border-top:2px solid #6C4DF6;padding-top:22px"><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:46px;color:#6C4DF6;letter-spacing:-0.02em;line-height:1">1/3</div><p style="font-size:16px;line-height:1.6;color:#3a3646;margin:14px 0 0">want to <strong style="font-weight:600;color:#15131C">edit and create</strong> charts themselves</p></div>
+      <div style="border-top:2px solid #6C4DF6;padding-top:22px"><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:46px;color:#6C4DF6;letter-spacing:-0.02em;line-height:1">1/3</div><p style="font-size:16px;line-height:1.6;color:#3a3646;margin:14px 0 0">want to <strong style="font-weight:600;color:#15131C">edit the underlying data</strong></p></div>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:56px 32px 0">
+    <div style="max-width:720px;margin:0 auto;padding:0 32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6C4DF6;margin-bottom:14px">PAIN POINTS</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;letter-spacing:-0.015em;color:#15131C;margin:0 0 24px">Use cases</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="background:#F7F5FB;border:1px solid rgba(108,77,246,0.14);border-radius:16px;padding:28px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6C4DF6;margin-bottom:12px;letter-spacing:0.04em">AS AN END USER</div><p style="font-size:17px;line-height:1.65;color:#3a3646;margin:0">I can only view the dashboard my vendor has set up. If I need something specific, I have to submit a request and wait. I can't iterate on my own.</p></div>
+      <div style="background:#F7F5FB;border:1px solid rgba(108,77,246,0.14);border-radius:16px;padding:28px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6C4DF6;margin-bottom:12px;letter-spacing:0.04em">AS AN ADMIN</div><p style="font-size:17px;line-height:1.65;color:#3a3646;margin:0">I have to handle every customization request manually. I lose time on specific developments, and I have no way to monetize these new options.</p></div>
+    </div>
+  </section>
+
+  <section style="max-width:720px;margin:0 auto;padding:92px 32px 0">
+    <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(0,0,0,0.1);padding-bottom:20px;margin-bottom:28px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#6C4DF6;letter-spacing:-0.01em">03</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.025em;color:#15131C;margin:0;line-height:1.05">Approach &amp; Key Decisions</h2>
+    </div>
+    <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0 0 8px">Building self-service on top of a decade-old product came with real constraints: significant UX debt, a complex technical foundation, and no room for a long delivery cycle.</p>
+    <div style="margin-top:40px;padding-top:28px;border-top:1px solid rgba(108,77,246,0.2)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6C4DF6;margin-bottom:10px">DECISION 01 · TRADE-OFF</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#15131C;margin:0 0 16px">Speed over completeness</h3>
+      <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0 0 20px">Rather than trying to serve all three user segments at once, we made a deliberate call to address the first two thirds of the demand first.</p>
+      <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0">We built a pick-and-choose experience: end users can browse a chart library curated by their admin, and select what they want with a simple, point-and-click interface. No technical or data expertise required. This covered the most common use cases immediately, without the complexity of a full self-service editor, and got us to market fast enough to start winning deals.</p>
+    </div>
+    <div style="margin-top:40px;padding-top:28px;border-top:1px solid rgba(108,77,246,0.2)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6C4DF6;margin-bottom:10px">DECISION 02 · UX DILEMMA</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:23px;letter-spacing:-0.015em;color:#15131C;margin:0 0 16px">Rebuild or adapt?</h3>
+      <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0 0 20px">The ideal path would have been a full redesign of the dashboard creation and editing experience. The existing one carried years of accumulated complexity and technical debt. But a full rebuild would have taken too long, and our primary goal was to equip the Sales team as fast as possible.</p>
+      <p style="font-size:18px;line-height:1.75;color:#3a3646;margin:0">We chose a pragmatic approach: working within the constraints of the existing experience, making targeted improvements, and accepting deliberate compromises. This allowed us to ship a first version significantly faster, without betting everything on a lengthy redesign cycle.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:92px 32px 0">
+    <div style="max-width:720px;margin:0 auto 28px;display:flex;align-items:baseline;gap:14px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#6C4DF6;letter-spacing:-0.01em">04</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.025em;color:#15131C;margin:0;line-height:1.05">The Solution</h2>
+    </div>
+    <div style="background:#15131C;border-radius:22px;padding:56px;color:#fff">
+      <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:28px;line-height:1.45;letter-spacing:-0.015em;margin:0;max-width:46ch">A pick-and-choose dashboard editor that lets business users customize their embedded analytics experience without any technical knowledge. Admins define the chart library; end users build their own views from it, independently.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:92px 32px 0">
+    <div style="max-width:720px;margin:0 auto 28px;display:flex;align-items:baseline;gap:14px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#6C4DF6;letter-spacing:-0.01em">05</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:-0.025em;color:#15131C;margin:0;line-height:1.05">Business Impact</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="background:#6C4DF6;color:#fff;border-radius:18px;padding:40px"><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:64px;line-height:1;letter-spacing:-0.03em">36%</div><p style="font-size:16px;line-height:1.6;opacity:0.92;margin:16px 0 0">a determining factor in 36% of SQL-to-QSO conversions in 2025, one of the most impactful features delivered that year.</p></div>
+      <div style="background:#ECE7FF;color:#15131C;border-radius:18px;padding:40px"><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:64px;line-height:1;letter-spacing:-0.03em;color:#6C4DF6">~20</div><p style="font-size:16px;line-height:1.6;color:#4a4556;margin:16px 0 0">clients adopted self-service since launch.</p></div>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:72px 32px 96px">
+    <a href="#" style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:#F4F2EE;border:1px solid rgba(0,0,0,0.06);border-radius:18px;padding:32px 40px" style-hover="background:#ECE7FF;border-color:rgba(108,77,246,0.3)">
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6a6577;margin-bottom:8px">NEXT PROJECT</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-0.02em;color:#15131C">Toucan AI</div></div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:32px;color:#6C4DF6">→</div>
+    </a>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const apply = (glassy) => {
+      const el = document.getElementById('hero-nav');
+      if (!el) return;
+      if (glassy) {
+        el.style.background = 'rgba(255,255,255,0.66)';
+        el.style.backdropFilter = 'blur(16px) saturate(1.4)';
+        el.style.webkitBackdropFilter = 'blur(16px) saturate(1.4)';
+        el.style.borderColor = 'rgba(255,255,255,0.7)';
+        el.style.boxShadow = '0 10px 34px -12px rgba(40,25,90,0.26)';
+      } else {
+        el.style.background = 'transparent';
+        el.style.backdropFilter = 'none';
+        el.style.webkitBackdropFilter = 'none';
+        el.style.borderColor = 'transparent';
+        el.style.boxShadow = 'none';
+      }
+    };
+    apply(false);
+    const sentinel = document.getElementById('nav-top-sentinel');
+    this._check = () => {
+      if (!sentinel) return;
+      const top = sentinel.getBoundingClientRect().top;
+      apply(top < -4);
+    };
+    window.addEventListener('scroll', this._check, { passive: true, capture: true });
+    if (sentinel && 'IntersectionObserver' in window) {
+      this._io = new IntersectionObserver(
+        (entries) => { entries.forEach((e) => apply(!e.isIntersecting)); },
+        { threshold: 0 }
+      );
+      this._io.observe(sentinel);
+    }
+    this._check();
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._check) window.removeEventListener('scroll', this._check, { capture: true });
+  }
+}
+</script>
+</body>
+</html>

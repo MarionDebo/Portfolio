@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  /** Optional mono subline (e.g. "FOUR CHAPTERS · ONE DIRECTION OF TRAVEL"). */
+  subline?: string;
+}
+const { title, subline } = Astro.props;
+---
+
+<div class="section-header">
+  <span class="bar" aria-hidden="true"></span>
+  <h2>{title}</h2>
+</div>
+{subline && <p class="section-subline">{subline}</p>}
+
+<style>
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(var(--color-accent-rgb), 0.28);
+  padding-bottom: 20px;
+}
+.bar {
+  width: 30px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin: 0;
+}
+.section-subline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-meta);
+  letter-spacing: 0.06em;
+  margin: 16px 0 0;
+}
+
+@media (max-width: 640px) {
+  .section-header h2 { font-size: 27px; }
+}
+</style>

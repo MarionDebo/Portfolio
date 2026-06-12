@@ -7,12 +7,18 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  /** Page background: 'cream' (Home, My Story) or 'white' (Work, Project Page). */
+  bg?: 'cream' | 'white';
+  /** Render the shared "Let's talk" footer. */
+  footer?: boolean;
 }
 
 const {
   title,
   description = 'Marion Débonnaire — Product Manager specialised in AI-native embedded analytics SaaS. Building data products that think.',
   ogImage = '/og-default.png',
+  bg = 'cream',
+  footer = true,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://mariondebonnaire.com');
@@ -46,20 +52,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://marionde
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts · Newsreader (display serif) + Manrope (UI) + DM Sans (body) -->
+    <!-- Fonts · Space Grotesk (display) + Hanken Grotesk (body) + JetBrains Mono (labels) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Manrope:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
   </head>
 
-  <body>
+  <body class={bg === 'white' ? 'bg-white' : undefined}>
+    <!-- Sentinel at document top — drives the nav glass-on-scroll toggle -->
+    <div id="nav-top-sentinel" aria-hidden="true"></div>
     <Nav />
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    {footer && <Footer />}
   </body>
 </html>

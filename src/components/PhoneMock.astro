@@ -1,0 +1,59 @@
+---
+// Pure-CSS phone mockup — a 208px dark device frame with a violet header and
+// three list rows. Decorative (the Entourage "Events" screen).
+---
+
+<div class="phone-wrap">
+  <div class="phone">
+    <div class="screen">
+      <div class="header">
+        <div class="eyebrow">NEAR YOU</div>
+        <div class="screen-title">Events</div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="avatar lilac"></div>
+          <div class="lines"><div class="l1" style="width:75%"></div><div class="l2" style="width:45%"></div></div>
+        </div>
+        <div class="row">
+          <div class="avatar lilac"></div>
+          <div class="lines"><div class="l1" style="width:60%"></div><div class="l2" style="width:50%"></div></div>
+        </div>
+        <div class="row">
+          <div class="avatar accent"></div>
+          <div class="lines"><div class="l1" style="width:70%"></div><div class="l2" style="width:40%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.phone-wrap { display: flex; justify-content: center; }
+.phone {
+  width: 208px;
+  border-radius: 32px;
+  padding: 9px;
+  background: var(--color-dark);
+  box-shadow: var(--shadow-photo);
+}
+.screen {
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  aspect-ratio: 9 / 18.5;
+  display: flex;
+  flex-direction: column;
+}
+.header { background: var(--color-accent); padding: 20px 16px 16px; color: #fff; }
+.eyebrow { font-family: var(--font-mono); font-size: 10px; opacity: 0.8; margin-bottom: 6px; }
+.screen-title { font-family: var(--font-display); font-weight: 600; font-size: 19px; }
+.rows { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; gap: 10px; align-items: center; }
+.avatar { width: 38px; height: 38px; border-radius: 12px; flex-shrink: 0; }
+.avatar.lilac { background: var(--color-bg-lilac); }
+.avatar.accent { background: var(--color-accent); }
+.lines { flex: 1; }
+.l1 { height: 9px; border-radius: 4px; background: #1f1c28; margin-bottom: 6px; }
+.l2 { height: 8px; border-radius: 4px; background: #cfc8dd; }
+</style>

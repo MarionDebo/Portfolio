@@ -1,163 +1,79 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import portrait from '../assets/portrait-Marion.jpg';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Tag from '../components/Tag.astro';
+import teamPhoto from '../assets/Photo-groupe-maison.jpeg';
 
-const timeline = [
+const chapters = [
   {
-    year: '2009',
-    title: 'A literature degree and a love for complex ideas',
-    body: 'I started with books. A bachelor\'s in literature, then a master\'s in communication. I learned to read carefully, write clearly, and explain things that were hard to explain. Skills I still use every day.',
-    impact: 'The ability to explain hard things simply is still my most-used PM skill.',
+    label: 'CH. 01 · THE SPARK',
+    title: 'Falling for the problem',
+    body: "I didn't set out to manage products. I set out to understand why people abandon the very thing that was supposed to help them. Product was simply where that question lived — at the seam between empathy, business and engineering. I've been standing on that seam ever since.",
   },
   {
-    year: '2011',
-    title: 'Five years at EDF, understanding how large organizations work',
-    body: 'As a communication officer on engineering and innovation projects, I learned what it takes to make ideas land inside complex organizations. I also learned that the most interesting problems are rarely the most visible ones.',
-    impact: 'Stakeholder alignment and cross-functional influence — learned the hard way.',
+    label: 'CH. 02 · MISSION-DRIVEN',
+    title: 'Entourage — product with a purpose',
+    body: "At Entourage I helped move a non-profit's app away from being a donation box and toward a place where people genuinely connect — events, communities, learning. 170,000 people now use it. The lesson that stuck: impact doesn't happen by accident. It has to be designed.",
+    metric: { value: '170,000', suffix: 'people on the app' },
   },
   {
-    year: '2016',
-    title: 'Munich. Two companies. A crash course in digital and agile.',
-    body: 'FlixBus, then a digital agency in Munich. SEO strategy at scale (4M monthly visits), OKRs, Kanban. My first real experience of agile culture, data-driven thinking, and moving fast.',
-    impact: '4M monthly visits. My first taste of product at scale.',
+    label: 'CH. 03 · INTO THE DATA',
+    title: 'Toucan — making analytics human',
+    body: "Then came analytics. At Toucan I built a self-service dashboard editor so business users could shape their own embedded analytics — no SQL, no waiting on a data team. It pushed SQL-to-QSO conversion to 36%. I learned that the best data product is the one that disappears behind the decision it helps you make.",
+    metric: { value: '36%', suffix: 'SQL-to-QSO conversion' },
   },
   {
-    year: '2020',
-    title: 'I learned to code.',
-    body: 'Le Wagon bootcamp, Nantes. Not to become a developer, but to stop being afraid of code. It changed how I talk to engineers, how I read a codebase, and how I think about product feasibility.',
-    impact: 'Changed how I think about technical feasibility — permanently.',
-  },
-  {
-    year: '2021',
-    title: 'My first PM role, at a non-profit.',
-    body: 'Entourage gave me the rarest kind of PM experience: user research in the field, during maraudes and daytime shelter visits. You learn humility fast when your users sometimes don\'t have the energy to talk to you. I contributed to a full app redesign, repositioning the product from donation-centric to connection-centric.',
-    impact: 'Full app redesign. Product repositioning from donation-centric to connection-centric.',
-  },
-  {
-    year: '2023',
-    title: 'Senior PM at Toucan. Embedded analytics, then AI.',
-    body: 'Three years building analytics products for B2B SaaS teams. I led the discovery and delivery of a self-service dashboard feature that became a key acquisition driver. Then I contributed to rebuilding the platform from scratch, AI-native, around a conversational experience. Still learning. Still shipping.',
-    impact: 'Self-service dashboards → key acquisition driver. Now rebuilding the platform AI-native.',
+    label: 'CH. 04 · AI-NATIVE · TODAY',
+    title: 'Betting on the conversation',
+    body: "Today I'm rebuilding analytics around conversation. Toucan AI lets people just ask — and get the answer, not a chart to decipher. It's the edge of AI, and it's exactly where I want to be: making powerful technology feel obvious, even kind.",
+    dark: true,
   },
 ];
 
-const philosophy = [
-  {
-    title: 'Product exists to create business impact',
-    body: 'A great product solves a real user problem and generates revenue at the same time. That\'s the discipline I love: finding the overlap between what users need and what moves the business forward. Vanity metrics don\'t interest me. Outcomes do.',
-    svg: '<line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
-  },
-  {
-    title: 'The product trio is still the best team unit',
-    body: 'AI gives us better tools and faster conversations. But I don\'t believe it replaces complementary minds. A design brain, a product brain, and a tech brain working together is still the most powerful combination I know. I lead squads with high standards and genuine care, because the best results come from teams that are driven by goals, supported in the day-to-day, and take time to celebrate wins.',
-    svg: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-  },
-  {
-    title: 'Understand the problem before imagining the solution',
-    body: 'I am user-obsessed, in the Teresa Torres and Marty Cagan sense of the term. Discovery is not a phase. It is a continuous practice. I believe that the best product decisions come from being close to users, close to the sales team, close to the CSMs, and close to the engineers. We all share the same goal. Anchoring product work in everyone\'s reality is what makes a team perform.',
-    svg: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/>',
-  },
-];
-
-const bookshelf = [
-  { title: 'Continuous Discovery Habits', author: 'Teresa Torres' },
-  { title: 'Inspired / Empowered', author: 'Marty Cagan' },
-  { title: 'Building AI-Powered Products', author: 'Dr Marily Nika' },
-];
-
-const education = [
-  { year: '2025', degree: 'Gen AI for Product Teams', school: 'AI Discipline by Rémi Guyot' },
-  { year: '2022', degree: 'Product Discovery', school: 'Panash by Axel Sooriah' },
-  { year: '2021', degree: 'Agile Project Management', school: 'Udemy' },
-  { year: '2020', degree: 'Web Development', school: 'Le Wagon bootcamp' },
-  { year: '2011', degree: 'Master in Communication', school: 'Université Grenoble Alpes' },
-  { year: '2009', degree: 'Bachelor in Literature', school: 'Université Grenoble Alpes' },
+const principles = [
+  { n: '01', title: 'Start with the job, not the feature', body: 'Understand the real job someone is hiring the product to do. Features are just one possible answer to it.' },
+  { n: '02', title: 'Ship to learn', body: 'Evidence beats opinion. Build the smallest thing that teaches you something real, then let it change your mind.' },
+  { n: '03', title: 'Make the technology disappear', body: 'Especially with AI. The best experience asks nothing of the user and quietly does the hard part for them.' },
+  { n: '04', title: 'The team is the product', body: 'A clear, trusting, curious team ships better products than any roadmap ever could. Protect it fiercely.', dark: true },
 ];
 ---
 
-<BaseLayout
-  title="Story — Marion Débonnaire"
-  description="From data analyst to AI product manager — the decisions, pivots, and lessons that shaped my approach to building data products."
->
-  <!-- Hero -->
+<BaseLayout title="My Story — Marion Débonnaire">
+  <!-- ░░ Hero ░░ -->
   <section class="story-hero">
-    <div class="container hero-layout">
-      <div class="hero-text">
-        <div class="breadcrumb text-muted">
-          <a href="/">Home</a>
-          <span aria-hidden="true">›</span>
-          <span>Story</span>
-        </div>
-
-        <h1 class="page-title">
-          From communication to product.<br />
-          <em class="title-em">Always about understanding people.</em>
-        </h1>
-
-        <p class="page-sub text-muted">
-          I started with words. Literature, then communication. I spent years learning how to explain complex things to different audiences, how to listen before speaking, and how to make information land. Somewhere along the way, I realized the best way to do that at scale was to build products. Six years in, I haven't looked back.
-        </p>
-
-      </div>
-
-      <div class="hero-portrait">
-        <div class="portrait-wrap">
-          <Image
-            src={portrait}
-            alt="Marion Débonnaire, Product Manager specialised in AI and analytics"
-            width={420}
-            height={500}
-            class="portrait-img"
-            loading="eager"
-          />
-          <div class="portrait-overlay"></div>
-        </div>
+    <div class="watermark" aria-hidden="true">product</div>
+    <div class="hero-inner">
+      <p class="eyebrow">MY&nbsp;STORY</p>
+      <h1>Not a résumé.<br>A throughline.</h1>
+      <p class="lead">I'm Marion, a product manager who fell for the messy middle, where user needs, business reality and what's technically possible all collide. Six years in, the throughline hasn't changed: turn complexity into something a human can actually use. Lately, that means building at the edge of AI.</p>
+      <div class="pills">
+        <Tag size="pill">Product</Tag>
+        <Tag size="pill">AI · Data</Tag>
+        <Tag size="pill">Human-first</Tag>
       </div>
     </div>
   </section>
 
-  <!-- Product Philosophy -->
-  <section class="philosophy-section">
-    <div class="container">
-      <h2 class="section-title">My Product Philosophy</h2>
-
-      <div class="philosophy-grid">
-        {philosophy.map(p => (
-          <article class="card philosophy-card">
-            <div class="philosophy-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={p.svg} />
-            </div>
-            <h3>{p.title}</h3>
-            <p class="text-muted">{p.body}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section class="timeline-section">
-    <div class="container">
-      <h2 class="section-title">The journey</h2>
-
-      <div class="timeline" role="list">
-        {timeline.map((item) => (
-          <div class="timeline-item" role="listitem">
-            <div class="tl-left">
-              <div class="tl-anchor">
-                <span class="year-label">{item.year}</span>
-                <div class="tl-dot" aria-hidden="true"></div>
-              </div>
-              <div class="tl-line" aria-hidden="true"></div>
-            </div>
-            <div class="tl-content">
-              <h3 class="timeline-title">{item.title}</h3>
-              <p class="timeline-body">{item.body}</p>
-              <p class="timeline-impact">
-                <span class="impact-arrow" aria-hidden="true">→</span>
-                {item.impact}
-              </p>
+  <!-- ░░ The Journey ░░ -->
+  <section class="journey">
+    <div class="journey-inner">
+      <SectionHeader title="The Journey" subline="FOUR CHAPTERS · ONE DIRECTION OF TRAVEL" />
+      <div class="timeline">
+        <div class="rail" aria-hidden="true"></div>
+        {chapters.map(ch => (
+          <div class="chapter">
+            <div class="node-col"><span class:list={['node', { dark: ch.dark }]} aria-hidden="true"></span></div>
+            <div class="chapter-body">
+              <div class="chapter-label">{ch.label}</div>
+              <h3>{ch.title}</h3>
+              <p>{ch.body}</p>
+              {ch.metric && (
+                <div class="inline-metric">
+                  <span class="metric-value">{ch.metric.value}</span>
+                  <span class="metric-suffix">{ch.metric.suffix}</span>
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -165,455 +81,205 @@ const education = [
     </div>
   </section>
 
-  <!-- Bookshelf -->
-  <section class="bookshelf-section">
-    <div class="container">
-      <h2 class="section-title">Bookshelf</h2>
-      <p class="section-sub text-muted">The books I keep coming back to.</p>
-
-      <ul class="bookshelf-list">
-        {bookshelf.map(b => (
-          <li class="bookshelf-item">
-            <span class="book-title">{b.title}</span>
-            <span class="book-author text-muted">— {b.author}</span>
-          </li>
-        ))}
-      </ul>
+  <!-- ░░ Product Philosophy ░░ -->
+  <section class="philosophy">
+    <div class="philosophy-inner">
+      <div class="phil-header"><SectionHeader title="Product Philosophy" /></div>
+      <div class="phil-grid">
+        <div class="phil-left">
+          <p class="phil-lead">There's no good product work without a solid team. I care about the craft, but I care more about the people I build it with. That's where the good decisions actually come from.</p>
+          <Image src={teamPhoto} alt="The team together after a bike ride" class="team-photo" widths={[480, 720, 960]} sizes="(max-width: 860px) 90vw, 520px" />
+          <p class="photo-caption">↑ THE TEAM BEHIND THE WORK</p>
+        </div>
+        <div class="phil-right">
+          {principles.map(p => (
+            <div class:list={['principle', { dark: p.dark }]}>
+              <div class="principle-num">{p.n}</div>
+              <h4>{p.title}</h4>
+              <p>{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
-
 </BaseLayout>
 
 <style>
 /* Hero */
 .story-hero {
-  padding-top: calc(var(--space-20) + var(--space-8));
-  padding-bottom: var(--space-16);
-  background: rgba(255,255,255,0.28);
-}
-
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: var(--space-16);
-  align-items: center;
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-  margin-bottom: var(--space-6);
-}
-.breadcrumb a:hover { color: var(--color-text); }
-
-.page-title {
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: var(--leading-tight);
-  margin-bottom: var(--space-6);
-}
-
-.title-em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--color-accent);
-}
-
-.page-sub {
-  font-size: var(--text-lg);
-  max-width: 520px;
-  line-height: var(--leading-normal);
-  margin-bottom: var(--space-8);
-}
-
-.hero-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-/* Portrait */
-.portrait-wrap {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  aspect-ratio: 4/5;
+  margin-top: calc(-1 * var(--nav-bleed));
+  padding: 160px var(--gutter) 92px;
   position: relative;
-  border: 1.5px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  overflow: hidden;
 }
-
-.portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.portrait-overlay {
+.watermark {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(15,23,42,0.15) 0%, transparent 55%);
-}
-
-/* Philosophy */
-.philosophy-section { background: rgba(255,255,255,0.28); }
-
-.philosophy-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-  margin-top: var(--space-10);
-}
-
-.philosophy-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.philosophy-icon {
-  width: 46px;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-  background: var(--color-accent-light);
-  border: 1px solid var(--color-accent-mid);
-  color: var(--color-accent);
-  flex-shrink: 0;
-}
-
-.philosophy-card h3 {
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-
-/* Bookshelf */
-.bookshelf-section { background: transparent; }
-
-.bookshelf-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-.bookshelf-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-border-soft);
-  font-size: var(--text-lg);
-}
-
-.bookshelf-item:last-child { border-bottom: none; }
-
-.book-title {
   font-weight: 600;
-  color: var(--color-text);
-}
-
-.book-author { font-size: var(--text-base); }
-
-/* Timeline */
-.timeline-section { background: transparent; }
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  margin-bottom: var(--space-3);
-}
-
-.section-sub {
-  font-size: var(--text-lg);
-  max-width: 560px;
-  margin-bottom: var(--space-12);
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  margin-top: var(--space-12);
-}
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 92px 1fr;
-}
-
-/* Left column */
-.tl-left {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Flex row: year + dot share the same vertical center — guaranteed alignment */
-.tl-anchor {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-3);
-}
-
-.year-label {
-  font-size: var(--text-base);
-  font-weight: 600;
-  font-family: var(--font-mono);
-  letter-spacing: 0.02em;
-  color: var(--color-text-faint);
+  font-size: clamp(180px, 30vw, 360px);
   line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.05;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
   white-space: nowrap;
 }
-
-.tl-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  opacity: 0.6;
-  flex-shrink: 0;
-}
-
-/* Vertical line: margin-right centers it on the dot (dot = 9px → center at 4.5px from right edge) */
-.tl-line {
-  flex: 1;
-  width: 1px;
-  background: var(--color-border-soft);
-  margin-left: auto;
-  margin-right: 4px; /* (9px dot / 2) - (1px line / 2) = 4px from right edge → center aligns with dot center */
-}
-
-/* Last item: no line after the final dot */
-.timeline-item:last-child .tl-line { display: none; }
-
-/* Right column */
-.tl-content {
-  padding-left: var(--space-8);
-  padding-bottom: var(--space-12);
-}
-
-.timeline-item:last-child .tl-content { padding-bottom: 0; }
-
-.timeline-title {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: var(--leading-snug);
-  margin-bottom: var(--space-3);
-  /* align first line with the dot row */
-  padding-top: 0;
-  margin-top: calc((var(--text-xl) * var(--leading-snug) - var(--text-xl)) / -2 + 0.05em);
-}
-
-.timeline-body {
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  color: var(--color-text-muted);
-  max-width: 580px;
-  margin-bottom: var(--space-4);
-}
-
-.timeline-impact {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.impact-arrow {
-  color: var(--color-accent);
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-/* Values */
-.values-section { background: rgba(255,255,255,0.28); }
-
-.values-layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: var(--space-16);
-  align-items: start;
-}
-
-.values-header .section-title { margin-bottom: 0; }
-
-.values-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-8);
-}
-
-.value-label {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 700;
-  margin-bottom: var(--space-2);
-  color: var(--color-text);
-}
-
-.value-item p { font-size: var(--text-sm); }
-
-/* Testimonials */
-.testimonials-section { background: transparent; }
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-}
-
-.testimonial-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.quote-mark {
-  font-size: 3.5rem;
-  line-height: 1;
-  color: var(--color-accent);
-  opacity: 0.25;
-  font-family: Georgia, serif;
-  margin-bottom: calc(-1 * var(--space-4));
-}
-
-.testimonial-quote {
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  color: var(--color-text-muted);
-  font-style: italic;
-  flex: 1;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border-soft);
-}
-
-.author-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-xs);
-  font-weight: 700;
-  color: #fff;
-  flex-shrink: 0;
-}
-
-.author-name {
-  font-size: var(--text-sm);
-  font-weight: 600;
-}
-
-.author-role { font-size: var(--text-xs); }
-
-/* Education */
-.education-section { background: transparent; }
-
-.education-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  margin-top: var(--space-10);
-}
-
-.education-item {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: var(--space-8);
-  align-items: start;
-}
-
-.education-year {
-  font-size: var(--text-sm);
-  font-family: var(--font-mono);
-  font-weight: 600;
-  padding-top: 3px;
-}
-
-.education-degree {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  margin-bottom: var(--space-1);
-}
-
-.education-school {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  margin-bottom: var(--space-2);
-}
-
-.education-content p { font-size: var(--text-sm); }
-
-/* CTA */
-.cta-section { background: transparent; }
-
-.cta-box {
-  overflow: hidden;
-  padding: var(--space-12);
+.hero-inner {
+  max-width: 880px;
+  margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin: 0 0 30px;
+}
+.story-hero h1 {
+  font-size: clamp(48px, 6.4vw, 82px);
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  margin: 0 0 32px;
+  color: var(--color-ink);
+}
+.lead {
+  font-size: 21px;
+  line-height: 1.65;
+  color: var(--color-muted-2);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.pills { display: flex; justify-content: center; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
 
-.cta-inner { position: relative; z-index: 1; }
-
-.cta-box h2 {
+/* Journey timeline */
+.journey { background: var(--color-bg-white); }
+.journey-inner { max-width: var(--max-nav); margin: 0 auto; padding: 88px var(--gutter) 96px; }
+.timeline { position: relative; margin-top: 56px; }
+.rail {
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(var(--color-accent) 0%, var(--violet-200) 100%);
+}
+.chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 28px;
+  padding-bottom: 56px;
+}
+.chapter:last-child { padding-bottom: 0; }
+.node-col { position: relative; }
+.node {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 5px #fff, 0 0 0 6px rgba(var(--color-accent-rgb), 0.25);
+}
+.node.dark {
+  background: var(--color-dark);
+  box-shadow: 0 0 0 5px #fff, 0 0 0 6px rgba(var(--color-accent-rgb), 0.4);
+}
+.chapter-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+.chapter-body h3 {
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: var(--color-ink);
+}
+.chapter-body p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin: 0;
+}
+.inline-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  margin-bottom: var(--space-3);
+  margin-top: 18px;
 }
+.metric-value { font-weight: 600; font-size: 24px; color: var(--color-accent); letter-spacing: -0.02em; }
+.metric-suffix { font-size: 14px; color: var(--color-meta); }
 
-.cta-box p {
-  max-width: 480px;
-  margin-inline: auto;
-  margin-bottom: var(--space-8);
+/* Product Philosophy */
+.philosophy { background: var(--color-bg-lilac); }
+.philosophy-inner { max-width: var(--max-content); margin: 0 auto; padding: 88px var(--gutter) 96px; }
+.phil-header { margin-bottom: 48px; }
+.phil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.phil-lead {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 1.42;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  margin: 0 0 28px;
 }
-
-.cta-actions {
-  display: flex;
-  gap: var(--space-3);
-  justify-content: center;
-  flex-wrap: wrap;
+.team-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: var(--shadow-photo);
 }
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .values-layout { grid-template-columns: 1fr; gap: var(--space-8); }
-  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+.photo-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #7d6fb0;
+  letter-spacing: 0.05em;
+  margin: 14px 0 0;
 }
+.phil-right { display: flex; flex-direction: column; gap: 16px; }
+.principle {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-card);
+  padding: 26px 28px;
+  border: var(--border-accent-12);
+}
+.principle.dark { background: var(--color-dark); border: none; }
+.principle-num { font-family: var(--font-mono); font-size: 12px; color: var(--color-accent); margin-bottom: 10px; }
+.principle.dark .principle-num { color: var(--color-accent-soft); }
+.principle h4 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  color: var(--color-ink);
+}
+.principle.dark h4 { color: #fff; }
+.principle p { font-size: 15.5px; line-height: 1.6; color: var(--color-muted); margin: 0; }
+.principle.dark p { color: var(--color-dark-body); }
 
-@media (max-width: 768px) {
-  .hero-layout { grid-template-columns: 1fr; }
-  .hero-portrait { order: -1; max-width: 280px; margin-inline: auto; }
-  .timeline-item { grid-template-columns: 64px 1fr; }
-  .tl-content { padding-left: var(--space-5); padding-bottom: var(--space-8); }
-  .timeline-title { font-size: var(--text-lg); }
-  .values-list { grid-template-columns: 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr; }
+@media (max-width: 860px) {
+  .story-hero { padding: 130px var(--gutter) 72px; }
+  .phil-grid { grid-template-columns: 1fr; gap: 40px; }
+  .journey-inner, .philosophy-inner { padding-block: 64px; }
 }
 </style>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  href: string;
+  target?: string;
+  rel?: string;
+  class?: string;
+}
+const { href, target, rel, class: className } = Astro.props;
+---
+
+<a href={href} target={target} rel={rel} class:list={['btn', className]}>
+  <slot />
+</a>
+
+<style>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 15px 30px;
+  border-radius: var(--radius-pill);
+  transition: background 200ms ease, transform 200ms ease;
+}
+.btn:hover { background: #5a3de0; transform: translateY(-1px); }
+</style>

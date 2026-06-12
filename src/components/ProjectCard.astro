@@ -1,0 +1,131 @@
+---
+import Tag from './Tag.astro';
+
+interface Props {
+  index: string;                 // "01"
+  tags: string[];
+  title: string;
+  blurb: string;
+  metricValue: string;           // "15+ qualified opportunities"
+  metricSuffix: string;          // "in the first month of beta"
+  href: string;
+  linkLabel?: string;            // default "View case study →"
+  reverse?: boolean;             // media on the left (Entourage)
+  asLink?: boolean;              // whole card is an <a> (Work page)
+  bg?: string;                   // background colour (link variant)
+  hoverBg?: string;              // hover background (link variant)
+  pad?: string;                  // inner padding
+}
+
+const {
+  index, tags, title, blurb, metricValue, metricSuffix, href,
+  linkLabel = 'View case study →',
+  reverse = false, asLink = false,
+  bg, hoverBg, pad = '72px 32px',
+} = Astro.props;
+
+const Wrapper = asLink ? 'a' : 'div';
+const wrapperProps = asLink ? { href } : {};
+const cssVars = [
+  bg ? `--card-bg:${bg}` : '',
+  hoverBg ? `--card-hover:${hoverBg}` : '',
+].filter(Boolean).join(';');
+---
+
+<Wrapper
+  {...wrapperProps}
+  class:list={['pcard', { 'as-link': asLink, reverse }]}
+  style={cssVars || undefined}
+>
+  <div class="pcard-inner" style={`padding:${pad}`}>
+    <div class="pcard-text">
+      <div class="index">{index}</div>
+      <div class="tags">
+        {tags.map(t => <Tag>{t}</Tag>)}
+      </div>
+      <h3>{title}</h3>
+      <p class="blurb">{blurb}</p>
+      <div class="metric">{metricValue} <span class="suffix">{metricSuffix}</span></div>
+      {asLink
+        ? <span class="case-link">{linkLabel}</span>
+        : <a href={href} class="case-link">{linkLabel}</a>}
+    </div>
+    <div class="pcard-media">
+      <slot name="media" />
+    </div>
+  </div>
+</Wrapper>
+
+<style>
+.pcard {
+  display: block;
+  background: var(--card-bg, transparent);
+}
+.pcard.as-link { transition: background 200ms ease; }
+.pcard.as-link:hover { background: var(--card-hover, var(--card-bg)); }
+
+.pcard-inner {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
+.pcard.reverse .pcard-inner { grid-template-columns: 1.1fr 1fr; }
+.pcard.reverse .pcard-text { order: 2; }
+.pcard.reverse .pcard-media { order: 1; }
+
+.index {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  opacity: 0.85;
+}
+.tags { display: flex; gap: 8px; margin: 18px 0 14px; flex-wrap: wrap; }
+
+.pcard h3 {
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: var(--color-ink);
+}
+.blurb {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 38ch;
+  margin: 0 0 22px;
+}
+.metric {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--color-ink);
+  margin-bottom: 24px;
+}
+.metric .suffix { color: var(--color-meta); font-weight: 400; font-size: 16px; }
+
+.case-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 3px;
+}
+
+@media (max-width: 860px) {
+  .pcard-inner,
+  .pcard.reverse .pcard-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pcard.reverse .pcard-text { order: 1; }
+  .pcard.reverse .pcard-media { order: 2; }
+  .pcard h3 { font-size: 30px; }
+}
+</style>

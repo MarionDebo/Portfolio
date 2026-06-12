@@ -1,0 +1,29 @@
+---
+interface Props {
+  /** 'chip' (project tags, 11px) or 'pill' (larger My-Story pills, 12px). */
+  size?: 'chip' | 'pill';
+}
+const { size = 'chip' } = Astro.props;
+---
+
+<span class:list={['tag', size]}><slot /></span>
+
+<style>
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  border-radius: var(--radius-pill);
+}
+.tag.chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid rgba(var(--color-accent-rgb), 0.35);
+}
+.tag.pill {
+  font-size: 12px;
+  padding: 7px 16px;
+  border: 1px solid rgba(var(--color-accent-rgb), 0.32);
+}
+</style>

@@ -2,166 +2,175 @@
 const pathname = Astro.url.pathname;
 
 const links = [
-  { href: '/ai-expertise', label: 'AI Expertise' },
-  { href: '/portfolio',    label: 'Work' },
-  { href: '/my-story',     label: 'Story' },
+  { href: '/work',          label: 'Work' },
+  { href: '/ai-expertise',  label: 'AI Expertise' },
+  { href: '/my-story',      label: 'Story' },
 ];
 
 function isActive(href: string) {
-  if (href === '/') return pathname === '/';
-  return pathname.startsWith(href);
+  if (href === '#') return false;
+  return pathname === href || pathname.startsWith(href + '/');
 }
 ---
 
 <header class="nav-header">
-  <nav class="container nav-inner" aria-label="Main navigation">
+  <div id="hero-nav" class="nav-pill">
+    <a href="/" class="nav-wordmark">Marion Débonnaire</a>
 
-    <a href="/" class="nav-logo" aria-label="Home">
-      <span class="logo-mark">Marion Débonnaire</span>
-    </a>
-
-    <ul class="nav-links" role="list">
+    <nav class="nav-links" aria-label="Main navigation">
       {links.map(link => (
-        <li>
-          <a
-            href={link.href}
-            class:list={['nav-link', { active: isActive(link.href) }]}
-            aria-current={isActive(link.href) ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        </li>
+        <a
+          href={link.href}
+          class:list={['nav-link', { active: isActive(link.href) }]}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+        >{link.label}</a>
       ))}
-    </ul>
+    </nav>
 
     <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-
-  </nav>
+  </div>
 </header>
 
 <style>
 .nav-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  height: var(--nav-height);
-  background: rgba(255, 255, 255, 0.52);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1.5px solid var(--glass-border);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  z-index: 50;
+  padding: 18px var(--gutter) 0;
 }
 
-.nav-inner {
+.nav-pill {
+  max-width: var(--max-nav);
+  margin: 0 auto;
+  border-radius: var(--radius-pill);
+  padding: 12px 16px 12px 26px;
   display: flex;
   align-items: center;
-  height: 100%;
-  gap: var(--space-8);
+  justify-content: space-between;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+  transition: background 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
 }
 
-/* Logo */
-.nav-logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  text-decoration: none;
+/* Frosted-glass state once scrolled past the top sentinel */
+.nav-pill.glassy {
+  background: rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-nav);
 }
 
-.logo-mark {
+.nav-wordmark {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.09em;
-  color: var(--color-text);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
 }
 
-.logo-dot {
-  color: var(--color-accent);
-}
-
-/* Nav links */
 .nav-links {
   display: flex;
-  list-style: none;
-  gap: var(--space-1);
-  margin-left: auto;
+  align-items: center;
+  gap: 32px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-body-soft);
 }
 
-.nav-link {
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  transition: color var(--transition), background var(--transition);
-}
+.nav-link { color: inherit; transition: color 200ms ease; }
+.nav-link:hover { color: var(--color-ink); }
+.nav-link.active { color: var(--color-accent); }
 
-.nav-link:hover {
-  color: var(--color-text);
-  background: rgba(255,255,255,0.5);
-}
-
-.nav-link.active {
-  color: var(--color-text);
-  background: rgba(255,255,255,0.6);
-}
-
-/* Burger */
+/* Burger — hidden on desktop */
 .nav-burger {
   display: none;
   flex-direction: column;
   gap: 5px;
   background: none;
   border: none;
-  padding: var(--space-2);
-  margin-left: auto;
+  padding: 6px;
 }
-
 .nav-burger span {
   display: block;
-  width: 20px;
-  height: 1.5px;
-  background: var(--color-text);
+  width: 22px;
+  height: 2px;
+  background: var(--color-ink);
   border-radius: 2px;
-  transition: all var(--transition);
+  transition: transform 200ms ease, opacity 200ms ease;
 }
+.nav-burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+.nav-burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-@media (max-width: 768px) {
-  .nav-links { display: none; }
+@media (max-width: 760px) {
   .nav-burger { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: var(--gutter);
+    right: var(--gutter);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px 20px;
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    box-shadow: var(--shadow-nav);
+    transform-origin: top;
+    opacity: 0;
+    transform: scaleY(0.96) translateY(-6px);
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+  .nav-links.mobile-open {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-link { padding: 8px 0; font-size: 17px; }
 }
 </style>
 
 <script>
-  const burger = document.querySelector('.nav-burger') as HTMLButtonElement;
-  const links  = document.querySelector('.nav-links') as HTMLElement;
+  // Glass-on-scroll: transparent at the top, frosted once the top sentinel
+  // leaves the viewport. Robust to any scroll container (capture-phase listener
+  // + IntersectionObserver), per the design reference.
+  const pill = document.getElementById('hero-nav');
+  const sentinel = document.getElementById('nav-top-sentinel');
 
+  if (pill) {
+    const apply = (glassy: boolean) => pill.classList.toggle('glassy', glassy);
+
+    const check = () => {
+      if (!sentinel) return;
+      apply(sentinel.getBoundingClientRect().top < -4);
+    };
+
+    window.addEventListener('scroll', check, { passive: true, capture: true });
+
+    if (sentinel && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        entries => entries.forEach(e => apply(!e.isIntersecting)),
+        { threshold: 0 }
+      );
+      io.observe(sentinel);
+    }
+    check();
+  }
+
+  // Mobile burger toggle
+  const burger = document.querySelector<HTMLButtonElement>('.nav-burger');
+  const links = document.querySelector<HTMLElement>('.nav-links');
   burger?.addEventListener('click', () => {
-    const expanded = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!expanded));
-    links?.classList.toggle('mobile-open');
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    links?.classList.toggle('mobile-open', !open);
   });
 </script>
-
-<style is:global>
-@media (max-width: 768px) {
-  .nav-links.mobile-open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: var(--nav-height);
-    left: 0; right: 0;
-    background: rgba(240, 238, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1.5px solid var(--glass-border);
-    padding: var(--space-4);
-    gap: var(--space-1);
-    z-index: 99;
-  }
-}
-</style>

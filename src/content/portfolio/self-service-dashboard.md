@@ -3,9 +3,15 @@ title: "Self-service Dashboard"
 description: "Toucan enables SaaS product teams to embed fully customizable, white-label analytics into their applications in days, not months. This allows teams to stay focused on their core product while Toucan takes care of the analytics experience."
 year: 2025
 tags: ["B2B SaaS", "Acquisition"]
-impact: "36% of SQL-to-QSO conversions in 2025"
+impact: "36% of SQL-to-QSO conversions"
 featured: true
 order: 2
+published: true
+role: "Senior Product Manager"
+scope: "Discovery → Delivery"
+heroImageAlt: "Toucan self-service dashboard editor"
+nextTitle: "Toucan AI"
+nextHref: "#"
 ---
 
 ## My Role
@@ -14,7 +20,7 @@ Senior Product Manager. I led this initiative end-to-end, from discovery to deli
 
 ## Problem
 
-The absence of a self-service offering was costing us at least **€300,000 in lost revenue per year**. For most of our prospects, self-service was a non-negotiable prerequisite to even consider Toucan, making it a critical acquisition blocker.
+The absence of a self-service offering represented a **significant amount of lost revenue every year**. For most of our prospects, self-service was a non-negotiable prerequisite to even consider Toucan, making it a critical acquisition blocker.
 
 ### What we heard from prospects
 

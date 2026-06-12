@@ -1,265 +1,392 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, getEntry } from 'astro:content';
+import dashboardShot from '../../assets/Self-serv-Dashboard_Edition.png';
 
+// Only fully-designed ("published") case studies get a detail page.
 export async function getStaticPaths() {
-  const projects = await getCollection('portfolio');
-  return projects.map(p => ({ params: { slug: p.slug } }));
+  const projects = await getCollection('portfolio', p => p.data.published);
+  return projects.map(p => ({ params: { slug: p.slug }, props: { project: p } }));
 }
 
-const { slug } = Astro.params;
-const project  = await getEntry('portfolio', slug!);
-if (!project) return Astro.redirect('/portfolio');
-
-const { Content } = await project.render();
-const { title, description, year, tags, impact } = project.data;
+interface Props { project: CollectionEntry<'portfolio'> }
+const { project } = Astro.props;
+const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHref } = project.data;
 ---
 
-<BaseLayout title={`${title} — Marion`} description={description}>
-  <section class="case-hero">
-    <div class="container">
-      <div class="breadcrumb text-muted">
-        <a href="/">Home</a>
-        <span aria-hidden="true">›</span>
-        <a href="/portfolio">Portfolio</a>
-        <span aria-hidden="true">›</span>
-        <span>{title}</span>
+<BaseLayout title={`${title} — Marion Débonnaire`} description={description} bg="white">
+  <!-- ░░ Header (gradient) ░░ -->
+  <section class="case-header gradient-hero nav-bleed">
+    <div class="header-col">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/work">Work</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span class="current">{title}</span>
+      </nav>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+    </div>
+    <div class="header-col meta-col">
+      <dl class="meta">
+        <div><dt>ROLE</dt><dd>{role}</dd></div>
+        <div><dt>SCOPE</dt><dd>{scope}</dd></div>
+        <div><dt>IMPACT</dt><dd class="accent">{impact}</dd></div>
+      </dl>
+    </div>
+    <div class="header-pad"></div>
+  </section>
+
+  <!-- ░░ Hero screenshot in a MacBook frame ░░ -->
+  <div class="laptop">
+    <div class="screen">
+      <div class="camera"><span></span></div>
+      <div class="screen-inner">
+        <Image src={dashboardShot} alt={heroImageAlt ?? title} widths={[640, 968, 1400]} sizes="(max-width: 1040px) 92vw, 968px" />
       </div>
+    </div>
+    <div class="base-1"></div>
+    <div class="base-2"><div class="notch"></div></div>
+  </div>
 
-      <div class="case-meta">
-        {tags.map(tag => <span class="tag accent">{tag}</span>)}
-        <span class="text-muted" style="font-size:var(--text-sm)">{year}</span>
+  <!-- ░░ 01 · My Role ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">01</span><h2>My Role</h2></div>
+    <p class="p-lg">Senior Product Manager. I led this initiative end-to-end, from discovery to delivery, working closely with a Lead Engineer and a Product Designer. I was responsible for framing the problem, defining the product strategy, making prioritization calls, and ensuring we shipped fast enough to unlock business impact.</p>
+  </section>
+
+  <!-- ░░ 02 · The Problem ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">02</span><h2>The Problem</h2></div>
+    <p>The absence of a self-service offering represented a <strong>significant amount of lost revenue every year</strong>. For most of our prospects, self-service was a non-negotiable prerequisite to even consider Toucan, making it a critical acquisition blocker.</p>
+  </section>
+
+  <!-- What we heard -->
+  <section class="prose tight">
+    <div class="eyebrow">WHAT WE HEARD</div>
+    <blockquote class="pull-quote">
+      <p>"As a B2B SaaS, I need a self-service layer in my product so that admin users can build their own dashboards with a simple, point-and-click experience, without depending on my team."</p>
+      <cite>Toucan prospect, 2025</cite>
+    </blockquote>
+    <p class="follow">Self-service had been one of our most recurring requests from prospects, and its absence had been causing us to regularly miss deals.</p>
+  </section>
+
+  <!-- Who needed it -->
+  <section class="wide">
+    <div class="wide-intro">
+      <div class="eyebrow">WHO NEEDED IT</div>
+      <h3>Three distinct user needs</h3>
+      <p>Through customer interviews, we identified three segments with different expectations:</p>
+    </div>
+    <div class="needs-grid">
+      <div class="need"><div class="frac">1/3</div><p>want to <strong>browse and select</strong> charts from an existing library</p></div>
+      <div class="need"><div class="frac">1/3</div><p>want to <strong>edit and create</strong> charts themselves</p></div>
+      <div class="need"><div class="frac">1/3</div><p>want to <strong>edit the underlying data</strong></p></div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section class="wide">
+    <div class="wide-intro">
+      <div class="eyebrow">PAIN POINTS</div>
+      <h3>Use cases</h3>
+    </div>
+    <div class="uc-grid">
+      <div class="uc"><div class="eyebrow">AS AN END USER</div><p>I can only view the dashboard my vendor has set up. If I need something specific, I have to submit a request and wait. I can't iterate on my own.</p></div>
+      <div class="uc"><div class="eyebrow">AS AN ADMIN</div><p>I have to handle every customization request manually. I lose time on specific developments, and I have no way to monetize these new options.</p></div>
+    </div>
+  </section>
+
+  <!-- ░░ 03 · Approach & Key Decisions ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">03</span><h2>Approach &amp; Key Decisions</h2></div>
+    <p>Building self-service on top of a decade-old product came with real constraints: significant UX debt, a complex technical foundation, and no room for a long delivery cycle.</p>
+    <div class="decision">
+      <div class="eyebrow">DECISION 01 · TRADE-OFF</div>
+      <h3>Speed over completeness</h3>
+      <p>Rather than trying to serve all three user segments at once, we made a deliberate call to address the first two thirds of the demand first.</p>
+      <p>We built a pick-and-choose experience: end users can browse a chart library curated by their admin, and select what they want with a simple, point-and-click interface. No technical or data expertise required. This covered the most common use cases immediately, without the complexity of a full self-service editor, and got us to market fast enough to start winning deals.</p>
+    </div>
+    <div class="decision">
+      <div class="eyebrow">DECISION 02 · UX DILEMMA</div>
+      <h3>Rebuild or adapt?</h3>
+      <p>The ideal path would have been a full redesign of the dashboard creation and editing experience. The existing one carried years of accumulated complexity and technical debt. But a full rebuild would have taken too long, and our primary goal was to equip the Sales team as fast as possible.</p>
+      <p>We chose a pragmatic approach: working within the constraints of the existing experience, making targeted improvements, and accepting deliberate compromises. This allowed us to ship a first version significantly faster, without betting everything on a lengthy redesign cycle.</p>
+    </div>
+  </section>
+
+  <!-- ░░ 04 · The Solution ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">04</span><h2>The Solution</h2></div>
+    <div class="solution-block">
+      <p>A pick-and-choose dashboard editor that lets business users customize their embedded analytics experience without any technical knowledge. Admins define the chart library; end users build their own views from it, independently.</p>
+    </div>
+  </section>
+
+  <!-- ░░ 05 · Business Impact ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">05</span><h2>Business Impact</h2></div>
+    <div class="impact-grid">
+      <div class="impact-card accent">
+        <div class="stat">36%</div>
+        <p>a determining factor in 36% of SQL-to-QSO conversions in 2025, one of the most impactful features delivered that year.</p>
       </div>
-
-      <h1 class="case-title">{title}</h1>
-      <p class="case-lead text-muted">{description}</p>
-
-      <div class="impact-banner">
-        <span class="impact-icon" aria-hidden="true">↗</span>
-        <span class="impact-text">{impact}</span>
+      <div class="impact-card lilac">
+        <div class="stat">~20</div>
+        <p>clients adopted self-service since launch.</p>
       </div>
     </div>
   </section>
 
-  <section class="case-body">
-    <div class="container case-layout">
-      <article class="prose">
-        <Content />
-      </article>
-
-      <aside class="case-sidebar">
-        <div class="sidebar-card card">
-          <h3 class="sidebar-title">At a glance</h3>
-          <dl class="sidebar-dl">
-            <div><dt>Year</dt><dd>{year}</dd></div>
-            <div><dt>Impact</dt><dd>{impact}</dd></div>
-            <div>
-              <dt>Tags</dt>
-              <dd class="tag-list">
-                {tags.map(tag => <span class="tag">{tag}</span>)}
-              </dd>
-            </div>
-          </dl>
-        </div>
-
-        <a href="/portfolio" class="btn btn-outline back-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          All projects
-        </a>
-
-        <a href="mailto:hello@marionpm.com" class="btn btn-primary">
-          Discuss this project
-        </a>
-      </aside>
-    </div>
+  <!-- Next project -->
+  <section class="wide next-wrap">
+    <a href={nextHref ?? '#'} class="next-card">
+      <div>
+        <div class="eyebrow plain">NEXT PROJECT</div>
+        <div class="next-title">{nextTitle}</div>
+      </div>
+      <div class="next-arrow" aria-hidden="true">→</div>
+    </a>
   </section>
 </BaseLayout>
 
 <style>
-.case-hero {
-  padding-top: calc(var(--space-20) + var(--space-8));
-  padding-bottom: var(--space-16);
-  background: var(--color-bg-surface);
-  border-bottom: 1px solid var(--color-border);
+/* ── Header ── */
+.case-header { display: block; }
+.header-col {
+  max-width: var(--max-prose-lg);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
 }
-
+.header-col:first-of-type { padding-top: 64px; }
 .breadcrumb {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-  margin-bottom: var(--space-6);
-}
-.breadcrumb a:hover { color: var(--color-text); }
-
-.case-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-  flex-wrap: wrap;
-}
-
-.case-title {
-  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: var(--leading-tight);
-  margin-bottom: var(--space-6);
-}
-
-.case-lead {
-  font-size: var(--text-xl);
-  max-width: 640px;
-  line-height: var(--leading-normal);
-  margin-bottom: var(--space-8);
-}
-
-.impact-banner {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-md);
-  background: rgba(124,106,247,0.08);
-  border: 1px solid rgba(124,106,247,0.2);
-}
-
-.impact-icon {
-  color: var(--color-accent);
-  font-size: var(--text-xl);
-  font-weight: 700;
-}
-
-.impact-text {
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-accent);
-}
-
-/* Body */
-.case-body { padding-block: var(--space-16); }
-
-.case-layout {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: var(--space-16);
-  align-items: start;
-}
-
-/* Prose */
-.prose {
-  color: var(--color-text);
-  line-height: var(--leading-normal);
-  max-width: 680px;
-}
-
-.prose :global(h2) {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-top: var(--space-12);
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.prose :global(h3) {
-  font-size: var(--text-xl);
-  font-weight: 600;
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-3);
-}
-
-.prose :global(p) {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
-  font-size: var(--text-lg);
-}
-
-.prose :global(ul), .prose :global(ol) {
-  padding-left: var(--space-6);
-  margin-bottom: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.prose :global(li) {
-  color: var(--color-text-muted);
-  font-size: var(--text-lg);
-}
-
-.prose :global(strong) { color: var(--color-text); font-weight: 600; }
-
-.prose :global(code) {
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.875em;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 0.1em 0.4em;
+  font-size: 12.5px;
+  margin-bottom: 26px;
 }
-
-/* Sidebar */
-.case-sidebar {
-  position: sticky;
-  top: calc(var(--nav-height) + var(--space-6));
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.sidebar-card { padding: var(--space-6); }
-
-.sidebar-title {
-  font-size: var(--text-sm);
+.breadcrumb a { color: var(--color-accent); }
+.breadcrumb .sep { color: #b3aec0; }
+.breadcrumb .current { color: var(--color-meta); }
+.case-header h1 {
+  font-size: 62px;
   font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+  color: var(--color-ink);
+}
+.case-header .lead {
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 60ch;
+  margin: 0;
+}
+.meta-col { padding-top: 40px; }
+.meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  border-top: 1px solid rgba(21, 19, 28, 0.14);
+  padding-top: 26px;
+  margin: 0;
+}
+.meta dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
+  color: var(--color-meta);
+  margin-bottom: 9px;
 }
-
-.sidebar-dl {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.sidebar-dl dt {
-  font-size: var(--text-xs);
+.meta dd {
+  font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  margin-bottom: var(--space-1);
+  font-size: 17px;
+  color: var(--color-ink);
+  margin: 0;
+}
+.meta dd.accent { color: var(--color-accent); }
+.header-pad { height: 96px; }
+
+/* ── MacBook frame ── */
+.laptop {
+  max-width: 1040px;
+  margin: -72px auto 0;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+.screen {
+  max-width: 968px;
+  margin: 0 auto;
+  background: #0C0B10;
+  border-radius: 20px 20px 7px 7px;
+  padding: 13px 13px 15px;
+  box-shadow: var(--shadow-laptop);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.camera { display: flex; align-items: center; justify-content: center; padding: 1px 0 9px; }
+.camera span { width: 6px; height: 6px; border-radius: 50%; background: #26252c; box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.8); }
+.screen-inner { border-radius: 7px; overflow: hidden; background: #fff; border: 1px solid rgba(0, 0, 0, 0.4); }
+.screen-inner :global(img) { width: 100%; height: auto; display: block; }
+.base-1 {
+  position: relative;
+  height: 16px;
+  background: linear-gradient(180deg, #e3e4e9 0%, #c2c3cb 55%, #a7a8b1 100%);
+  border-radius: 0 0 4px 4px;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.7);
+}
+.base-2 {
+  position: relative;
+  height: 11px;
+  width: 104%;
+  margin-left: -2%;
+  background: linear-gradient(180deg, #b9bac2 0%, #9a9ba4 60%, #7e7f88 100%);
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 14px 22px -10px rgba(0, 0, 0, 0.35);
+}
+.base-2 .notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 128px;
+  height: 9px;
+  background: linear-gradient(180deg, #86878f, #aeb0b8);
+  border-radius: 0 0 9px 9px;
 }
 
-.sidebar-dl dd {
-  font-size: var(--text-sm);
-  color: var(--color-text);
-}
-
-.tag-list {
+/* ── Prose columns ── */
+.prose { max-width: var(--max-prose); margin: 0 auto; padding: 92px var(--gutter) 0; }
+.prose.tight { padding-top: 56px; }
+.sec-head {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
+  align-items: baseline;
+  gap: 14px;
+  border-bottom: var(--border-hairline);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+.sec-head .num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+}
+.sec-head h2 {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.05;
+}
+.prose p { font-size: 18px; line-height: 1.75; color: var(--color-body-soft); margin: 0; }
+.prose p.p-lg { font-size: 20px; line-height: 1.7; color: var(--color-body); }
+.prose p strong { font-weight: 600; color: var(--color-ink); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+.pull-quote { margin: 0; padding: 8px 0 8px 28px; border-left: 3px solid var(--color-accent); }
+.pull-quote p {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--color-ink);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.pull-quote cite { font-family: var(--font-mono); font-size: 12px; color: #6a6577; font-style: normal; }
+.follow { margin-top: 32px !important; }
+
+.decision { margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(var(--color-accent-rgb), 0.2); }
+.decision .eyebrow { margin-bottom: 10px; }
+.decision h3 {
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  margin: 0 0 16px;
+}
+.decision p + p { margin-top: 20px; }
+
+/* ── Wide sections ── */
+.wide { max-width: var(--max-nav); margin: 0 auto; padding: 56px var(--gutter) 0; }
+.wide-intro { max-width: var(--max-prose); margin: 0 auto; padding: 0 var(--gutter); }
+.wide-intro h3 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  margin: 0 0 6px;
+}
+.wide-intro p { font-size: 18px; line-height: 1.75; color: var(--color-body-soft); margin: 0 0 32px; }
+
+.needs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.need { border-top: 2px solid var(--color-accent); padding-top: 22px; }
+.frac { font-family: var(--font-display); font-weight: 600; font-size: 46px; color: var(--color-accent); letter-spacing: -0.02em; line-height: 1; }
+.need p { font-size: 16px; line-height: 1.6; color: var(--color-body-soft); margin: 14px 0 0; }
+.need strong { font-weight: 600; color: var(--color-ink); }
+
+.uc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.uc { background: var(--color-bg-lilac-soft); border: 1px solid rgba(var(--color-accent-rgb), 0.14); border-radius: var(--radius-card); padding: 28px; }
+.uc .eyebrow { letter-spacing: 0.04em; margin-bottom: 12px; }
+.uc p { font-size: 17px; line-height: 1.65; color: var(--color-body-soft); margin: 0; }
+
+.solution-head { max-width: var(--max-prose); margin: 0 auto 28px; border-bottom: none; padding-bottom: 0; }
+.solution-block { background: var(--color-dark); border-radius: var(--radius-xl); padding: 56px; color: #fff; }
+.solution-block p {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  margin: 0;
+  max-width: 46ch;
 }
 
-.back-btn, .btn-primary {
-  width: 100%;
-  justify-content: center;
-}
+.impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.impact-card { border-radius: var(--radius-lg); padding: 40px; }
+.impact-card .stat { font-family: var(--font-display); font-weight: 600; font-size: 64px; line-height: 1; letter-spacing: -0.03em; }
+.impact-card p { font-size: 16px; line-height: 1.6; margin: 16px 0 0; }
+.impact-card.accent { background: var(--color-accent); color: #fff; }
+.impact-card.accent p { opacity: 0.92; }
+.impact-card.lilac { background: var(--color-bg-lilac); color: var(--color-ink); }
+.impact-card.lilac .stat { color: var(--color-accent); }
+.impact-card.lilac p { color: var(--color-muted); }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .case-layout {
-    grid-template-columns: 1fr;
-  }
-  .case-sidebar {
-    position: static;
-    order: -1;
-  }
+.next-wrap { padding: 72px var(--gutter) 96px; }
+.next-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--color-bg-cream);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 32px 40px;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.next-card:hover { background: var(--color-bg-lilac); border-color: rgba(var(--color-accent-rgb), 0.3); }
+.eyebrow.plain { color: #6a6577; margin-bottom: 8px; }
+.next-title { font-family: var(--font-display); font-weight: 600; font-size: 28px; letter-spacing: -0.02em; color: var(--color-ink); }
+.next-arrow { font-family: var(--font-display); font-size: 32px; color: var(--color-accent); }
+
+@media (max-width: 760px) {
+  .case-header h1 { font-size: clamp(40px, 11vw, 62px); }
+  .meta { grid-template-columns: 1fr; gap: 18px; }
+  .needs-grid, .uc-grid, .impact-grid { grid-template-columns: 1fr; }
+  .solution-block { padding: 36px; }
+  .solution-block p { font-size: 22px; }
 }
 </style>

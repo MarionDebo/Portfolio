@@ -119,7 +119,7 @@ body {
 /* White-background pages (Work, Project Page) */
 body.bg-white { background: var(--color-bg-white); }
 
-img, video { max-width: 100%; display: block; }
+img, video { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: inherit; }
 

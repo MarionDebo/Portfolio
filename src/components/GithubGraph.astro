@@ -1,0 +1,169 @@
+---
+// GitHub contribution graph (calendar-year Jan→Dec grid).
+// Data is fetched at BUILD TIME in the page frontmatter and passed in as `weeks`
+// + `monthLabels`, so the grid renders instantly and works with no JS. The
+// colocated <script> re-fetches in the browser to keep it fresh (and to fill in
+// if the build-time fetch was blocked). Island per the handoff.
+interface Day { c: string }
+interface Week { days: Day[] }
+interface Props {
+  weeks: Week[];
+  monthLabels: string[];
+  year?: number;
+  githubUrl?: string;
+}
+const { weeks, monthLabels, year = 2026, githubUrl = 'https://github.com/MarionDebo' } = Astro.props;
+---
+
+<div class="gh-card" data-year={year}>
+  <div class="gh-head">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#15131C" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.85 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.79.62-3.38-1.37-3.38-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.34 9.34 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.92-2.34 4.78-4.57 5.04.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"></path></svg>
+    <span class="gh-caption">Contribution activity · {year}</span>
+  </div>
+
+  <div id="gh-months" class="gh-months">
+    {monthLabels.map(m => <div>{m}</div>)}
+  </div>
+
+  <div class="gh-grid">
+    <div class="gh-weekdays">
+      <div></div><div>Mon</div><div></div><div>Wed</div><div></div><div>Fri</div><div></div>
+    </div>
+    <div id="gh-weeks" class="gh-weeks">
+      {weeks.map(w => (
+        <div class="gh-week">
+          {w.days.map(d => <div class="gh-cell" style={`background:${d.c}`}></div>)}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="gh-foot">
+    <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="gh-link">View on GitHub →</a>
+    <div class="gh-legend">
+      <span>Less</span>
+      <span style="background:var(--gh-0)"></span>
+      <span style="background:var(--gh-1)"></span>
+      <span style="background:var(--gh-2)"></span>
+      <span style="background:var(--gh-3)"></span>
+      <span style="background:var(--gh-4)"></span>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.gh-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 18px;
+  padding: 28px 30px 24px;
+  box-shadow: 0 24px 50px -34px rgba(50, 30, 110, 0.3);
+}
+.gh-head { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+.gh-caption { font-family: var(--font-mono); font-size: 12px; color: var(--color-muted-2); }
+
+.gh-months { display: flex; gap: 3px; padding-left: 34px; margin-bottom: 7px; max-width: 780px; }
+.gh-months > div { flex: 1; font-family: var(--font-mono); font-size: 10px; color: #9a93a8; white-space: nowrap; }
+
+.gh-grid { display: flex; gap: 6px; overflow-x: auto; max-width: 780px; }
+.gh-weekdays { display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; width: 28px; }
+.gh-weekdays > div { height: 11px; line-height: 11px; font-family: var(--font-mono); font-size: 9px; color: #9a93a8; }
+.gh-weeks { display: flex; gap: 3px; flex: 1; }
+.gh-week { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.gh-cell { width: 100%; aspect-ratio: 1; border-radius: 2px; }
+
+.gh-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; flex-wrap: wrap; gap: 14px; }
+.gh-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 3px;
+}
+.gh-legend { display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; color: #9a93a8; }
+.gh-legend > span:not(:first-child):not(:last-child) { width: 11px; height: 11px; border-radius: 2px; }
+</style>
+
+<script>
+  // Refresh the grid from the live GitHub contributions API in the browser.
+  // Keeps the build-time render fresh and fills it in if the build fetch failed.
+  const card = document.querySelector<HTMLElement>('.gh-card[data-year]');
+  const monthsEl = document.getElementById('gh-months');
+  const weeksEl = document.getElementById('gh-weeks');
+
+  if (card && monthsEl && weeksEl) {
+    const YEAR = Number(card.dataset.year) || new Date().getFullYear();
+    const COLORS = ['#EAE8EE', '#C3ABF6', '#9B79F1', '#7A52EC', '#6C4DF6'];
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    const build = (byDate: Record<string, { level: number }>) => {
+      const weeks: { c: string }[][] = [];
+      const monthLabels: string[] = [];
+      let prevMonth = -1;
+      const d = new Date(YEAR, 0, 1);
+      d.setDate(d.getDate() - d.getDay()); // back to the Sunday on/before Jan 1
+      const end = new Date(YEAR, 11, 31);
+      while (d <= end) {
+        const wMonth = d.getMonth();
+        const wYear = d.getFullYear();
+        const days: { c: string }[] = [];
+        for (let i = 0; i < 7; i++) {
+          if (d.getFullYear() === YEAR) {
+            const key = YEAR + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+            const rec = byDate[key];
+            days.push({ c: COLORS[rec ? rec.level : 0] });
+          } else {
+            days.push({ c: 'transparent' });
+          }
+          d.setDate(d.getDate() + 1);
+        }
+        weeks.push(days);
+        if (wYear === YEAR && wMonth !== prevMonth) { monthLabels.push(MONTHS[wMonth]); prevMonth = wMonth; }
+        else monthLabels.push('');
+      }
+      return { weeks, monthLabels };
+    };
+
+    const paint = ({ weeks, monthLabels }: { weeks: { c: string }[][]; monthLabels: string[] }) => {
+      const weekEls = weeksEl.querySelectorAll<HTMLElement>('.gh-week');
+      const monthEls = monthsEl.children;
+
+      // Same calendar algorithm at build & runtime → identical structure, so
+      // update colours/labels IN PLACE. This preserves Astro's scoped-style
+      // attributes (rebuilding via innerHTML would strip them and collapse the grid).
+      if (weekEls.length === weeks.length && monthEls.length === monthLabels.length) {
+        monthLabels.forEach((m, i) => { (monthEls[i] as HTMLElement).textContent = m; });
+        weeks.forEach((w, wi) => {
+          const cells = weekEls[wi].querySelectorAll<HTMLElement>('.gh-cell');
+          w.forEach((d, di) => { if (cells[di]) cells[di].style.background = d.c; });
+        });
+        return;
+      }
+
+      // Fallback (structure mismatch): rebuild with inline styles so it renders
+      // correctly even without the scoped-style attributes.
+      monthsEl.innerHTML = monthLabels
+        .map(m => `<div style="flex:1;font-family:var(--font-mono);font-size:10px;color:#9a93a8;white-space:nowrap">${m}</div>`)
+        .join('');
+      weeksEl.innerHTML = weeks
+        .map(w => `<div style="display:flex;flex-direction:column;gap:3px;flex:1">${w
+          .map(d => `<div style="width:100%;aspect-ratio:1;border-radius:2px;background:${d.c}"></div>`)
+          .join('')}</div>`)
+        .join('');
+    };
+
+    fetch(`https://github-contributions-api.jogruber.de/v4/MarionDebo?y=${YEAR}`)
+      .then(r => { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(data => {
+        const byDate: Record<string, { level: number }> = {};
+        (data.contributions || []).forEach((c: { date: string; level: number }) => { byDate[c.date] = c; });
+        paint(build(byDate));
+      })
+      .catch(() => { /* keep build-time render */ });
+  }
+</script>

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrowserMock from '../../components/sections/BrowserMock.astro';
 import dashboardShot from '../../assets/images/projects/self-service-dashboard.png';
 
 // Only fully-designed ("published") case studies get a detail page.
@@ -42,13 +43,17 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
     <div class="screen">
       <div class="camera"><span></span></div>
       <div class="screen-inner">
-        <Image src={dashboardShot} alt={heroImageAlt ?? title} widths={[640, 968, 1400]} sizes="(max-width: 1040px) 92vw, 968px" />
+        {project.slug === 'toucan-ai'
+          ? <BrowserMock variant="chart" />
+          : <Image src={dashboardShot} alt={heroImageAlt ?? title} widths={[640, 968, 1400]} sizes="(max-width: 1040px) 92vw, 968px" />}
       </div>
     </div>
     <div class="base-1"></div>
     <div class="base-2"><div class="notch"></div></div>
   </div>
 
+  {project.slug === 'self-service-dashboard' && (
+  <Fragment>
   <!-- ░░ 01 · My Role ░░ -->
   <section class="prose">
     <div class="sec-head"><span class="num">01</span><h2>My Role</h2></div>
@@ -137,6 +142,86 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
       </div>
     </div>
   </section>
+  </Fragment>
+  )}
+
+  {project.slug === 'toucan-ai' && (
+  <Fragment>
+  <!-- ░░ Intro ░░ -->
+  <section class="prose">
+    <p class="p-lg">Instead of navigating dashboards, end users simply ask questions in natural language and instantly receive clear, reliable answers, complete with charts and narrative. Toucan handles all the underlying complexity: data connections, semantic layer, query generation, chart formatting, and enterprise-grade security.</p>
+  </section>
+
+  <!-- ░░ 01 · My Role ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">01</span><h2>My Role</h2></div>
+    <p class="p-lg">Senior Product Manager, responsible for the chart and dashboard creation experience within Toucan AI. Working with my squad, my focus spanned both sides of the product: the maker experience (how builders create and edit charts and dashboards in an AI-native environment) and, above all, the end user experience. Ensuring that asking a question and instantly receiving a relevant, accurate chart would feel as simple and natural as possible.</p>
+  </section>
+
+  <!-- ░░ 02 · The Problem ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">02</span><h2>The Problem</h2></div>
+    <div class="decision">
+      <h3>The market shift</h3>
+      <p>By mid-2025, the pressure was undeniable: AI giants were entering every vertical, competitors were shipping AI features at speed, and end users shaped by tools like ChatGPT expected conversation-first experiences.</p>
+      <p>The old analytics paradigm (click, navigate, analyze) was becoming obsolete. <strong>81% of users now prefer asking a question over navigating charts.</strong> SaaS companies without a credible AI analytics offering faced harder sales, higher churn, and mounting pressure from both clients and investors.</p>
+    </div>
+    <div class="decision">
+      <h3>The product challenge</h3>
+      <p>Rebuilding around conversational AI raised a fundamental design question: <strong>how should users create and edit charts in an AI-native product?</strong></p>
+      <p>Giving full control to AI risked frustrating power users. Keeping a purely manual editing experience would defeat the purpose of going AI-native. The right answer was somewhere in between, and it wasn't obvious.</p>
+    </div>
+  </section>
+
+  <!-- ░░ 03 · Approach & Key Decisions ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">03</span><h2>Approach &amp; Key Decisions</h2></div>
+    <div class="decision">
+      <div class="eyebrow">DECISION 01 · INTERACTION MODEL</div>
+      <h3>Designing for complementary modes</h3>
+      <p>Through user testing, a clear pattern emerged: there is no single "right" way to work with AI in analytics. Users defaulted to different behaviors depending on their profile and context.</p>
+      <p>A typical PM would use AI to kickstart a chart or dashboard, then switch to manual editing to fine-tune the result. A more technical user might prefer to go directly into code mode for precision. Some users never left the AI interface at all.</p>
+      <p>This insight led to a key product decision: <strong>rather than forcing a single interaction model, we designed three complementary editing modes (AI, manual, and code), allowing each user to work the way that felt most natural to them.</strong> The challenge was making these three modes feel like one coherent experience, not three separate tools stitched together.</p>
+    </div>
+    <div class="decision">
+      <div class="eyebrow">DECISION 02 · TRUST</div>
+      <h3>Designing for trust in AI</h3>
+      <p>Embedding AI into a product used for business decision-making raised a specific UX challenge: <strong>how do you make users trust an AI answer when the stakes are real?</strong></p>
+      <p>Analytics are inherently high-stakes. A wrong chart or a misinterpreted metric can lead to poor business decisions. Generic AI responses were not enough.</p>
+      <p>To address this, we designed the conversational experience around transparency. Rather than just surfacing an answer, the product exposes its reasoning at every step: which data table was selected and why, which transformation steps were applied, and why a specific chart type was chosen to represent the data. This "chain of thought" layer gave users the context they needed to validate AI outputs with confidence, not just accept them blindly.</p>
+    </div>
+    <div class="decision">
+      <div class="eyebrow">DECISION 03 · TENSION</div>
+      <h3>The probabilistic challenge</h3>
+      <p>One of the broader challenges the team had to navigate was a fundamental tension at the heart of the product: <strong>analytics is a deterministic domain, but AI is probabilistic by nature.</strong> Users expect exact, reproducible answers from data. AI cannot always guarantee that.</p>
+      <p>This made evaluation a critical and complex challenge. Ensuring that the AI's answers were not just plausible, but reliably accurate. While the solution was primarily an engineering and ML challenge, it shaped how we framed requirements and set user expectations throughout the product experience.</p>
+    </div>
+  </section>
+
+  <!-- ░░ 04 · The Solution ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">04</span><h2>The Solution</h2></div>
+    <div class="solution-block">
+      <p>A conversational analytics experience embedded directly into SaaS products. End users simply ask a question in natural language and instantly receive the answer: a key figure, a chart, or a breakdown, with no technical knowledge required. For those who want to go further, the interface also supports manual editing and code mode, so every profile can work at their own level of depth.</p>
+    </div>
+  </section>
+
+  <!-- ░░ 05 · Business Impact ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">05</span><h2>Business Impact</h2></div>
+    <div class="impact-grid">
+      <div class="impact-card accent">
+        <div class="stat">15+</div>
+        <p>qualified commercial opportunities generated by the beta launch in its first month.</p>
+      </div>
+      <div class="impact-card lilac">
+        <div class="stat">June '25</div>
+        <p>first paying clients onboarded, marking the transition from beta to general availability.</p>
+      </div>
+    </div>
+  </section>
+  </Fragment>
+  )}
 
   <!-- Next project -->
   <section class="wide next-wrap">

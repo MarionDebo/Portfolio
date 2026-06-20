@@ -6,6 +6,12 @@ tags: ["AI", "Conversational UX"]
 impact: "15+ qualified opportunities in the first month of beta"
 featured: true
 order: 1
+published: true
+role: "Senior Product Manager"
+scope: "Maker & end-user experience"
+heroImageAlt: "Toucan AI conversational analytics interface"
+nextTitle: "Self-service Dashboard"
+nextHref: "/portfolio/self-service-dashboard"
 ---
 
 ## My Role

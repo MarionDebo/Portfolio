@@ -6,22 +6,28 @@ import ProjectCard from '../components/ProjectCard.astro';
 import BrowserMock from '../components/BrowserMock.astro';
 import PhoneMock from '../components/PhoneMock.astro';
 import portrait from '../assets/portrait-Marion.jpg';
+import jeremyPinhel from '../assets/jeremy-pinhel.jpeg';
+import saraTissenier from '../assets/sara-tissenier.jpeg';
+import alexandreMac from '../assets/alexandre-mac.jpeg';
 
 const testimonials = [
   {
     quote: "C'est probablement l'une des collaborations produit / engineering les plus riches que j'ai connues. Ce que j'ai beaucoup apprécié avec Marion, c'est qu'elle cherche vraiment à comprendre : les utilisateurs, le marché, la concurrence, mais aussi les impacts côté engineering. Ça rend les discussions très efficaces, et surtout beaucoup plus intéressantes pour un développeur.",
     name: 'Jérémy Pinhel',
     role: 'Senior Software Engineer · Toucan',
+    avatar: jeremyPinhel,
   },
   {
     quote: "Marion fait clairement partie des PM avec qui on a envie de travailler. Elle fait preuve d'une grande maturité produit et sait arbitrer avec justesse sous pression marché, en alignant enjeux business, besoins utilisateurs et qualité de ce qui est délivré, sans jamais perdre de vue l'humain au sein de ses équipes. Elle collabore très étroitement avec le design et sait en faire un véritable levier d'impact produit. Un vrai plaisir de collaborer avec elle au quotidien.",
     name: 'Sara Tissenier',
     role: 'Senior Product Designer',
+    avatar: saraTissenier,
   },
   {
     quote: "J'ai managé Marion pendant deux ans chez Entourage. Elle est arrivée en stage, elle est repartie PM aguerrie après avoir piloté la refonte complète de notre app mobile native iOS / Android. Une évolution qu'elle a portée avec autant d'exigence que d'humilité. Au-delà de la rigueur, il y a aussi un vrai sens du collectif. Marion adore vraiment son métier, et cette passion tire toute l'équipe vers le haut. On a tous besoin d'une Marion dans son équipe !",
     name: 'Alexandre Mac',
     role: 'Chief Product Officer · Entourage',
+    avatar: alexandreMac,
   },
 ];
 ---
@@ -99,13 +105,23 @@ const testimonials = [
   <!-- ░░ Kind Words ░░ -->
   <section class="kind-words">
     <div class="wrap">
-      <div class="kw-header"><SectionHeader title="Kind Words from Teammates" /></div>
+      <div class="kw-header">
+        <SectionHeader title="Kind Words from Teammates" />
+        <p class="kw-linkedin">
+          <a href="https://www.linkedin.com/in/marion-debonnaire/" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.84v1.64h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9V9Z"/></svg>
+            <span>See all on LinkedIn</span>
+          </a>
+        </p>
+      </div>
       <div class="kw-grid">
         {testimonials.map(t => (
           <figure class="quote-card">
             <blockquote>{t.quote}</blockquote>
             <figcaption class="author">
-              <span class="avatar" aria-hidden="true"></span>
+              {t.avatar
+                ? <Image src={t.avatar} alt={`Portrait of ${t.name}`} class="avatar" width={84} height={84} />
+                : <span class="avatar" aria-hidden="true"></span>}
               <span>
                 <span class="author-name">{t.name}</span>
                 <span class="author-role">{t.role}</span>
@@ -186,19 +202,59 @@ const testimonials = [
 /* Kind Words */
 .kind-words { background: var(--color-bg-white); }
 .kind-words .wrap { padding-block: 72px; }
-.kw-header { margin-bottom: 44px; }
+.kw-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
 .kw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.quote-card { margin: 0; border-top: 2px solid var(--color-accent); padding-top: 22px; }
+.quote-card { position: relative; margin: 0; border-top: 2px solid var(--color-accent); padding-top: 22px; }
+.quote-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  color: rgba(var(--color-accent-rgb), 0.16);
+  pointer-events: none;
+}
 .quote-card blockquote {
+  position: relative;
+  padding-top: 15px;
   font-size: 17px;
   line-height: 1.6;
   color: var(--color-body);
   margin: 0 0 22px;
 }
 .author { display: flex; align-items: center; gap: 12px; }
-.avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--color-bg-lilac); flex-shrink: 0; }
-.author-name { display: block; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--color-ink); }
-.author-role { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--color-meta); }
+.avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--color-bg-lilac); flex-shrink: 0; object-fit: cover; border: 1px solid rgba(122, 82, 236, 0.18); box-shadow: 0 0 0 4px rgba(122, 82, 236, 0.06); }
+.kw-linkedin { margin: 0; }
+.kw-linkedin a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-meta);
+  transition: color 0.18s ease;
+}
+.kw-linkedin a:hover { color: var(--color-accent); }
+.kw-linkedin a span {
+  border-bottom: 1.5px solid rgba(var(--color-accent-rgb), 0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.18s ease;
+}
+.kw-linkedin a:hover span { border-bottom-color: var(--color-accent); }
+.kw-linkedin svg {
+  flex-shrink: 0;
+  box-sizing: content-box;
+  padding: 6px;
+  border-radius: 50%;
+  background: var(--color-bg-lilac);
+  color: var(--color-accent);
+  transition: background 0.18s ease;
+}
+.kw-linkedin a:hover svg { background: var(--color-bg-lilac-tint); }
+.author-name { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--color-ink); }
+.author-role { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--color-meta); }
 
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }

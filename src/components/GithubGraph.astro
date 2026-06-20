@@ -2,8 +2,8 @@
 // GitHub contribution graph (calendar-year Jan→Dec grid).
 // Data is fetched at BUILD TIME in the page frontmatter and passed in as `weeks`
 // + `monthLabels`, so the grid renders instantly and works with no JS. The
-// colocated <script> re-fetches in the browser to keep it fresh (and to fill in
-// if the build-time fetch was blocked). Island per the handoff.
+// colocated client script re-fetches in the browser to keep it fresh (and to
+// fill in if the build-time fetch was blocked). Island per the handoff.
 interface Day { c: string }
 interface Week { days: Day[] }
 interface Props {

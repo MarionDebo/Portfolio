@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrowserMock from '../../components/sections/BrowserMock.astro';
+import PhoneMock from '../../components/sections/PhoneMock.astro';
 import dashboardShot from '../../assets/images/projects/self-service-dashboard.png';
 
 // Only fully-designed ("published") case studies get a detail page.
@@ -38,19 +39,24 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
     <div class="header-pad"></div>
   </section>
 
-  <!-- ░░ Hero screenshot in a MacBook frame ░░ -->
-  <div class="laptop">
-    <div class="screen">
-      <div class="camera"><span></span></div>
-      <div class="screen-inner">
-        {project.slug === 'toucan-ai'
-          ? <BrowserMock variant="chart" />
-          : <Image src={dashboardShot} alt={heroImageAlt ?? title} widths={[640, 968, 1400]} sizes="(max-width: 1040px) 92vw, 968px" />}
+  {project.slug === 'entourage-app' ? (
+    <!-- ░░ Hero — mobile app phone frame ░░ -->
+    <div class="phone-hero"><PhoneMock /></div>
+  ) : (
+    <!-- ░░ Hero screenshot in a MacBook frame ░░ -->
+    <div class="laptop">
+      <div class="screen">
+        <div class="camera"><span></span></div>
+        <div class="screen-inner">
+          {project.slug === 'toucan-ai'
+            ? <BrowserMock variant="chart" />
+            : <Image src={dashboardShot} alt={heroImageAlt ?? title} widths={[640, 968, 1400]} sizes="(max-width: 1040px) 92vw, 968px" />}
+        </div>
       </div>
+      <div class="base-1"></div>
+      <div class="base-2"><div class="notch"></div></div>
     </div>
-    <div class="base-1"></div>
-    <div class="base-2"><div class="notch"></div></div>
-  </div>
+  )}
 
   {project.slug === 'self-service-dashboard' && (
   <Fragment>
@@ -217,6 +223,111 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
       <div class="impact-card lilac">
         <div class="stat">June '25</div>
         <p>first paying clients onboarded, marking the transition from beta to general availability.</p>
+      </div>
+    </div>
+  </section>
+  </Fragment>
+  )}
+
+  {project.slug === 'entourage-app' && (
+  <Fragment>
+  <!-- ░░ Intro ░░ -->
+  <section class="prose">
+    <p class="p-lg">The core belief: social isolation is an invisible crisis with very real consequences. For the most vulnerable, rebuilding human connections is not just helpful — it is vital.</p>
+  </section>
+
+  <!-- ░░ 01 · My Role ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">01</span><h2>My Role</h2></div>
+    <p class="p-lg">Junior Product Manager at Entourage in 2023, working alongside the CPO. I contributed to the full repositioning of the mobile app and led the design and delivery of new social features: events, local communities, and educational content. I worked within a small, mission-driven team (2 PMs, 1 designer, 3 developers, 1 CPO, 1 CTO) and collaborated with an external agency working pro bono.</p>
+  </section>
+
+  <!-- ░░ 02 · The Problem ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">02</span><h2>The Problem</h2></div>
+    <div class="decision">
+      <h3>A product misaligned with its mission</h3>
+      <p>The Entourage app was originally built around material donation: users could offer goods to people in need. While useful, this approach reflected only a small part of the association's mission.</p>
+      <p>Entourage's core belief is not that people need stuff. <strong>It is that they need bonds.</strong> The app was framing homeless people as recipients of charity rather than as neighbors to connect with. And it was not giving volunteers the tools to actually build those connections.</p>
+    </div>
+    <div class="decision">
+      <h3>The product gap</h3>
+      <p>There was no way for users to discover local events, join neighborhood groups, or access educational content that could help break down the stigma around homelessness. <strong>The app was transactional where it needed to be relational.</strong></p>
+    </div>
+  </section>
+
+  <!-- ░░ 03 · Approach & Key Decisions ░░ -->
+  <section class="prose">
+    <div class="sec-head"><span class="num">03</span><h2>Approach &amp; Key Decisions</h2></div>
+    <div class="decision">
+      <div class="eyebrow">DECISION 01 · RESEARCH</div>
+      <h3>Learning from the field</h3>
+      <p>One of the most distinctive aspects of this project was how we conducted user research. Our team included a social worker who gave us the keys to understand the reality of people in precarious situations. I participated in maraudes (street outreach sessions) and visits to daytime shelters to meet users where they were.</p>
+      <p>These sessions were unlike any standard user testing environment. Sometimes the people we met were too tired or too overwhelmed to engage. You take what comes. You listen more than you ask. It teaches you a level of humility that stays with you as a product manager.</p>
+      <p>These direct observations shaped our product decisions: <strong>the app needed to be extremely simple and low-friction, trust had to be established before any engagement, and the value had to be felt immediately.</strong></p>
+    </div>
+    <div class="decision">
+      <div class="eyebrow">DECISION 02 · REPOSITIONING</div>
+      <h3>Reframing the product around connection</h3>
+      <p>The central decision was a full repositioning: <strong>moving away from a donation-centric experience toward a social connection platform.</strong> This meant rethinking the core use cases from the ground up around three pillars.</p>
+    </div>
+  </section>
+
+  <!-- Three pillars -->
+  <section class="wide">
+    <div class="wide-intro">
+      <div class="eyebrow">THE NEW MODEL</div>
+      <h3>Three pillars of connection</h3>
+      <p>Each pillar creates a different, natural reason for neighbors and people in precarious situations to meet.</p>
+    </div>
+    <div class="needs-grid">
+      <div class="need"><div class="pillar">Events</div><p>Local gatherings organized by Entourage or volunteer ambassadors — coffee meetups, football, pétanque, art workshops. Any shared activity that brings people into the same space.</p></div>
+      <div class="need"><div class="pillar">Communities</div><p>Local neighborhood groups where residents connect, engage in conversations, and build ongoing relationships beyond a single event.</p></div>
+      <div class="need"><div class="pillar">Education</div><p>Resources designed to break down prejudices about homelessness. Connection starts with understanding: when people know more, they fear less, and they open up.</p></div>
+    </div>
+  </section>
+
+  <!-- ░░ 04 · The Solution ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">04</span><h2>The Solution</h2></div>
+    <div class="solution-block">
+      <p>A redesigned mobile app built around social connection — turning the relationship between volunteers and people in precarious situations from giver/receiver into neighbor/neighbor.</p>
+    </div>
+  </section>
+
+  <!-- ░░ 05 · Impact ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">05</span><h2>Impact</h2></div>
+    <div class="impact-grid four">
+      <div class="impact-card accent">
+        <div class="stat">170K</div>
+        <p>users registered on the app.</p>
+      </div>
+      <div class="impact-card lilac">
+        <div class="stat">4,300</div>
+        <p>community events organized across 30 cities.</p>
+      </div>
+      <div class="impact-card lilac">
+        <div class="stat">50K</div>
+        <p>citizens engaged alongside 13,000+ people in exclusion situations.</p>
+      </div>
+      <div class="impact-card accent">
+        <div class="stat">79%</div>
+        <p>of people supported feel better thanks to the connections made.</p>
+      </div>
+    </div>
+    <p class="impact-note">Figures from entourage.social, reflecting the platform's cumulative growth since the redesign.</p>
+  </section>
+
+  <!-- ░░ 06 · Conference Talk ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">06</span><h2>Conference Talk</h2></div>
+    <div class="talk-card">
+      <div class="talk-play" aria-hidden="true">▶</div>
+      <div class="talk-meta">
+        <div class="eyebrow plain">CONFERENCE TALK</div>
+        <div class="talk-title">Recording coming soon</div>
+        <p>A talk about the Entourage redesign — title, event and video link to be added.</p>
       </div>
     </div>
   </section>
@@ -450,6 +561,41 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
 .impact-card.lilac .stat { color: var(--color-accent); }
 .impact-card.lilac p { color: var(--color-muted); }
 
+/* ── Phone hero (mobile case study) ── */
+.phone-hero { margin: -40px auto 0; padding: 0 var(--gutter); position: relative; z-index: 2; display: flex; justify-content: center; }
+
+/* ── Pillars (three-pillar grid) ── */
+.pillar { font-family: var(--font-display); font-weight: 600; font-size: 24px; color: var(--color-accent); letter-spacing: -0.015em; line-height: 1; }
+
+/* ── Impact source note ── */
+.impact-note { margin: 22px 0 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--color-meta); }
+
+/* ── Conference talk ── */
+.talk-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: var(--color-bg-lilac-soft);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.14);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+}
+.talk-play {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+}
+.talk-title { font-family: var(--font-display); font-weight: 600; font-size: 23px; letter-spacing: -0.015em; color: var(--color-ink); margin: 2px 0 8px; }
+.talk-meta p { font-size: 16px; line-height: 1.6; color: var(--color-body-soft); margin: 0; }
+
 .next-wrap { padding: 72px var(--gutter) 96px; }
 .next-card {
   display: flex;
@@ -473,5 +619,6 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
   .needs-grid, .uc-grid, .impact-grid { grid-template-columns: 1fr; }
   .solution-block { padding: 36px; }
   .solution-block p { font-size: 22px; }
+  .talk-card { flex-direction: column; align-items: flex-start; gap: 18px; }
 }
 </style>

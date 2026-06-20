@@ -6,6 +6,12 @@ tags: ["Mobile", "Social Impact"]
 impact: "170,000 users on the app"
 featured: true
 order: 3
+published: true
+role: "Junior Product Manager"
+scope: "Repositioning & social features"
+heroImageAlt: "Entourage app — Events screen"
+nextTitle: "Self-service Dashboard"
+nextHref: "/portfolio/self-service-dashboard"
 ---
 
 ## My Role

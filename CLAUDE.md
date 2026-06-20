@@ -24,28 +24,44 @@ Portfolio personnel d'un **Product Manager spécialisé en AI-native**. Le site 
 /
 ├── public/
 │   └── favicon.svg
+├── docs/
+│   └── design/          # RÉFÉRENCE design (handoff) : maquettes, screenshots, specs.
+│                        # Archive figée, hors build — ≠ design system (qui vit dans le code).
 ├── src/
-│   ├── assets/          # images, logos, médias optimisés par Astro
-│   ├── components/      # composants réutilisables (.astro)
-│   │   ├── Nav.astro
-│   │   ├── Footer.astro
-│   │   └── ...
+│   ├── assets/
+│   │   └── images/      # images optimisées par Astro, rangées par usage
+│   │       ├── portraits/     # portrait-marion.jpg
+│   │       ├── testimonials/  # avatars des recommandations
+│   │       ├── projects/      # captures d'études de cas
+│   │       ├── badges/        # certifications / formations
+│   │       └── about/         # photos My Story (group-photo, etc.)
+│   ├── components/      # composants réutilisables (.astro), groupés par rôle
+│   │   ├── ui/          # primitives : Button, Tag, SectionHeader
+│   │   ├── layout/      # Nav, Footer
+│   │   └── sections/    # blocs de page : Hero, ProjectCard, BrowserMock, PhoneMock, GithubGraph
 │   ├── layouts/
 │   │   └── BaseLayout.astro   # layout racine (head, nav, footer)
 │   ├── pages/
-│   │   ├── index.astro         # Home
-│   │   ├── ai-expertise.astro  # AI Expertise
-│   │   ├── portfolio.astro     # Portfolio
-│   │   └── my-story.astro      # My Story
-│   ├── styles/
-│   │   ├── global.css          # variables CSS, reset, base
-│   │   └── ...
-│   └── content/         # collections Astro Content (Markdown/MDX) si utilisé
-│       └── portfolio/   # études de cas en .mdx
+│   │   ├── index.astro            # Home
+│   │   ├── ai-expertise.astro     # AI Expertise
+│   │   ├── work.astro             # Work (grille de projets)
+│   │   ├── my-story.astro         # My Story
+│   │   └── portfolio/[slug].astro # page détail d'étude de cas
+│   ├── styles/         # CSS scindé, importé via global.css :
+│   │   ├── global.css   # point d'entrée — @import des 3 fichiers ci-dessous
+│   │   ├── tokens.css   # variables CSS (couleurs, typo, espacements…) = design system
+│   │   ├── reset.css    # reset & éléments de base
+│   │   └── base.css     # utilitaires partagés, focus, scrollbar, animations
+│   └── content/         # collections Astro Content (Markdown/MDX)
+│       └── portfolio/   # études de cas en .md
 ├── astro.config.mjs
 ├── package.json
 └── CLAUDE.md
 ```
+
+> **Design system ≠ design handoff.** Le *design system* vivant = `src/styles/tokens.css` (tokens)
+> + `src/components/` (composants). On le fait évoluer ici. Le *handoff* dans `docs/design/` est la
+> référence d'entrée figée (maquettes & specs) — on la consulte, on ne la modifie pas.
 
 ---
 

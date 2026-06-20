@@ -1,0 +1,101 @@
+/* ─── Design Tokens · Marion Débonnaire — Portfolio ──────────────────────
+   Source of truth for the whole site. Every component & page consumes these
+   variables — never hard-code a hex or a px that already lives here.
+   ----------------------------------------------------------------------- */
+:root {
+  /* ── Brand / accent ── */
+  --color-accent:        #6C4DF6;        /* primary violet — links, CTAs, numerals */
+  --color-accent-rgb:    108, 77, 246;   /* for rgba() borders & tints */
+  --color-accent-soft:   #A593F8;        /* accent on dark surfaces */
+
+  /* ── Ink / text ── */
+  --color-ink:           #15131C;        /* near-black headings */
+  --color-body:          #2c2836;        /* body copy on light bg */
+  --color-body-soft:     #3a3646;        /* secondary body copy */
+  --color-muted:         #4a4556;        /* muted paragraph text */
+  --color-muted-2:       #55505f;        /* lead paragraph grey */
+  --color-meta:          #8a8594;        /* mono labels, captions, de-emphasis */
+
+  /* ── Surfaces / backgrounds ── */
+  --color-bg-cream:      #F4F2EE;        /* default page background (warm off-white) */
+  --color-bg-white:      #FFFFFF;        /* white sections */
+  --color-bg-lilac:      #ECE7FF;        /* pale violet section / accent cards */
+  --color-bg-lilac-soft: #F7F5FB;        /* very pale violet cards */
+  --color-bg-lilac-tint: #F2EEFE;        /* mock UI fills */
+
+  /* ── Dark surface (footer, solution block, dark card) ── */
+  --color-dark:          #15131C;
+  --color-dark-text:     #F4F2EE;        /* text on dark */
+  --color-dark-meta:     #9b94ad;        /* mono label on dark */
+  --color-dark-meta-2:   #a39cb5;        /* sign-off line on dark */
+  --color-dark-body:     #c8c2d6;        /* body on dark card */
+
+  /* ── Chart / mock decorative violets ── */
+  --violet-100: #E5DEFB;
+  --violet-200: #D8CDFB;
+  --violet-300: #C9BCF5;
+  --violet-400: #B9A6F7;
+
+  /* ── Hero gradient stops (warm → cool diagonal) ── */
+  --hero-grad-1: #FBEEE7;
+  --hero-grad-2: #F4E9F1;
+  --hero-grad-3: #EBE6F7;
+  --hero-grad-4: #E6EAF3;
+  --hero-grad-5: #E9ECF2;
+
+  /* Single reusable hero background (Home / Work / Project headers) */
+  --gradient-hero:
+    radial-gradient(ellipse 60% 80% at 12% 8%, rgba(255,224,205,0.55), transparent 52%),
+    radial-gradient(ellipse 70% 90% at 92% 70%, rgba(214,224,242,0.6), transparent 58%),
+    linear-gradient(108deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 32%,
+      var(--hero-grad-3) 56%, var(--hero-grad-4) 80%, var(--hero-grad-5) 100%);
+
+  /* ── Traffic-light dots for browser mock ── */
+  --dot-red:    #FF5F57;
+  --dot-yellow: #FEBC2E;
+  --dot-green:  #28C840;
+
+  /* ── GitHub contribution ramp (level 0 → 4) ── */
+  --gh-0: #EAE8EE;
+  --gh-1: #C3ABF6;
+  --gh-2: #9B79F1;
+  --gh-3: #7A52EC;
+  --gh-4: #6C4DF6;
+
+  /* ── Typography ── */
+  --font-display: 'Space Grotesk', sans-serif;             /* headings, numerals, nav, names, buttons */
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif; /* body copy, default */
+  --font-mono:    'JetBrains Mono', monospace;             /* eyebrows, labels, tags, captions, units */
+
+  /* ── Layout widths ── */
+  --max-content:  1180px;   /* main content max-width */
+  --max-nav:      1080px;   /* nav pill + Work/Project body */
+  --max-prose:    720px;    /* long-form reading column (Project Page) */
+  --max-prose-lg: 860px;    /* Project Page header column */
+
+  /* ── Section rhythm ── */
+  --section-pad-y: 72px;    /* common vertical section padding */
+  --gutter:        32px;    /* horizontal page gutter */
+  --nav-bleed:     78px;    /* nav height the hero bleeds up behind */
+
+  /* ── Radius ── */
+  --radius-pill:  999px;    /* nav, buttons, tags */
+  --radius-card:  16px;     /* cards, mock frames */
+  --radius-lg:    18px;     /* impact cards */
+  --radius-xl:    22px;     /* dark solution block */
+  --radius-img:   24px;     /* hero portrait */
+
+  /* ── Shadows ── */
+  --shadow-card:    0 36px 60px -28px rgba(50,30,110,0.4);
+  --shadow-card-sm: 0 36px 60px -28px rgba(50,30,110,0.28);
+  --shadow-portrait:0 22px 48px -20px rgba(40,25,90,0.34);
+  --shadow-photo:   0 28px 54px -26px rgba(50,30,110,0.45);
+  --shadow-laptop:  0 50px 90px -30px rgba(50,30,110,0.5);
+  --shadow-nav:     0 10px 34px -12px rgba(40,25,90,0.26);
+  --shadow-soft:    0 30px 60px -34px rgba(50,30,110,0.42);
+
+  /* ── Borders ── */
+  --border-hairline:  1px solid rgba(0,0,0,0.1);
+  --border-accent-12: 1px solid rgba(var(--color-accent-rgb), 0.12);
+  --border-accent-35: 1px solid rgba(var(--color-accent-rgb), 0.35);
+}

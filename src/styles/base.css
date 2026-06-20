@@ -1,0 +1,80 @@
+/* ─── Shared utilities ───────────────────────────────────────────────── */
+
+/* Sentinel pinned at document top; IntersectionObserver in Nav watches it */
+#nav-top-sentinel { position: absolute; top: 0; left: 0; height: 8px; width: 1px; }
+
+/* Full-bleed hero gradient + bleed up behind the transparent sticky nav */
+.gradient-hero { background: var(--gradient-hero); }
+
+.nav-bleed {
+  margin-top: calc(-1 * var(--nav-bleed));
+  padding-top: var(--nav-bleed);
+}
+
+/* Centred content wrappers */
+.wrap        { max-width: var(--max-content); margin: 0 auto; padding-inline: var(--gutter); }
+.wrap-nav    { max-width: var(--max-nav);     margin: 0 auto; padding-inline: var(--gutter); }
+.wrap-prose  { max-width: var(--max-prose);   margin: 0 auto; padding-inline: var(--gutter); }
+
+/* ─── Focus visible (a11y) ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(var(--color-accent-rgb), 0.28); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* ─── AI Expertise — animations & tool tooltip ───────────────────────── */
+@keyframes aiCaret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes aiRise  { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes aiDot   { 0%, 80%, 100% { transform: translateY(0); opacity: 0.35; } 40% { transform: translateY(-4px); opacity: 1; } }
+
+/* Tools & Stack: logo tile lifts + dark tooltip chip on hover (pure CSS) */
+.tool { position: relative; display: inline-flex; }
+.tool .tile { transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.tool:hover .tile {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 26px -12px rgba(40, 25, 90, 0.4);
+  border-color: rgba(var(--color-accent-rgb), 0.45);
+}
+.tool .tip {
+  position: absolute;
+  bottom: calc(100% + 11px);
+  left: 50%;
+  transform: translate(-50%, 5px);
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 6px 12px;
+  border-radius: 9px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 6;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.4);
+}
+.tool .tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-ink);
+}
+.tool:hover .tip { opacity: 1; transform: translate(-50%, 0); }
+
+/* ─── Reduced motion ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

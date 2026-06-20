@@ -10,8 +10,8 @@ published: true
 role: "Senior Product Manager"
 scope: "Maker & end-user experience"
 heroImageAlt: "Toucan AI conversational analytics interface"
-nextTitle: "Self-service Dashboard"
-nextHref: "/portfolio/self-service-dashboard"
+nextTitle: "Entourage App Redesign"
+nextHref: "/portfolio/entourage-app"
 ---
 
 ## My Role

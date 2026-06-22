@@ -3,8 +3,11 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import ProjectCard from '../components/sections/ProjectCard.astro';
-import BrowserMock from '../components/sections/BrowserMock.astro';
+import LaptopMock from '../components/sections/LaptopMock.astro';
 import PhoneMock from '../components/sections/PhoneMock.astro';
+import toucanShot from '../assets/images/projects/toucan-ai.png';
+import entourageShot from '../assets/images/projects/entourage-events.png';
+import dashboardShot from '../assets/images/projects/self-service-dashboard.png';
 import portrait from '../assets/images/portraits/portrait-marion.jpg';
 import jeremyPinhel from '../assets/images/testimonials/jeremy-pinhel.jpeg';
 import saraTissenier from '../assets/images/testimonials/sara-tissenier.jpeg';
@@ -32,7 +35,7 @@ const testimonials = [
 ];
 ---
 
-<BaseLayout title="Marion Débonnaire — Senior Product Manager at the edge of AI">
+<BaseLayout title="Marion Débonnaire · Senior Product Manager at the edge of AI">
   <!-- ░░ Hero ░░ -->
   <section class="hero gradient-hero nav-bleed">
     <div class="hero-inner">
@@ -67,7 +70,9 @@ const testimonials = [
       href="/portfolio/toucan-ai"
       pad="48px 32px 72px"
     >
-      <BrowserMock slot="media" variant="chart" />
+      <LaptopMock slot="media">
+        <Image src={toucanShot} alt="Toucan AI conversational analytics interface" widths={[480, 720, 960]} sizes="(max-width: 860px) 90vw, 600px" />
+      </LaptopMock>
     </ProjectCard>
   </section>
 
@@ -83,7 +88,9 @@ const testimonials = [
       href="/portfolio/entourage-app"
       reverse
     >
-      <PhoneMock slot="media" />
+      <PhoneMock slot="media">
+        <Image src={entourageShot} alt="Entourage app · Events screen" widths={[260, 416, 624]} sizes="208px" />
+      </PhoneMock>
     </ProjectCard>
   </section>
 
@@ -94,11 +101,13 @@ const testimonials = [
       tags={['B2B SaaS', 'Acquisition']}
       title="Self-service Dashboard"
       blurb="A pick-and-choose dashboard editor that lets business users customize their embedded analytics, with no technical knowledge required."
-      metricValue="36% of SQL-to-QSO conversions"
+      metricValue="+36% SQL-to-QSO conversion"
       metricSuffix="in 2025"
       href="/portfolio/self-service-dashboard"
     >
-      <BrowserMock slot="media" variant="dashboard" soft urlWidth="40%" />
+      <LaptopMock slot="media">
+        <Image src={dashboardShot} alt="Toucan self-service dashboard editor" widths={[480, 720, 960]} sizes="(max-width: 860px) 90vw, 600px" />
+      </LaptopMock>
     </ProjectCard>
   </section>
 

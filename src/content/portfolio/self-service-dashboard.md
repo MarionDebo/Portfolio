@@ -3,7 +3,7 @@ title: "Self-service Dashboard"
 description: "Toucan enables SaaS product teams to embed fully customizable, white-label analytics into their applications in days, not months. This allows teams to stay focused on their core product while Toucan takes care of the analytics experience."
 year: 2025
 tags: ["B2B SaaS", "Acquisition"]
-impact: "36% of SQL-to-QSO conversions"
+impact: "+36% SQL-to-QSO conversion"
 featured: true
 order: 2
 published: true
@@ -64,5 +64,5 @@ A pick-and-choose dashboard editor that lets business users customize their embe
 
 ## Business Impact
 
-- Self-service was a **determining factor in 36% of SQL-to-QSO conversions** in 2025, making it one of the most impactful features delivered that year.
+- Self-service drove a **36% increase in SQL-to-QSO conversion** in 2025, making it one of the most impactful features delivered that year.
 - **Adopted by ~20 clients since launch.**

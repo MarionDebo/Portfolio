@@ -3,8 +3,10 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/sections/ProjectCard.astro';
 import BrowserMock from '../components/sections/BrowserMock.astro';
+import LaptopMock from '../components/sections/LaptopMock.astro';
 import PhoneMock from '../components/sections/PhoneMock.astro';
 import dashboardShot from '../assets/images/projects/self-service-dashboard.png';
+import toucanShot from '../assets/images/projects/toucan-ai.png';
 ---
 
 <BaseLayout title="Work — Marion Débonnaire" bg="white">
@@ -32,7 +34,9 @@ import dashboardShot from '../assets/images/projects/self-service-dashboard.png'
     bg="#FFFFFF"
     hoverBg="#FAF9FE"
   >
-    <BrowserMock slot="media" variant="chart" />
+    <LaptopMock slot="media">
+      <Image src={toucanShot} alt="Toucan AI conversational analytics interface" widths={[480, 720, 960]} sizes="(max-width: 860px) 90vw, 600px" />
+    </LaptopMock>
   </ProjectCard>
 
   <!-- ░░ Project 02 · Entourage ░░ -->

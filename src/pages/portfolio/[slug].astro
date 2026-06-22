@@ -299,20 +299,12 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
   <!-- ░░ 05 · Impact ░░ -->
   <section class="wide">
     <div class="sec-head solution-head"><span class="num">05</span><h2>Impact</h2></div>
-    <div class="impact-grid four">
+    <div class="impact-grid">
       <div class="impact-card accent">
         <div class="stat">170K</div>
         <p>users registered on the app.</p>
       </div>
       <div class="impact-card lilac">
-        <div class="stat">4,300</div>
-        <p>community events organized across 30 cities.</p>
-      </div>
-      <div class="impact-card lilac">
-        <div class="stat">50K</div>
-        <p>citizens engaged alongside 13,000+ people in exclusion situations.</p>
-      </div>
-      <div class="impact-card accent">
         <div class="stat">79%</div>
         <p>of people supported feel better thanks to the connections made.</p>
       </div>
@@ -320,18 +312,6 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
     <p class="impact-note">Figures from entourage.social, reflecting the platform's cumulative growth since the redesign.</p>
   </section>
 
-  <!-- ░░ 06 · Conference Talk ░░ -->
-  <section class="wide">
-    <div class="sec-head solution-head"><span class="num">06</span><h2>Conference Talk</h2></div>
-    <div class="talk-card">
-      <div class="talk-play" aria-hidden="true">▶</div>
-      <div class="talk-meta">
-        <div class="eyebrow plain">CONFERENCE TALK</div>
-        <div class="talk-title">Recording coming soon</div>
-        <p>A talk about the Entourage redesign. Title, event and video link to be added.</p>
-      </div>
-    </div>
-  </section>
   </Fragment>
   )}
 
@@ -542,32 +522,6 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
 /* ── Impact source note ── */
 .impact-note { margin: 22px 0 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--color-meta); }
 
-/* ── Conference talk ── */
-.talk-card {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  background: var(--color-bg-lilac-soft);
-  border: 1px solid rgba(var(--color-accent-rgb), 0.14);
-  border-radius: var(--radius-lg);
-  padding: 32px 36px;
-}
-.talk-play {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  color: #fff;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 4px;
-}
-.talk-title { font-family: var(--font-display); font-weight: 600; font-size: 23px; letter-spacing: -0.015em; color: var(--color-ink); margin: 2px 0 8px; }
-.talk-meta p { font-size: 16px; line-height: 1.6; color: var(--color-body-soft); margin: 0; }
-
 .next-wrap { padding: 72px var(--gutter) 96px; }
 .next-card {
   display: flex;
@@ -592,6 +546,5 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
   .app-shots { gap: 16px; }
   .solution-block { padding: 36px; }
   .solution-block p { font-size: 22px; }
-  .talk-card { flex-direction: column; align-items: flex-start; gap: 18px; }
 }
 </style>

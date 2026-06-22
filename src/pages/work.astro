@@ -2,11 +2,11 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/sections/ProjectCard.astro';
-import BrowserMock from '../components/sections/BrowserMock.astro';
 import LaptopMock from '../components/sections/LaptopMock.astro';
 import PhoneMock from '../components/sections/PhoneMock.astro';
 import dashboardShot from '../assets/images/projects/self-service-dashboard.png';
 import toucanShot from '../assets/images/projects/toucan-ai.png';
+import entourageShot from '../assets/images/projects/entourage-events.png';
 ---
 
 <BaseLayout title="Work — Marion Débonnaire" bg="white">
@@ -53,7 +53,9 @@ import toucanShot from '../assets/images/projects/toucan-ai.png';
     bg="#ECE7FF"
     hoverBg="#E4DBFF"
   >
-    <PhoneMock slot="media" />
+    <PhoneMock slot="media">
+      <Image src={entourageShot} alt="Entourage app — Events screen" widths={[260, 416, 624]} sizes="208px" />
+    </PhoneMock>
   </ProjectCard>
 
   <!-- ░░ Project 03 · Self-service Dashboard ░░ -->
@@ -62,16 +64,16 @@ import toucanShot from '../assets/images/projects/toucan-ai.png';
     tags={['B2B SaaS', 'Acquisition']}
     title="Self-service Dashboard"
     blurb="A pick-and-choose dashboard editor that lets business users customize their embedded analytics, with no technical knowledge required."
-    metricValue="36% of SQL-to-QSO conversions"
+    metricValue="+36% SQL-to-QSO conversion"
     metricSuffix="in 2025"
     href="/portfolio/self-service-dashboard"
     asLink
     bg="#F4F2EE"
     hoverBg="#EDEAE3"
   >
-    <BrowserMock slot="media" soft urlWidth="40%">
+    <LaptopMock slot="media">
       <Image src={dashboardShot} alt="Toucan self-service dashboard editor" widths={[480, 720, 960]} sizes="(max-width: 860px) 90vw, 600px" />
-    </BrowserMock>
+    </LaptopMock>
   </ProjectCard>
 </BaseLayout>
 

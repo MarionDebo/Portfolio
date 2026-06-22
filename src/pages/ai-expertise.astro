@@ -4,10 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroDemo from '../components/sections/HeroDemo.astro';
 import GithubGraph from '../components/sections/GithubGraph.astro';
 import genaiFormation from '../assets/images/badges/genai-formation.jpg';
-import certifiedBadge from '../assets/images/badges/certified-ai-discipline.png';
 
 const GITHUB_URL = 'https://github.com/MarionDebo';
-const CERT_URL = '#'; // TODO(owner): add the AI Discipline certification URL
+const CERT_URL = '/genai-certificate.jpg'; // certificate image (public/)
 
 // ── Build-time GitHub contributions (calendar year) ──────────────────────
 // Fetched here so the graph renders instantly and works with no JS. The
@@ -143,7 +142,7 @@ const acts = [
           </div>
         </div>
       </div>
-      <a href="/portfolio/self-service-dashboard" class="text-link build-link">Read the Toucan AI case study →</a>
+      <a href="/portfolio/toucan-ai" class="text-link build-link">Read the Toucan AI case study →</a>
     </div>
   </section>
 
@@ -207,7 +206,6 @@ const acts = [
         <Image src={genaiFormation} alt="GenAI · Les Fondamentaux, AI Discipline — Tristan Charvillat" class="formation-img" widths={[600, 900, 1200]} sizes="(max-width: 860px) 90vw, 600px" />
         <div>
           <div class="cert-row">
-            <Image src={certifiedBadge} alt="Certified by AI Discipline" width={74} height={74} class="cert-badge" />
             <span class="cert-pill">CERTIFIED · 2025</span>
           </div>
           <h2 class="formation-h2">GenAI · Les Fondamentaux</h2>
@@ -217,7 +215,7 @@ const acts = [
             <div><span class="b-dot"></span>RAG &amp; knowledge-base structuring</div>
             <div><span class="b-dot"></span>Building &amp; configuring AI assistants</div>
           </div>
-          <a href={CERT_URL} class="text-link">View the certification →</a>
+          <a href={CERT_URL} target="_blank" rel="noopener noreferrer" class="text-link">View the certification →</a>
         </div>
       </div>
     </div>
@@ -410,7 +408,6 @@ const acts = [
 .formation-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: center; }
 .formation-img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: var(--shadow-soft); }
 .cert-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-.cert-badge { display: block; flex-shrink: 0; }
 .cert-pill { font-family: var(--font-mono); font-size: 11px; color: var(--color-accent); background: var(--color-bg-lilac-tint); padding: 6px 13px; border-radius: var(--radius-pill); }
 .formation-h2 { font-size: clamp(28px, 3vw, 38px); font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; color: var(--color-ink); margin: 0 0 14px; }
 .formation-desc { font-size: 17px; line-height: 1.6; margin-bottom: 24px; }

@@ -1,29 +1,37 @@
 ---
-// Pure-CSS phone mockup — a 208px dark device frame with a violet header and
-// three list rows. Decorative (the Entourage "Events" screen).
+// Phone device frame (208px, dark bezel). Drop a screenshot in the default
+// slot to show a real screen: <PhoneMock><Image .../></PhoneMock>. With no
+// slot it falls back to the decorative Entourage "Events" mock.
+const hasImage = Astro.slots.has('default');
 ---
 
 <div class="phone-wrap">
   <div class="phone">
     <div class="screen">
-      <div class="header">
-        <div class="eyebrow">NEAR YOU</div>
-        <div class="screen-title">Events</div>
-      </div>
-      <div class="rows">
-        <div class="row">
-          <div class="avatar lilac"></div>
-          <div class="lines"><div class="l1" style="width:75%"></div><div class="l2" style="width:45%"></div></div>
-        </div>
-        <div class="row">
-          <div class="avatar lilac"></div>
-          <div class="lines"><div class="l1" style="width:60%"></div><div class="l2" style="width:50%"></div></div>
-        </div>
-        <div class="row">
-          <div class="avatar accent"></div>
-          <div class="lines"><div class="l1" style="width:70%"></div><div class="l2" style="width:40%"></div></div>
-        </div>
-      </div>
+      {hasImage ? (
+        <slot />
+      ) : (
+        <Fragment>
+          <div class="header">
+            <div class="eyebrow">NEAR YOU</div>
+            <div class="screen-title">Events</div>
+          </div>
+          <div class="rows">
+            <div class="row">
+              <div class="avatar lilac"></div>
+              <div class="lines"><div class="l1" style="width:75%"></div><div class="l2" style="width:45%"></div></div>
+            </div>
+            <div class="row">
+              <div class="avatar lilac"></div>
+              <div class="lines"><div class="l1" style="width:60%"></div><div class="l2" style="width:50%"></div></div>
+            </div>
+            <div class="row">
+              <div class="avatar accent"></div>
+              <div class="lines"><div class="l1" style="width:70%"></div><div class="l2" style="width:40%"></div></div>
+            </div>
+          </div>
+        </Fragment>
+      )}
     </div>
   </div>
 </div>
@@ -45,6 +53,7 @@
   display: flex;
   flex-direction: column;
 }
+.screen :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .header { background: var(--color-accent); padding: 20px 16px 16px; color: #fff; }
 .eyebrow { font-family: var(--font-mono); font-size: 10px; opacity: 0.8; margin-bottom: 6px; }
 .screen-title { font-family: var(--font-display); font-weight: 600; font-size: 19px; }

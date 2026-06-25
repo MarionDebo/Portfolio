@@ -5,52 +5,84 @@
 ---
 
 <div class="laptop">
-  <div class="screen">
+  <div class="lid">
     <div class="camera"><span></span></div>
-    <div class="screen-inner">
+    <div class="display">
       <slot />
     </div>
   </div>
-  <div class="base-1"></div>
-  <div class="base-2"><div class="notch"></div></div>
+  <div class="deck">
+    <div class="groove"></div>
+  </div>
 </div>
 
 <style>
-.screen {
-  background: #0C0B10;
-  border-radius: 20px 20px 7px 7px;
-  padding: 13px 13px 15px;
-  box-shadow: var(--shadow-laptop);
-  border: 1px solid rgba(0, 0, 0, 0.5);
+.laptop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 22px 30px rgba(15, 12, 30, 0.28));
 }
-.camera { display: flex; align-items: center; justify-content: center; padding: 1px 0 9px; }
-.camera span { width: 6px; height: 6px; border-radius: 50%; background: #26252c; box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.8); }
-.screen-inner { border-radius: 7px; overflow: hidden; background: #fff; border: 1px solid rgba(0, 0, 0, 0.4); }
-.screen-inner :global(img) { width: 100%; height: auto; display: block; }
-.base-1 {
+
+/* Screen lid: dark aluminium bezel around the display */
+.lid {
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #2a2933 0%, #1a1922 100%);
+  border-radius: 16px 16px 5px 5px;
+  padding: 12px 12px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+.camera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 8px;
+}
+.camera span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3a3942;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.9);
+}
+.display {
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  line-height: 0;
+}
+.display :global(img) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Bottom deck: a single aluminium bar, slightly wider than the lid */
+.deck {
   position: relative;
-  height: 16px;
-  background: linear-gradient(180deg, #e3e4e9 0%, #c2c3cb 55%, #a7a8b1 100%);
-  border-radius: 0 0 4px 4px;
-  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.7);
+  width: calc(100% + 22px);
+  height: 14px;
+  background: linear-gradient(180deg, #dcdde2 0%, #c0c1c9 45%, #9b9ca5 100%);
+  border-radius: 0 0 11px 11px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
 }
-.base-2 {
-  position: relative;
-  height: 11px;
-  width: 104%;
-  margin-left: -2%;
-  background: linear-gradient(180deg, #b9bac2 0%, #9a9ba4 60%, #7e7f88 100%);
-  border-radius: 0 0 14px 14px;
-  box-shadow: 0 14px 22px -10px rgba(0, 0, 0, 0.35);
-}
-.base-2 .notch {
+/* Concave finger groove that opens the lid */
+.deck .groove {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 128px;
-  height: 9px;
-  background: linear-gradient(180deg, #86878f, #aeb0b8);
-  border-radius: 0 0 9px 9px;
+  width: 22%;
+  height: 7px;
+  background: linear-gradient(180deg, #8f9099, #b6b7bf);
+  border-radius: 0 0 8px 8px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 </style>

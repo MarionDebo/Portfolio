@@ -10,6 +10,7 @@ import entourageShot1 from '../../assets/images/projects/entourage-appstore-1.pn
 import entourageShot2 from '../../assets/images/projects/entourage-appstore-2.png';
 import entourageShot3 from '../../assets/images/projects/entourage-appstore-3.png';
 import entourageShot4 from '../../assets/images/projects/entourage-appstore-4.png';
+import conferencePhoto from '../../assets/images/projects/marion-debonnaire-conference.png';
 const entourageShots = [entourageShot1, entourageShot2, entourageShot3, entourageShot4];
 
 // Only fully-designed ("published") case studies get a detail page.
@@ -312,6 +313,27 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
     <p class="impact-note">Figures from entourage.social, reflecting the platform's cumulative growth since the redesign.</p>
   </section>
 
+  <!-- ░░ 06 · The Talk ░░ -->
+  <section class="wide">
+    <div class="sec-head solution-head"><span class="num">06</span><h2>The Talk</h2></div>
+    <div class="talk-top">
+      <figure class="talk-photo">
+        <Image src={conferencePhoto} alt="Marion Débonnaire speaking on stage at School of Product" widths={[420, 840]} sizes="420px" />
+      </figure>
+      <p class="talk-intro">I took the stage at <strong>School of Product</strong> to share the story behind this repositioning: how we reframed the product around human connection, the lessons learned from the field, and the launch of the new app.</p>
+    </div>
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/CyvZsIZ8QCg?start=5"
+        title="Conference talk · Entourage product repositioning"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+
   </Fragment>
   )}
 
@@ -522,6 +544,49 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
 /* ── Impact source note ── */
 .impact-note { margin: 22px 0 0; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--color-meta); }
 
+/* ── Conference talk video ── */
+.talk-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 44px;
+  margin-bottom: 32px;
+}
+.talk-intro {
+  flex: 1;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--color-body);
+}
+.talk-photo {
+  flex: 0 0 420px;
+  max-width: 420px;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-dark);
+}
+.talk-photo :global(img) {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-dark);
+  box-shadow: var(--shadow-lg, 0 20px 60px rgba(21, 19, 28, 0.18));
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .next-wrap { padding: 72px var(--gutter) 96px; }
 .next-card {
   display: flex;
@@ -543,6 +608,8 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
   .case-header h1 { font-size: clamp(40px, 11vw, 62px); }
   .meta { grid-template-columns: 1fr; gap: 18px; }
   .needs-grid, .uc-grid, .impact-grid { grid-template-columns: 1fr; }
+  .talk-top { flex-direction: column; align-items: stretch; gap: 24px; }
+  .talk-photo { flex: none; max-width: 100%; }
   .app-shots { gap: 16px; }
   .solution-block { padding: 36px; }
   .solution-block p { font-size: 22px; }

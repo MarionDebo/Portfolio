@@ -11,7 +11,7 @@ role: "Senior Product Manager"
 scope: "Discovery → Delivery"
 heroImageAlt: "Toucan self-service dashboard editor"
 nextTitle: "Toucan AI"
-nextHref: "/portfolio/toucan-ai"
+nextHref: "/work/toucan-ai"
 ---
 
 ## My Role

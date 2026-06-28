@@ -11,7 +11,7 @@ role: "Junior Product Manager"
 scope: "Repositioning & social features"
 heroImageAlt: "Entourage app · Events screen"
 nextTitle: "Self-service Dashboard"
-nextHref: "/portfolio/self-service-dashboard"
+nextHref: "/work/self-service-dashboard"
 ---
 
 ## My Role

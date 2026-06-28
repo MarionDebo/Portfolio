@@ -11,7 +11,7 @@ role: "Senior Product Manager"
 scope: "Maker & end-user experience"
 heroImageAlt: "Toucan AI conversational analytics interface"
 nextTitle: "Entourage App Redesign"
-nextHref: "/portfolio/entourage-app"
+nextHref: "/work/entourage-app"
 ---
 
 ## My Role

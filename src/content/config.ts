@@ -10,7 +10,7 @@ const portfolio = defineCollection({
     impact:      z.string(),
     featured:    z.boolean().default(false),
     order:       z.number().default(99),
-    // Case-study detail page — only `published` entries render a /portfolio/[slug] page.
+    // Case-study detail page — only `published` entries render a /work/[slug] page.
     published:   z.boolean().default(false),
     role:        z.string().optional(),
     scope:       z.string().optional(),

@@ -318,7 +318,7 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
     <div class="sec-head solution-head"><span class="num">06</span><h2>The Talk</h2></div>
     <div class="talk-top">
       <figure class="talk-photo">
-        <Image src={conferencePhoto} alt="Marion Débonnaire speaking on stage at School of Product" widths={[420, 840]} sizes="420px" />
+        <Image src={conferencePhoto} alt="Marion Débonnaire speaking on stage at School of Product" widths={[500, 945]} sizes="(max-width: 760px) 92vw, 500px" />
       </figure>
       <p class="talk-intro">I took the stage at <strong>School of Product</strong> to share the story behind this repositioning: how we reframed the product around human connection, the lessons learned from the field, and the launch of the new app.</p>
     </div>
@@ -559,8 +559,8 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
   color: var(--color-body);
 }
 .talk-photo {
-  flex: 0 0 420px;
-  max-width: 420px;
+  /* Match the width of one Impact card: (row − grid gap) / 2 */
+  flex: 0 0 calc((100% - 20px) / 2);
   margin: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;

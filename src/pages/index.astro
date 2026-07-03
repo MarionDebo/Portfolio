@@ -8,7 +8,7 @@ import PhoneMock from '../components/sections/PhoneMock.astro';
 import toucanShot from '../assets/images/projects/toucan-ai.png';
 import entourageShot from '../assets/images/projects/entourage-events.png';
 import dashboardShot from '../assets/images/projects/self-service-dashboard.png';
-import portrait from '../assets/images/portraits/portrait-marion.jpg';
+import portrait from '../assets/images/portraits/marion-hero.JPG';
 import jeremyPinhel from '../assets/images/testimonials/jeremy-pinhel.jpeg';
 import saraTissenier from '../assets/images/testimonials/sara-tissenier.jpeg';
 import alexandreMac from '../assets/images/testimonials/alexandre-mac.jpeg';
@@ -50,7 +50,7 @@ const testimonials = [
       </div>
       <div class="hero-portrait">
         <div class="outline" aria-hidden="true"></div>
-        <Image src={portrait} alt="Portrait of Marion Débonnaire" class="portrait" widths={[360, 560, 720]} sizes="(max-width: 860px) 90vw, 420px" />
+        <Image src={portrait} alt="Portrait of Marion Débonnaire" class="portrait" widths={[360, 560, 720]} sizes="(max-width: 860px) min(90vw, 360px), 390px" />
       </div>
     </div>
   </section>
@@ -187,7 +187,7 @@ const testimonials = [
   white-space: nowrap;
   margin-bottom: 7px;
 }
-.hero-portrait { position: relative; margin: 0 16px 16px 0; }
+.hero-portrait { position: relative; width: 100%; max-width: 390px; min-width: 0; margin: 0 16px 16px auto; }
 .hero-portrait .outline {
   position: absolute;
   inset: 18px -16px -16px 18px;
@@ -267,8 +267,10 @@ const testimonials = [
 
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-text { min-width: 0; }
   .hero-text h1 { font-size: clamp(40px, 9vw, 62px); }
-  .hero-portrait { order: -1; margin: 0; max-width: 420px; }
+  .hero-portrait { order: -1; width: 100%; max-width: 360px; margin: 0 auto; }
+  .stats { flex-wrap: wrap; row-gap: 20px; }
   .kw-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 </style>

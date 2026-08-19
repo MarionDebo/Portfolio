@@ -19,18 +19,21 @@ const testimonials = [
     name: 'Jérémy Pinhel',
     role: 'Senior Software Engineer · Toucan',
     avatar: jeremyPinhel,
+    linkedin: 'https://www.linkedin.com/in/jeremypinhel/',
   },
   {
     quote: "Marion fait clairement partie des PM avec qui on a envie de travailler. Elle fait preuve d'une grande maturité produit et sait arbitrer avec justesse sous pression marché, en alignant enjeux business, besoins utilisateurs et qualité de ce qui est délivré, sans jamais perdre de vue l'humain au sein de ses équipes. Elle collabore très étroitement avec le design et sait en faire un véritable levier d'impact produit. Un vrai plaisir de collaborer avec elle au quotidien.",
     name: 'Sara Tissenier',
     role: 'Senior Product Designer',
     avatar: saraTissenier,
+    linkedin: 'https://www.linkedin.com/in/saratissenier/',
   },
   {
     quote: "J'ai managé Marion pendant deux ans chez Entourage. Elle est arrivée en stage, elle est repartie PM aguerrie après avoir piloté la refonte complète de notre app mobile native iOS / Android. Une évolution qu'elle a portée avec autant d'exigence que d'humilité. Au-delà de la rigueur, il y a aussi un vrai sens du collectif. Marion adore vraiment son métier, et cette passion tire toute l'équipe vers le haut. On a tous besoin d'une Marion dans son équipe !",
     name: 'Alexandre Mac',
     role: 'Chief Product Officer · Entourage',
     avatar: alexandreMac,
+    linkedin: 'https://www.linkedin.com/in/alexandre-mac/',
   },
 ];
 ---
@@ -131,13 +134,15 @@ const testimonials = [
           <figure class="quote-card">
             <blockquote>{t.quote}</blockquote>
             <figcaption class="author">
-              {t.avatar
-                ? <Image src={t.avatar} alt={`Portrait of ${t.name}`} class="avatar" width={84} height={84} />
-                : <span class="avatar" aria-hidden="true"></span>}
-              <span>
-                <span class="author-name">{t.name}</span>
-                <span class="author-role">{t.role}</span>
-              </span>
+              <a href={t.linkedin} target="_blank" rel="noopener noreferrer" class="author-link">
+                {t.avatar
+                  ? <Image src={t.avatar} alt={`Portrait of ${t.name}`} class="avatar" width={84} height={84} />
+                  : <span class="avatar" aria-hidden="true"></span>}
+                <span>
+                  <span class="author-name">{t.name}</span>
+                  <span class="author-role">{t.role}</span>
+                </span>
+              </a>
             </figcaption>
           </figure>
         ))}
@@ -255,6 +260,8 @@ const testimonials = [
   margin: 0 0 22px;
 }
 .author { display: flex; align-items: center; gap: 12px; }
+.author-link { display: flex; align-items: center; gap: 12px; }
+.author-link:hover .author-name { color: var(--color-accent); }
 .avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--color-bg-lilac); flex-shrink: 0; object-fit: cover; border: 1px solid rgba(122, 82, 236, 0.18); box-shadow: 0 0 0 4px rgba(122, 82, 236, 0.06); }
 .kw-linkedin { margin: 0; }
 .kw-linkedin a {
@@ -283,7 +290,7 @@ const testimonials = [
   transition: background 0.18s ease;
 }
 .kw-linkedin a:hover svg { background: var(--color-bg-lilac-tint); }
-.author-name { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--color-ink); }
+.author-name { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--color-ink); transition: color 0.18s ease; }
 .author-role { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--color-meta); }
 
 @media (max-width: 860px) {

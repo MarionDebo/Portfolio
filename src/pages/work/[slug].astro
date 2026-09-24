@@ -216,6 +216,21 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
     <div class="solution-block">
       <p>A conversational analytics experience embedded directly into SaaS products. End users simply ask a question in natural language and instantly receive the answer: a key figure, a chart, or a breakdown, with no technical knowledge required. For those who want to go further, the interface also supports manual editing and code mode, so every profile can work at their own level of depth.</p>
     </div>
+    <div class="demo">
+      <div class="eyebrow">SEE IT IN ACTION · 0:57</div>
+      <p class="demo-intro">From a single prompt to a complete HR dashboard.</p>
+      <LaptopMock>
+        <video
+          src="/videos/toucan-ai-demo.mp4"
+          poster="/videos/toucan-ai-demo-poster.jpg"
+          controls
+          muted
+          playsinline
+          preload="none"
+          aria-label="Demo: creating a dashboard from a prompt in Toucan AI"
+        ></video>
+      </LaptopMock>
+    </div>
   </section>
 
   <!-- ░░ 05 · Business Impact ░░ -->
@@ -580,6 +595,9 @@ const { title, description, role, scope, impact, heroImageAlt, nextTitle, nextHr
   background: var(--color-dark);
   box-shadow: var(--shadow-lg, 0 20px 60px rgba(21, 19, 28, 0.18));
 }
+/* ── Product demo video (Toucan AI) ── */
+.demo { margin-top: 56px; }
+.demo-intro { font-size: 20px; line-height: 1.7; color: var(--color-body); margin: 0 0 24px; }
 .video-frame iframe {
   position: absolute;
   inset: 0;
